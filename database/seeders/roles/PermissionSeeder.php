@@ -23,19 +23,6 @@ class PermissionSeeder extends Seeder {
             ['cat_id' => 'roles', 'name' => 'roles_delete', 'name_ar' => 'حذف', 'name_en' => 'Delete'],
             ['cat_id' => 'roles', 'name' => 'roles_update_permissions', 'name_ar' => 'تعديل صلاحيات المجموعة', 'name_en' => 'Roles Update Permissions'],
 
-            ['cat_id' => 'Product', 'name' => 'Product_view', 'name_ar' => 'عرض', 'name_en' => 'View'],
-            ['cat_id' => 'Product', 'name' => 'Product_add', 'name_ar' => 'اضافة', 'name_en' => 'Add'],
-            ['cat_id' => 'Product', 'name' => 'Product_edit', 'name_ar' => 'تعديل', 'name_en' => 'Edit'],
-            ['cat_id' => 'Product', 'name' => 'Product_delete', 'name_ar' => 'حذف', 'name_en' => 'Delete'],
-            ['cat_id' => 'Product', 'name' => 'Product_edit_slug', 'name_ar' => 'تعديل الرابط', 'name_en' => 'Edit Slug'],
-            ['cat_id' => 'Product', 'name' => 'Product_restore', 'name_ar' => 'استعادة المحذوف', 'name_en' => 'Restore'],
-
-            ['cat_id' => 'Faq', 'name' => 'Faq_view', 'name_ar' => 'عرض', 'name_en' => 'View'],
-            ['cat_id' => 'Faq', 'name' => 'Faq_add', 'name_ar' => 'اضافة', 'name_en' => 'Add'],
-            ['cat_id' => 'Faq', 'name' => 'Faq_edit', 'name_ar' => 'تعديل', 'name_en' => 'Edit'],
-            ['cat_id' => 'Faq', 'name' => 'Faq_delete', 'name_ar' => 'حذف', 'name_en' => 'Delete'],
-            ['cat_id' => 'Faq', 'name' => 'Faq_edit_slug', 'name_ar' => 'تعديل الرابط', 'name_en' => 'Edit Slug'],
-            ['cat_id' => 'Faq', 'name' => 'Faq_restore', 'name_ar' => 'استعادة المحذوف', 'name_en' => 'Restore'],
 
             ['cat_id' => 'Blog', 'name' => 'Blog_view', 'name_ar' => 'عرض', 'name_en' => 'View'],
             ['cat_id' => 'Blog', 'name' => 'Blog_add', 'name_ar' => 'اضافة', 'name_en' => 'Add'],
@@ -66,21 +53,6 @@ class PermissionSeeder extends Seeder {
             ['cat_id' => 'data', 'name' => 'data_delete', 'name_ar' => 'حذف', 'name_en' => 'Delete'],
             ['cat_id' => 'data', 'name' => 'data_restore', 'name_ar' => 'استعادة المحذوف', 'name_en' => 'Restore'],
             ['cat_id' => 'data', 'name' => 'country_view', 'name_ar' => 'الدول', 'name_en' => 'Country'],
-
-            ['cat_id' => 'leads', 'name' => 'leads_view', 'name_ar' => 'عرض', 'name_en' => 'View'],
-            ['cat_id' => 'leads', 'name' => 'leads_add', 'name_ar' => 'اضافة', 'name_en' => 'Add'],
-            ['cat_id' => 'leads', 'name' => 'leads_edit', 'name_ar' => 'تعديل', 'name_en' => 'Edit'],
-            ['cat_id' => 'leads', 'name' => 'leads_export', 'name_ar' => 'تصدير', 'name_en' => 'Export'],
-            ['cat_id' => 'leads', 'name' => 'leads_delete', 'name_ar' => 'حذف', 'name_en' => 'Delete'],
-
-            ['cat_id' => 'app_setting', 'name' => 'AppSetting_view', 'name_ar' => 'عرض', 'name_en' => 'View'],
-            ['cat_id' => 'app_setting', 'name' => 'AppSetting_add', 'name_ar' => 'اضافة', 'name_en' => 'Add'],
-            ['cat_id' => 'app_setting', 'name' => 'AppSetting_edit', 'name_ar' => 'تعديل', 'name_en' => 'Edit'],
-            ['cat_id' => 'app_setting', 'name' => 'AppSetting_delete', 'name_ar' => 'حذف', 'name_en' => 'Delete'],
-            ['cat_id' => 'app_setting', 'name' => 'AppSetting_restore', 'name_ar' => 'استعادة المحذوف', 'name_en' => 'Restore'],
-
-
-
 
         ];
 

@@ -20,7 +20,7 @@
   <x-admin.hmtl.section>
     @if($categoryTree)
       <ol class="breadcrumb breadcrumb_menutree">
-        <li class="breadcrumb-item"><a href="{{route($PrefixRoute.'.index_Main')}}">{{__('admin/proProduct.cat_main_category')}}</a></li>
+        <li class="breadcrumb-item"><a href="{{route($PrefixRoute.'.index_Main')}}">{{__('admin/def.cat_main_category')}}</a></li>
         @if($pageData['SubView'])
           @foreach($trees as $tree)
             <li class="breadcrumb-item"><a href="{{route($PrefixRoute.'.SubCategory',$tree->id)}}">{{ $tree->name }}</a></li>

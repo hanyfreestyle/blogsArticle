@@ -2,6 +2,7 @@
 
 return
 [
+	'cat_main_category' => 'Main Category',
 	'delete_date' => 'Delete Date',
 	'delete_force' => 'Force Delete',
 	'delete_restor' => 'Restore',
@@ -21,4 +22,5 @@ return
 	'status' => 'Status',
 	'status_active' => 'Active',
 	'status_unactive' => 'UnActive',
+	'cat_name' => 'Category Name',
 ];

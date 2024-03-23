@@ -31,6 +31,7 @@ class AdminMainController extends DefaultMainController {
 
         $modelsNameArr = [
             "users" => ['name' => __('admin/config/roles.menu_roles_users')],
+
             "roles" => ['name' => __('admin/config/roles.menu_roles_role')],
             "config" => ['name' => __('admin.app_menu_setting')],
             "data" => ['name' => __('admin.app_menu_data')],
@@ -38,6 +39,7 @@ class AdminMainController extends DefaultMainController {
             "app_setting" => ['name' => __('admin/configApp.app_menu')],
             "Product" => ['name' => __('admin/proProduct.app_menu')],
             "Faq" => ['name' => __('admin/faq.app_menu')],
+            "Blog" => ['name' => __('admin/blogPost.app_menu')],
         ];
 
 

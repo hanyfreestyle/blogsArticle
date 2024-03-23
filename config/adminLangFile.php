@@ -11,18 +11,12 @@ return [
         'deleteMass'=> ['id'=> 'deleteMass','group'=>'admin','file_name'=>'deleteMass','name'=>'Delete Mass','name_ar'=>'رسائل الحذف' ],
         'form'=> ['id'=> 'form' , 'group'=>'admin' , 'file_name'=> 'form','name_en'=>'Forms','name_ar'=>'الفورم' ],
         'def' => ['id'=> 'def' , 'group'=>'admin' , 'file_name'=> 'def','name_en'=>'Default Variables','name_ar'=>'المتغيرات الاساسية' ],
-        'country'=> ['id'=> 'country' , 'group'=>'admin', 'file_name'=> 'dataCountry','name_en'=>'Country','name_ar'=>'الدول' ],
         'filter'=> ['id'=> 'filter', 'group'=>'admin', 'file_name'=> 'formFilter','name_en'=>'Filter Form','name_ar'=>'فلتر' ],
 
-        'Branch'=> ['id'=> 'Branch','group'=>'admin', 'file_name'=> 'configBranch','name'=>'Branch','name_ar'=>'الفروع' ],
         'Privacy'=> ['id'=> 'Privacy','group'=>'admin', 'file_name'=> 'configPrivacy','name'=>'Privacy','name_ar'=>'سياسية الاستخدام' ],
         'Meta'=> ['id'=> 'Meta','group'=>'admin', 'file_name'=> 'configMeta','name'=>'Meta Tage','name_ar'=>'ميتا تاج' ],
         'sitemap'=> ['id'=> 'sitemap','group'=>'admin','file_name'=> 'configSitemap','name'=>'SiteMap' ,'name_ar'=>'خريطة الموقع'],
-        'Apps'=> ['id'=> 'Apps' , 'group'=>'admin' , 'file_name'=> 'configApp','name'=>'AppSetting','name_ar'=>'اعدادات التطبيق' ],
         'newsletter'=> ['id'=> 'newsletter','group'=>'admin','file_name'=> 'leadsNewsLetter','name'=>'Newsletter','name_ar'=>'القائمة البريدية'],
-        'leadForm'=> ['id'=> 'leadForm' , 'group'=>'admin','file_name'=> 'leadsContactUs','name'=>'Lead Form','name_ar'=>'الاتصاللات' ],
-        'product'=> ['id'=> 'product' , 'group'=>'admin','file_name'=> 'proProduct','name'=>'Product','name_ar'=>'المنتجات' ],
-        'faq'=> ['id'=> 'faq' , 'group'=>'admin','file_name'=> 'faq','name'=>'Faq','name_ar'=>'الاسئلة المتكررة' ],
         'blogPost'=> ['id'=> 'blogPost' , 'group'=>'admin','file_name'=> 'blogPost','name'=>'Blog Post','name_ar'=>'المقالات' ],
 
 

@@ -2,6 +2,7 @@
 
 return
 [
+	'cat_main_category' => 'المجموعات الرئيسية',
 	'delete_date' => 'تاريخ الحذف',
 	'delete_force' => 'حذف نهائى',
 	'delete_restor' => 'استعادة',
@@ -21,4 +22,5 @@ return
 	'status' => 'الحالة',
 	'status_active' => 'فعال',
 	'status_unactive' => 'غير فعال',
+	'cat_name' => 'اسم المجموعة',
 ];

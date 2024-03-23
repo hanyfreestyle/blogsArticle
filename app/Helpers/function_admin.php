@@ -160,7 +160,7 @@ if(!function_exists('DefCategoryTextName')) {
         if($key) {
             $send = $key;
         } else {
-            $send = __('admin/proProduct.cat_text_name');
+            $send = __('admin/def.cat_name');
         }
         return $send;
     }
