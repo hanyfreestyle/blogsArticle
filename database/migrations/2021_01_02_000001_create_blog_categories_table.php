@@ -16,6 +16,11 @@ return new class extends Migration {
             $table->string("photo_thum_1")->nullable();
             $table->boolean("is_active")->default(true);
             $table->integer('postion')->default(0);
+
+            $table->integer('old_id')->nullable();
+            $table->integer('old_parent')->nullable();
+            $table->integer('count')->nullable();
+
             $table->timestamps();
         });
 

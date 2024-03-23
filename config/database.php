@@ -63,6 +63,19 @@ return [
             ]) : [],
         ],
 
+        'wordpress' => [ // for WordPress database (used by Corcel)
+            'driver'    => 'mysql',
+            'host'      => 'localhost',
+            'database'  => 'blog_article_sours',
+            'username'  => 'root',
+            'password'  => '',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => 'wp_',
+            'strict'    => false,
+            'engine'    => null,
+        ],
+
         'mysql2' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
