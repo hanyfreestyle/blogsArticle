@@ -1,10 +1,6 @@
 <?php
-
-
 namespace App\AppPlugin\BlogPost\Models;
 
-
-use App\AppPlugin\Faq\Models\FaqTranslation;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;

@@ -7,6 +7,7 @@ use App\AppPlugin\BlogPost\Seeder\BlogPhotoSeeder;
 use App\AppPlugin\BlogPost\Seeder\BlogPivotSeeder;
 use App\AppPlugin\BlogPost\Seeder\BlogSeeder;
 
+use App\AppPlugin\BlogPost\Seeder\BlogTagsSeeder;
 use App\AppPlugin\Config\Meta\SeederMetaTag;
 use App\AppPlugin\Config\Privacy\SeederWebPrivacy;
 use App\AppPlugin\Leads\NewsLetter\SeederNewsLetter;
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder {
         $this->call(UploadFilterSizeSeeder::class);
 
         $this->call(BlogCategorySeeder::class);
+        $this->call(BlogTagsSeeder::class);
 //        $this->call(BlogSeeder::class);
 //        $this->call(BlogPivotSeeder::class);
 //        $this->call(BlogPhotoSeeder::class);

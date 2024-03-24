@@ -2,6 +2,7 @@
 
 use App\AppPlugin\BlogPost\BlogCategoryController;
 use App\AppPlugin\BlogPost\BlogPostController;
+use App\AppPlugin\BlogPost\BlogTagsController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -55,3 +56,11 @@ Route::post('/Blog/PhotoUpdate/{id}',[BlogPostController::class,'More_PhotosUpda
 Route::get('/Blog/PhotosEdit/{id}',[BlogPostController::class,'More_PhotosEditAll'])->name('Blog.BlogPost.More_PhotosEditAll');
 Route::post('/Blog/PhotoUpdateAll/{id}',[BlogPostController::class,'More_PhotosUpdateAll'])->name('Blog.BlogPost.More_PhotosUpdateAll');
 Route::get('/Blog/config', [BlogPostController::class,'config'])->name('Blog.BlogPost.config');
+
+
+Route::get('/Blog/tags',[BlogTagsController::class,'index'])->name('Blog.BlogTags.index');
+Route::get('/Blog/tags/create',[BlogTagsController::class,'create'])->name('Blog.BlogTags.create');
+Route::get('/Blog/tags/edit/{id}',[BlogTagsController::class,'edit'])->name('Blog.BlogTags.edit');
+Route::post('/Blog/tags/update/{id}',[BlogTagsController::class,'storeUpdate'])->name('Blog.BlogTags.update');
+Route::get('/Blog/tags/destroy/{id}',[BlogTagsController::class,'ForceDeleteException'])->name('Blog.BlogTags.destroy');
+Route::get('/Blog/tags/config', [BlogTagsController::class,'config'])->name('Blog.BlogTags.config');

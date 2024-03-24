@@ -41,8 +41,16 @@ return [
                     'icon' => 'fas fa-rss',
                     'view' => true
                 ],
-
+                [
+                    'sel_routs' => 'BlogTags',
+                    'url' => 'Blog.BlogTags.index',
+                    'roleView' => 'Blog_view',
+                    'text' => 'admin/blogPost.app_menu_tags',
+                    'icon' => 'fas fa-hashtag',
+                    'view' => true
+                ],
             ],
+
         ], #BlogPost
         [
             'view' => IsMenuView($MenuView, "Permissions"),
