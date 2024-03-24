@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->text('old_tags')->nullable();
             $table->integer('old_id')->nullable();
             $table->integer('old_cat')->nullable();
+            $table->integer('update_tags')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,9 +34,10 @@ return new class extends Migration {
             $table->string('g_title')->nullable();
             $table->text('g_des')->nullable();
             $table->string('youtube_title')->nullable();
+            $table->integer('slug_count')->nullable();
 
             $table->unique(['blog_id', 'locale']);
-            $table->unique(['locale', 'slug']);
+//            $table->unique(['locale', 'slug']);
             $table->foreign('blog_id')->references('id')->on('blog_post')->onDelete('cascade');
         });
 

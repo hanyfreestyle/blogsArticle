@@ -68,12 +68,21 @@ class WordPressController extends Controller {
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| # ImportPosts
     public function ImportPosts() {
-
+        set_time_limit(0);
         $SaveData = 0;
 
-        if ($SaveData) {
-            $posts = Post::published()->where('post_type', 'post')->with('attachment')->with('taxonomies')->take(1)->get();
 
+        if ($SaveData) {
+//            dd('hi');
+//            $posts = Post::published()->where('post_type', 'post')->get();
+//            $posts = Post::published()->where('post_type', 'post')->skip(0)->take(1000)->get();
+//            $posts = Post::published()->where('post_type', 'post')->skip(1000)->take(1000)->get();
+//            $posts = Post::published()->where('post_type', 'post')->skip(2000)->take(1000)->get();
+//            $posts = Post::published()->where('post_type', 'post')->skip(3000)->take(1000)->get();
+//            $posts = Post::published()->where('post_type', 'post')->skip(4000)->take(1000)->get();
+//            $posts = Post::published()->where('post_type', 'post')->skip(5000)->take(1000)->get();
+//            $posts = Post::published()->where('post_type', 'post')->skip(6000)->take(1000)->get();
+//            dd(count($posts));
         } else {
             $posts = Post::published()->where('post_type', 'post')->with('attachment')->with('taxonomies')->take(1)->get();
         }
@@ -104,6 +113,7 @@ class WordPressController extends Controller {
             $newPost->created_at = $post->post_date;
             $newPost->updated_at = $post->post_modified;
             $newPost->photo = $photo;
+            $newPost->photo_thum_1 = $photo;
 
             foreach ($post->taxonomies as $taxonomies){
                 if($taxonomies->taxonomy == 'post_tag'){
