@@ -55,6 +55,7 @@ class BlogTagsController extends AdminMainController {
         $pageData = $this->pageData;
         $pageData['ViewType'] = "List";
         $pageData['SubView'] = false;
+//        dd(BlogTags::where('count',0)->count());
         $rowData = self::getSelectQuery(BlogTags::def());
         return view('AppPlugin.BlogPost.tags_index', compact('pageData', 'rowData'));
     }

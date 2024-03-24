@@ -6,6 +6,8 @@ use App\AppPlugin\BlogPost\Models\Blog;
 use App\AppPlugin\BlogPost\Models\BlogCategory;
 use App\AppPlugin\BlogPost\Models\BlogPhoto;
 use App\AppPlugin\BlogPost\Models\BlogPhotoTranslation;
+use App\AppPlugin\BlogPost\Models\BlogTags;
+use App\AppPlugin\BlogPost\Models\BlogTagsTranslation;
 use App\AppPlugin\BlogPost\Models\BlogTranslation;
 
 use App\AppPlugin\BlogPost\Request\BlogPostRequest;
@@ -123,12 +125,17 @@ class BlogPostController extends AdminMainController {
     public function create() {
         $pageData = $this->pageData;
         $pageData['ViewType'] = "Add";
-        $Categories = $this->modelCategory::all();
+        $Categories = BlogCategory::with('translation')->get();
         $rowData = $this->model::findOrNew(0);
         $LangAdd = self::getAddLangForAdd();
         $selCat = [];
-        return view('AppPlugin.BlogPost.form',compact('pageData','rowData','Categories','LangAdd','selCat'));
+        $tags = BlogTags::where('id','!=',0)->take(50)->get();
+        $selTags = [];
+        return view('AppPlugin.BlogPost.form',compact('pageData','rowData','Categories','LangAdd','selCat','tags','selTags'));
     }
+
+
+
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #     edit
@@ -139,7 +146,12 @@ class BlogPostController extends AdminMainController {
         $rowData = $this->model::where('id', $id)->with('categories')->firstOrFail();
         $selCat = $rowData->categories()->pluck('category_id')->toArray();
         $LangAdd = self::getAddLangForEdit($rowData);
-        return view('AppPlugin.BlogPost.form',compact('pageData','rowData','Categories','LangAdd','selCat'));
+
+        $tags = BlogTags::where('id','!=',0)->take(50)->get();
+        $selTags = $rowData->tags()->pluck('tag_id')->toArray();
+
+        return view('AppPlugin.BlogPost.form',compact('pageData','rowData','Categories','LangAdd','selCat','tags','selTags'));
+
     }
 
 
@@ -150,6 +162,7 @@ class BlogPostController extends AdminMainController {
         try {
             DB::transaction(function () use ($request, $saveData) {
                 $categories = $request->input('categories');
+                $tags = $request->input('blog_tag');
 
                 $saveData->is_active = intval((bool)$request->input('is_active'));
                 $saveData->youtube = $request->input('youtube');
@@ -157,6 +170,8 @@ class BlogPostController extends AdminMainController {
                 $saveData->save();
 
                 $saveData->categories()->sync($categories);
+                $saveData->tags()->sync($tags);
+
                 self::SaveAndUpdateDefPhoto($saveData, $request, $this->UploadDirIs, 'en.name');
 
                 $addLang = json_decode($request->add_lang);
@@ -193,6 +208,28 @@ class BlogPostController extends AdminMainController {
         $deleteRow->forceDelete();
         self::ClearCash();
         return back()->with('confirmDelete', "");
+    }
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| #
+
+    public function getEmployees(Request $request){
+
+        $search = $request->search;
+
+        if($search == ''){
+            $employees = BlogTagsTranslation::orderby('name','asc')->select('id','name')->limit(5)->get();
+        }else{
+            $employees = BlogTagsTranslation::orderby('name','asc')->select('id','name')->where('name', 'like', '%'
+                .$search . '%')->limit(50)->get();
+        }
+
+        $response = array();
+        foreach($employees as $employee){
+            $response[] = array("value"=>$employee->id,"label"=>$employee->name);
+        }
+
+        return response()->json($response);
     }
 
 }

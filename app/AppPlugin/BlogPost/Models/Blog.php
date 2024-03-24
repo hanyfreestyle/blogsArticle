@@ -60,6 +60,12 @@ class Blog extends Model implements TranslatableContract {
         return $this->belongsToMany(BlogCategory::class,'blogcategory_blog','blog_id', 'category_id');
     }
 
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| # tags
+    public function tags(): BelongsToMany {
+        return $this->belongsToMany(BlogTags::class,'blog_tags_post','blog_id', 'tag_id');
+    }
+
 
 //#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 //#|||||||||||||||||||||||||||||||||||||| #

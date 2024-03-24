@@ -57,6 +57,8 @@ Route::get('/Blog/PhotosEdit/{id}',[BlogPostController::class,'More_PhotosEditAl
 Route::post('/Blog/PhotoUpdateAll/{id}',[BlogPostController::class,'More_PhotosUpdateAll'])->name('Blog.BlogPost.More_PhotosUpdateAll');
 Route::get('/Blog/config', [BlogPostController::class,'config'])->name('Blog.BlogPost.config');
 
+Route::post('/employees/getEmployees/', [BlogPostController::class,'getEmployees'])->name('employees.getEmployees');
+
 
 Route::get('/Blog/tags',[BlogTagsController::class,'index'])->name('Blog.BlogTags.index');
 Route::get('/Blog/tags/create',[BlogTagsController::class,'create'])->name('Blog.BlogTags.create');
@@ -64,3 +66,4 @@ Route::get('/Blog/tags/edit/{id}',[BlogTagsController::class,'edit'])->name('Blo
 Route::post('/Blog/tags/update/{id}',[BlogTagsController::class,'storeUpdate'])->name('Blog.BlogTags.update');
 Route::get('/Blog/tags/destroy/{id}',[BlogTagsController::class,'ForceDeleteException'])->name('Blog.BlogTags.destroy');
 Route::get('/Blog/tags/config', [BlogTagsController::class,'config'])->name('Blog.BlogTags.config');
+

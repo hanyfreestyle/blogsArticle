@@ -13,6 +13,7 @@ Route::get('/adminTest/{model}',[DashboardController::class,'adminTest'])->name(
 Route::get('/ImportPostsCategory',[WordPressController::class,'ImportPostsCategory'])->name('admin.ImportPostsCategory');
 Route::get('/ImportPosts',[WordPressController::class,'ImportPosts'])->name('admin.ImportPosts');
 Route::get('/syncBlogCategory',[WordPressController::class,'syncBlogCategory'])->name('admin.syncBlogCategory');
+Route::get('/ImportTags',[WordPressController::class,'ImportTags'])->name('admin.ImportTags');
 
 Route::get('/AppPuzzle/List',[AppPuzzleController::class,'IndexModel'])->name('AppPuzzle.IndexModel');
 Route::get('/AppPuzzle/Info/{model}',[AppPuzzleController::class,'InfoModel'])->name('AppPuzzle.InfoModel');

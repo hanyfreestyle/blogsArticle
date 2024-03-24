@@ -6,6 +6,8 @@ use App\AppPlugin\BlogPost\Models\Blog;
 use App\AppPlugin\BlogPost\Models\BlogCategory;
 use App\AppPlugin\BlogPost\Models\BlogCategoryTranslation;
 use App\AppPlugin\BlogPost\Models\BlogPhotoThumbnail;
+use App\AppPlugin\BlogPost\Models\BlogTags;
+use App\AppPlugin\BlogPost\Models\BlogTagsTranslation;
 use App\AppPlugin\BlogPost\Models\BlogTranslation;
 use App\Helpers\AdminHelper;
 use Corcel\Model\Meta\ThumbnailMeta;
@@ -167,6 +169,48 @@ class WordPressController extends Controller {
             }
             echobr(count($AllPost));
         }
+    }
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| #   ImportTags
+    public function ImportTags() {
+        set_time_limit(0);
+        $SaveData =0;
+
+        if ($SaveData) {
+            $tags = Taxonomy::where('taxonomy','post_tag')->with('term')->get();
+        } else {
+            $tags = Taxonomy::where('taxonomy', 'post_tag')->take('1')->with('term')->get();
+        }
+
+//        dd(count($tags));
+
+        foreach ($tags as $tag){
+
+            $newTag = new BlogTags();
+            $newTag->old_id  = $tag->term_id ;
+            $newTag->count  = $tag->count ;
+            $newTag->old_count  = $tag->count ;
+
+            if($SaveData){
+                $newTag->save();
+                $newTranslation = new BlogTagsTranslation();
+                $newTranslation->tag_id = $newTag->id ;
+                $newTranslation->locale = "ar" ;
+                $newTranslation->slug =  urldecode($tag->term->slug);
+                $newTranslation->name = $tag->term->name ;
+                $newTranslation->save() ;
+            }else{
+                echobr($tag->term_id);
+                echobr($tag->count);
+                echobr($tag->term->name);
+                echobr(urldecode($tag->term->slug));
+            }
+
+
+        }
+
+
     }
 
 
