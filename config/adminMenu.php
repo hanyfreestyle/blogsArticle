@@ -3,6 +3,7 @@
 $MenuView = [
 //    'Permissions'=>false,
     'Update' => false,
+    'AppPuzzle' => false,
 //    'Data'=>false,
 //    'AdminLang'=>false,
 //    'WebLang'=>false,
