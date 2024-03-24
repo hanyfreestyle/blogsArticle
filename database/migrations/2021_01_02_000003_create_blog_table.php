@@ -15,6 +15,9 @@ return new class extends Migration {
             $table->integer('url_type')->nullable()->default(0);
             $table->string('youtube')->nullable();
             $table->date('published_at')->nullable();
+            $table->text('old_tags')->nullable();
+            $table->integer('old_id')->nullable();
+            $table->integer('old_cat')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

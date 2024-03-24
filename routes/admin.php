@@ -11,6 +11,8 @@ Route::get('/testpdf',[DashboardController::class,'testpdf'])->name('admin.testp
 Route::get('/adminTest/{model}',[DashboardController::class,'adminTest'])->name('admin.adminTest');
 
 Route::get('/ImportPostsCategory',[WordPressController::class,'ImportPostsCategory'])->name('admin.ImportPostsCategory');
+Route::get('/ImportPosts',[WordPressController::class,'ImportPosts'])->name('admin.ImportPosts');
+Route::get('/syncBlogCategory',[WordPressController::class,'syncBlogCategory'])->name('admin.syncBlogCategory');
 
 Route::get('/AppPuzzle/List',[AppPuzzleController::class,'IndexModel'])->name('AppPuzzle.IndexModel');
 Route::get('/AppPuzzle/Info/{model}',[AppPuzzleController::class,'InfoModel'])->name('AppPuzzle.InfoModel');
