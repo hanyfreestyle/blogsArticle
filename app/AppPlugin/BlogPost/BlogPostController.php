@@ -147,8 +147,10 @@ class BlogPostController extends AdminMainController {
         $selCat = $rowData->categories()->pluck('category_id')->toArray();
         $LangAdd = self::getAddLangForEdit($rowData);
 
-        $tags = BlogTags::where('id','!=',0)->take(50)->get();
         $selTags = $rowData->tags()->pluck('tag_id')->toArray();
+        $tags = BlogTags::whereIn('id',$selTags)->take(50)->get();
+
+//         dd($selTags);
 
         return view('AppPlugin.BlogPost.form',compact('pageData','rowData','Categories','LangAdd','selCat','tags','selTags'));
 

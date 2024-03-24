@@ -34,10 +34,10 @@ return new class extends Migration {
             $table->string('g_title')->nullable();
             $table->text('g_des')->nullable();
             $table->string('youtube_title')->nullable();
-            $table->integer('slug_count')->nullable();
+//            $table->integer('slug_count')->nullable();
 
             $table->unique(['blog_id', 'locale']);
-//            $table->unique(['locale', 'slug']);
+            $table->unique(['locale', 'slug']);
             $table->foreign('blog_id')->references('id')->on('blog_post')->onDelete('cascade');
         });
 

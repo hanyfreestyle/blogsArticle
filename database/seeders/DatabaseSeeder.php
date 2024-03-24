@@ -2,11 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\AppPlugin\BlogPost\Models\BlogTagsPivot;
 use App\AppPlugin\BlogPost\Seeder\BlogCategorySeeder;
 use App\AppPlugin\BlogPost\Seeder\BlogPhotoSeeder;
 use App\AppPlugin\BlogPost\Seeder\BlogPivotSeeder;
 use App\AppPlugin\BlogPost\Seeder\BlogSeeder;
 
+use App\AppPlugin\BlogPost\Seeder\BlogTagsPivotSeeder;
 use App\AppPlugin\BlogPost\Seeder\BlogTagsSeeder;
 use App\AppPlugin\Config\Meta\SeederMetaTag;
 use App\AppPlugin\Config\Privacy\SeederWebPrivacy;
@@ -40,8 +42,9 @@ class DatabaseSeeder extends Seeder {
 
         $this->call(BlogCategorySeeder::class);
         $this->call(BlogTagsSeeder::class);
-//        $this->call(BlogSeeder::class);
-//        $this->call(BlogPivotSeeder::class);
+        $this->call(BlogSeeder::class);
+        $this->call(BlogPivotSeeder::class);
+        $this->call(BlogTagsPivotSeeder::class);
 //        $this->call(BlogPhotoSeeder::class);
 
     }

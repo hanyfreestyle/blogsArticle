@@ -169,6 +169,7 @@ class WordPressController extends Controller {
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #   syncBlogCategory
     public function syncBlogCategory() {
+        dd('hi');
         $AllCats = BlogCategory::all();
         foreach ($AllCats as $cat) {
             $thisId = $cat->id;
@@ -179,6 +180,28 @@ class WordPressController extends Controller {
             }
             echobr(count($AllPost));
         }
+    }
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| #   UpdateTags
+    public  function UpdateTags(){
+        dd('hi');
+        $AllPost = Blog::where('update_tags', null)->take(150)->get();
+//        $AllPost = Blog::where('update_tags', null)->where('id',4385)->take(1)->get();
+        foreach ($AllPost as $post){
+             $oldTags = unserialize($post->old_tags);
+             $newTags = array();
+             foreach ($oldTags as $oldTag){
+                 $newTagModel = BlogTags::where('old_id',$oldTag)->first();
+                 $newTags =  array_merge($newTags,[$newTagModel->id]);
+             }
+            $post->tags()->sync($newTags);
+            $post->update_tags = 1;
+            $post->save();
+        }
+        echobr( $AllPost = Blog::where('update_tags', null)->take(500)->count());
+
     }
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -216,10 +239,21 @@ class WordPressController extends Controller {
                 echobr($tag->term->name);
                 echobr(urldecode($tag->term->slug));
             }
-
-
         }
+    }
 
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| #
+    public function CountSlug(){
+        set_time_limit(0);
+        $blogs = BlogTranslation::where('slug_count',null)->take(1000)->get();
+        $blogs = BlogTranslation::where('slug_count','>',1)->take(1000)->get();
+
+        foreach ($blogs as $blog){
+            $count = BlogTranslation::where('slug',$blog->slug)->count();
+            $blog->slug_count = $count ;
+            $blog->save() ;
+        }
 
     }
 

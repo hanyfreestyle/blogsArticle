@@ -10,6 +10,8 @@
 #/public/db
 /public/db/SQLDumpSplitterResult
 /public/db/blog_translations.sql
+/public/db/*.zip
+/public/db/*.exe
 /public/ckfinder
 #/public/images/project
 #/public/images
