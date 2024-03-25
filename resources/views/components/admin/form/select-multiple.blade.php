@@ -7,7 +7,7 @@
       </label>
     @endif
 
-    <select class="select2 is-invalid" multiple="multiple" name="{{$name}}[]" data-placeholder="" style="width: 100%;">
+    <select class="select2 is-invalid" id="{{$name}}" multiple="multiple" name="{{$name}}[]" data-placeholder="" style="width: 100%;">
       @if($type == 'Main')
         @foreach($categories as $category )
           <option value="{{$category->id}}"

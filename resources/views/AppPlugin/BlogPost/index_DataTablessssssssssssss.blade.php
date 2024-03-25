@@ -49,9 +49,10 @@
 
 
                   {data: 'tablename.0.name', name: 'tablename.name'},
-                {{--  {data: 'tablename.1.name', name: 'tablename.name'},--}}
+                  {data: 'tablename.1.name', name: 'tablename.name'},
 
-
+                  // {data: 'arName', name: 'arName.name'},
+                  // {data: 'enName', name: 'enName.name'},
 
 
 
@@ -59,9 +60,7 @@
                   {data: 'is_active', name: 'is_active', orderable: false, searchable: false},
 
                   @can($PrefixRole.'_edit')
-                      @if(count(config('app.web_lang'))>1)
                   {data: 'AddLang', name: 'AddLang', orderable: false, searchable: false},
-                      @endif
                   {data: 'MorePhoto', name: 'MorePhoto', orderable: false, searchable: false},
                   {data: 'Edit', name: 'Edit', orderable: false, searchable: false},
                   @endcan

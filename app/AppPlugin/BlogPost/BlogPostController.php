@@ -15,9 +15,7 @@ use App\Helpers\AdminHelper;
 use App\Http\Controllers\AdminMainController;
 
 use App\Http\Traits\CrudTraits;
-use Faker\Factory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
@@ -91,7 +89,6 @@ class BlogPostController extends AdminMainController {
 #|||||||||||||||||||||||||||||||||||||| #   DataTable
     public function DataTable(Request $request){
         if ($request->ajax()) {
-//            $data = $this->model::select(['blog_post.id','photo_thum_1','is_active','published_at'])->with('arName')->with('enName');
             $data = $this->model::select(['blog_post.id','photo_thum_1','is_active','published_at'])->with('tablename');
             return self::DataTableAddColumns($data)->make(true);
         }
@@ -130,6 +127,7 @@ class BlogPostController extends AdminMainController {
         $LangAdd = self::getAddLangForAdd();
         $selCat = [];
         $tags = BlogTags::where('id','!=',0)->take(50)->get();
+//        $tags = [];
         $selTags = [];
         return view('AppPlugin.BlogPost.form',compact('pageData','rowData','Categories','LangAdd','selCat','tags','selTags'));
     }
@@ -164,7 +162,7 @@ class BlogPostController extends AdminMainController {
         try {
             DB::transaction(function () use ($request, $saveData) {
                 $categories = $request->input('categories');
-                $tags = $request->input('blog_tag');
+                $tags = $request->input('tag_id');
 
                 $saveData->is_active = intval((bool)$request->input('is_active'));
                 $saveData->youtube = $request->input('youtube');
@@ -213,25 +211,47 @@ class BlogPostController extends AdminMainController {
     }
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-#|||||||||||||||||||||||||||||||||||||| #
+#|||||||||||||||||||||||||||||||||||||| #   TagsSearch
 
-    public function getEmployees(Request $request){
+    public function TagsSearch(Request $request){
 
-        $search = $request->search;
+        if(!empty($_GET['type']) && $_GET['type'] == 'TagsSearch'){
+            $search = $request->search;
 
-        if($search == ''){
-            $employees = BlogTagsTranslation::orderby('name','asc')->select('id','name')->limit(5)->get();
-        }else{
-            $employees = BlogTagsTranslation::orderby('name','asc')->select('id','name')->where('name', 'like', '%'
-                .$search . '%')->limit(50)->get();
+            $employees = BlogTagsTranslation::orderby('name','asc')->select('id','name')->where('name', 'like', '%' .$search . '%')->limit(50)->get();
+
+            $response = array();
+            foreach($employees as $employee){
+                $response[] = array("id"=>$employee->id,"text"=>$employee->name);
+            }
+            return response()->json($response);
         }
+    }
 
-        $response = array();
-        foreach($employees as $employee){
-            $response[] = array("value"=>$employee->id,"label"=>$employee->name);
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| # TagsOnFly
+    public function TagsOnFly(Request $request){
+
+        $response = array('addDone'=>false);
+
+        if($request->newTagData['newTag'] == true){
+            $slug = AdminHelper::Url_Slug($request->newTagData['text']);
+            $slugCount = BlogTagsTranslation::where('slug',$slug)->count();
+            if($slugCount == 0){
+                $addNewTag = new BlogTags();
+                $addNewTag->save();
+                $newTranslation = new BlogTagsTranslation();
+                $newTranslation->tag_id = $addNewTag->id;
+                $newTranslation->locale = 'ar';
+                $newTranslation->slug = $slug;
+                $newTranslation->name = $request->newTagData['text'];
+                $newTranslation->save();
+                $response = array('addDone'=>true,'id'=>$addNewTag->id);
+            }
         }
 
         return response()->json($response);
     }
+
 
 }

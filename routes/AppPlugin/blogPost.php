@@ -56,9 +56,8 @@ Route::post('/Blog/PhotoUpdate/{id}',[BlogPostController::class,'More_PhotosUpda
 Route::get('/Blog/PhotosEdit/{id}',[BlogPostController::class,'More_PhotosEditAll'])->name('Blog.BlogPost.More_PhotosEditAll');
 Route::post('/Blog/PhotoUpdateAll/{id}',[BlogPostController::class,'More_PhotosUpdateAll'])->name('Blog.BlogPost.More_PhotosUpdateAll');
 Route::get('/Blog/config', [BlogPostController::class,'config'])->name('Blog.BlogPost.config');
-
-Route::post('/employees/getEmployees/', [BlogPostController::class,'getEmployees'])->name('employees.getEmployees');
-
+Route::get('/Blog/TagsSearch', [BlogPostController::class,'TagsSearch'])->name('Blog.BlogPost.TagsSearch');
+Route::get('/Blog/TagsOnFly', [BlogPostController::class,'TagsOnFly'])->name('Blog.BlogPost.TagsOnFly');
 
 Route::get('/Blog/tags',[BlogTagsController::class,'index'])->name('Blog.BlogTags.index');
 Route::get('/Blog/tags/create',[BlogTagsController::class,'create'])->name('Blog.BlogTags.create');

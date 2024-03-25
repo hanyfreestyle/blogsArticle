@@ -18,5 +18,6 @@
     <x-admin.table.action-but po="top" type="edit"/>
     <x-admin.table.action-but po="top" type="delete"/>
   @endif
+
 </tr>
 </thead>

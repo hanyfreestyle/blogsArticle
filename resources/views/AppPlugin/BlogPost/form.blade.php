@@ -18,11 +18,21 @@
 
 
                 <div class="row">
+                    <x-admin.form.select-multiple name="tag_id" :categories="$tags" :sel-cat="$selTags" col="12" />
 
-                    <x-admin.form.select-multiple name="blog_tag" :categories="$tags" :sel-cat="$selTags" col="12" />
+{{--                    <select class="is-invalid " id="user_select" multiple="multiple" name="tag_id[]" data-placeholder="" style="width: 100%;">--}}
+{{--                        @foreach($tags as $tag )--}}
+{{--                            <option value="{{$tag->id}}"--}}
+{{--                            @if(is_array($selTags))--}}
+{{--                                {{ (in_array($tag->id,$selTags)) ? 'selected' : ''}}--}}
+{{--                                @endif--}}
+{{--                                {{ (collect(old('tag_id'))->contains($tag->id)) ? 'selected':'' }}>{{ print_h1($tag)}}</option>--}}
+{{--                        @endforeach--}}
+{{--                    </select>--}}
 
-{{--                    <input type="text" id='employee_search'>--}}
-{{--                    <input type="text" id='employeeid' readonly>--}}
+{{--                    <x-admin.form.select-multiple name="blog_tag" :categories="$tags" :sel-cat="$selTags" col="12" />--}}
+
+
 
                 </div>
 
@@ -62,38 +72,57 @@
     @if($viewEditor)
         <x-admin.form.ckeditor-jave height="350"/>
     @endif
-
-
-{{--    <script type="text/javascript">--}}
-{{--        // CSRF Token--}}
-{{--        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');--}}
-{{--        $(document).ready(function(){--}}
-
-{{--            $( "#employee_search" ).autocomplete({--}}
-{{--                source: function( request, response ) {--}}
-{{--                    // Fetch data--}}
-{{--                    $.ajax({--}}
-{{--                        url:"{{route('employees.getEmployees')}}",--}}
-{{--                        type: 'post',--}}
-{{--                        dataType: "json",--}}
-{{--                        data: {--}}
-{{--                            _token: CSRF_TOKEN,--}}
-{{--                            search: request.term--}}
-{{--                        },--}}
-{{--                        success: function( data ) {--}}
-{{--                            response( data );--}}
-{{--                        }--}}
-{{--                    });--}}
-{{--                },--}}
-{{--                select: function (event, ui) {--}}
-{{--                    // $('#employee_search').val(ui.item.label); // display the selected text--}}
-{{--                    $('#hany').val("hany"); // display the selected text--}}
-{{--                    $('#employee_search').val(""); // display the selected text--}}
-{{--                    $('#employeeid').val(ui.item.value); // save selected id to input--}}
-{{--                    return false;--}}
-{{--                }--}}
-{{--            });--}}
-{{--        });--}}
-{{--    </script>--}}
+    <script>
+        $(document).ready(function() {
+            $("#tag_id").select2({
+                ajax: {
+                    url: "{{route('Blog.BlogPost.TagsSearch')}}",
+                    dataType: 'json',
+                    data: function (params) {
+                        var query = {
+                            search: params.term,
+                            type: 'TagsSearch',
+                        }
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data
+                        };
+                    }
+                },
+                cache: false,
+                placeholder: 'Search for a user...',
+                tags: true,
+                tokenSeparators: [','],
+                minimumInputLength: 2,
+                createTag: function (params) {
+                    var term = $.trim(params.term);
+                    if (term === '') {
+                        return null;
+                    }
+                    return {
+                        id: term,
+                        text: term,
+                        newTag: true
+                    }
+                },
+            });
+        }).on('select2:select', function (e) {
+            var data = e.params.data;
+            if(data.newTag === true){
+                $.ajax({
+                    url:"{{route('Blog.BlogPost.TagsOnFly')}}",
+                    method:"get",
+                    data:{newTagData:data},
+                    success:function(response) {
+                        if (response.addDone === true){
+                            $("#tag_id").find('[value="'+e.params.data.id+'"]').replaceWith('<option selected value="'+response.id+'">'+e.params.data.text+'</option>');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 
 @endpush

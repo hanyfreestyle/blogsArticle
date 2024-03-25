@@ -37,7 +37,7 @@ class BlogCategoryController extends AdminMainController {
         $this->translationdb = 'category_id';
 
 
-        self::SetCatTree(true, 2);
+        self::SetCatTree(false, 2);
 
         $this->categoryIcon = true;
         View::share('categoryIcon', $this->categoryIcon);
