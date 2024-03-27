@@ -1,30 +1,22 @@
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
+<header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
 
-                                <li class="nav-item {{activeMenu($pageView,'HomePage')}}">
-                                    <a href="{{route('page_index')}}"> {{__('web/menu.main_home')}} </a>
-                                </li>
-
-                                <li class="nav-item {{activeMenu($pageView,'Contact')}} ">
-                                    <a href="{{ LaravelLocalization::localizeUrl(route('page_ContactUs')) }}">
-                                        {{__('web/menu.main_contatc_us')}}
-                                    </a>
-                                </li>
-
-                                <li class="lang_menu d-none d-lg-block">
-                                    <a href="{{ LaravelLocalization::getLocalizedURL(webChangeLocale(),$pageView['go_home']) }}"
-                                       class="link d-flex align-items-center gap-2 p-2 rounded-pill bg-primary-5p clr-neutral-500">
-                                        <i class="fa-solid fa-globe language"></i>
-                                    </a>
-                                </li>
-
-                            </ul>
-                    </div>
-                </nav>
-            </div>
+        <div class="logo">
+            <h1><a href="index.html"><span>e</span>Business</a></h1>
         </div>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link active" href="#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="#about">About</a></li>
+                <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+                <li><a class="nav-link scrollto" href="#team">Team</a></li>
+                <li><a href="blog.html">Blog</a></li>
+
+
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
     </div>
+</header>

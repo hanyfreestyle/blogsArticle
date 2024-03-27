@@ -1,43 +1,50 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"  {!!htmlArDir()!!}  >
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" {!!htmlArDir()!!} >
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="index, follow">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     {!! SEO::generate() !!}
     <x-site.def.fav-icon/>
-    {!! (new \App\Helpers\MinifyTools)->MinifyCss('css/bootstrap.min.css',$cssMinifyType,$cssReBuild) !!}
+    {!! (new \App\Helpers\MinifyTools)->MinifyCss('vendor/animate.css/animate.min.css',$cssMinifyType,$cssReBuild) !!}
+    {!! (new \App\Helpers\MinifyTools)->MinifyCss('vendor/bootstrap/css/bootstrap.min.css',$cssMinifyType,$cssReBuild) !!}
+{{--    {!! (new \App\Helpers\MinifyTools)->MinifyCss('vendor/bootstrap-icons/bootstrap-icons.css',$cssMinifyType,$cssReBuild) !!}--}}
+    {!! (new \App\Helpers\MinifyTools)->MinifyCss('vendor/boxicons/css/boxicons.min.css',$cssMinifyType,$cssReBuild) !!}
+    {!! (new \App\Helpers\MinifyTools)->MinifyCss('vendor/glightbox/css/glightbox.min.css',$cssMinifyType,$cssReBuild) !!}
+    {!! (new \App\Helpers\MinifyTools)->MinifyCss('vendor/swiper/swiper-bundle.min.css',$cssMinifyType,$cssReBuild) !!}
     {!! (new \App\Helpers\MinifyTools)->MinifyCss('css/style.css',$cssMinifyType,$cssReBuild) !!}
-    {!! (new \App\Helpers\MinifyTools)->MinifyCss('fontawesome/all.css',$cssMinifyType,$cssReBuild) !!}
-    {!! (new \App\Helpers\MinifyTools)->MinifyCss('css/style_footer.css',$cssMinifyType,$cssReBuild) !!}
-    {!! (new \App\Helpers\MinifyTools)->MinifyCss('css/style_contact_us.css',$cssMinifyType,$cssReBuild) !!}
-    {!! (new \App\Helpers\MinifyTools)->MinifyCss('share/share_buttons.css',$cssMinifyType,$cssReBuild) !!}
+    {{--    {!! (new \App\Helpers\MinifyTools)->MinifyCss('fontawesome/all.css',$cssMinifyType,$cssReBuild) !!}--}}
+    {{--    {!! (new \App\Helpers\MinifyTools)->MinifyCss('share/share_buttons.css',$cssMinifyType,$cssReBuild) !!}--}}
     @yield('AddStyle')
-    {!! (new \App\Helpers\MinifyTools)->MinifyCss('css/style_lang_'.thisCurrentLocale().'.css',$cssMinifyType,$cssReBuild) !!}
     @livewireStyles
 </head>
 <body>
 
-@if($_SERVER['HTTP_HOST'] != 'localhost' )
-    @include('web.layouts.inc.preloader')
-@endif
-@if(isset($DefPhotoList))
-    @include('web.layouts.inc.header_top')
-    @include('web.layouts.inc.header_menu')
-@endif
-
+@include('web.layouts.inc.header_menu')
 @yield('content')
+{{--@include('web.layouts.inc.footer')--}}
 
-@if(isset($DefPhotoList))
-    @include('web.layouts.inc.footer')
-@endif
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
 
 {!! (new \App\Helpers\MinifyTools)->MinifyJs('js/jquery-3.7.1.min.js',"Web",false) !!}
-{!! (new \App\Helpers\MinifyTools)->MinifyJs('js/lazy/jquery.lazy.min.js',"SeoWeb",$cssReBuild) !!}
-{!! (new \App\Helpers\MinifyTools)->MinifyJs('js/lazy/lazy_fun.js',"Seo",$cssReBuild) !!}
-{!! (new \App\Helpers\MinifyTools)->MinifyJs('js/customs.js',"Seo",$cssReBuild) !!}
-{!! (new \App\Helpers\MinifyTools)->MinifyJs('share/share-buttons.js',"Seo",$cssReBuild) !!}
-<x-site.js.load-web-font/>
+{{--{!! (new \App\Helpers\MinifyTools)->MinifyJs('js/lazy/jquery.lazy.min.js',"SeoWeb",$cssReBuild) !!}--}}
+{{--{!! (new \App\Helpers\MinifyTools)->MinifyJs('js/lazy/lazy_fun.js',"Seo",$cssReBuild) !!}--}}
+{{--{!! (new \App\Helpers\MinifyTools)->MinifyJs('js/customs.js',"Seo",$cssReBuild) !!}--}}
+{{--{!! (new \App\Helpers\MinifyTools)->MinifyJs('share/share-buttons.js',"Seo",$cssReBuild) !!}--}}
+{{--<x-site.js.load-web-font/>--}}
 @livewireScripts
 {{--<script>--}}
 {{--    document.addEventListener('livewire:load', () => {--}}
@@ -46,6 +53,6 @@
 {{--</script>--}}
 @yield('AddScript')
 @stack('ScriptCode')
-{!! $printSchema->Businesses() !!}
+{{--{!! $printSchema->Businesses() !!}--}}
 </body>
 </html>

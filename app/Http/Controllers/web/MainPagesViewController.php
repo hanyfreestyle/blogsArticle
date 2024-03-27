@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\web;
 
-use App\AppPlugin\Leads\ContactUs\ContactUsForm;
-use App\AppPlugin\Leads\ContactUs\ContactUsFormRequest;
-use App\AppPlugin\Leads\ContactUs\ContactUsOnPageRequest;
 use App\Http\Controllers\WebMainController;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
