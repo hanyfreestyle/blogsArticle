@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers\web;
 
+use App\AppPlugin\BlogPost\Models\Blog;
+use App\AppPlugin\BlogPost\Models\BlogCategory;
+use App\Helpers\AdminHelper;
 use App\Http\Controllers\WebMainController;
+use App\Models\admin\BlogPost;
+use App\Models\admin\Location;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,14 +27,37 @@ class MainPagesViewController extends WebMainController{
         $pageView['SelMenu'] = 'HomePage' ;
 
 
+        $categories =  BlogCategory::orderby('count',"desc")->take(10)->get()->map(function($blog) {
+            $blog->setRelation('homeBlog', $blog->homeBlog->take(3));
+            return $blog;
+        });
 
-        return view('web.index')->with(
+       return view('web.index')->with(
             [
                 'pageView'=>$pageView,
+                'categories'=>$categories,
             ]
         );
     }
 
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| # BlogView
+    public  function BlogView($slug){
+
+        try {
+            $slug =  AdminHelper::Url_Slug($slug);
+            $post  = Blog::defWeb()
+                ->whereTranslation('slug', $slug)
+                ->firstOrFail();
+        }
+        catch (\Exception $e){
+            self::abortError404('root');
+        }
+
+
+    }
 
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

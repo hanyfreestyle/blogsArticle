@@ -28,7 +28,7 @@ return [
         'newsletter'=> ['id'=> 'newsletter' , 'group'=>'web' ,'file_name'=> 'newsletter','name_en'=>'Newsletter' ,'name_ar'=>'القائمة البريدية' ],
         'product'=> ['id'=> 'product','group'=>'web','file_name'=> 'proProduct','name_en'=>'Product','name_ar'=>'المنتجات' ],
 
-//        'def'=> ['id'=> 'def' , 'group'=>'web' , 'sub_dir'=> null , 'file_name'=> 'def','name_en'=>'Default Variables','name_ar'=>'المتغيرات الاساسية' ],
+        'def'=> ['id'=> 'def' , 'group'=>'web' , 'sub_dir'=> null , 'file_name'=> 'def','name_en'=>'Default Variables','name_ar'=>'المتغيرات الاساسية' ],
 //        'layout'=> ['id'=> 'layout' , 'group'=>'web' , 'sub_dir'=> null , 'file_name'=> 'layout','name'=>'Web Layout' ],
 //        'contact'=> ['id'=> 'contact' , 'group'=>'web' , 'sub_dir'=> null , 'file_name'=> 'contact','name'=>'Contact Us' ],
 //

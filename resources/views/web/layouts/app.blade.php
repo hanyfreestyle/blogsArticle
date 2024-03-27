@@ -13,6 +13,7 @@
     {!! (new \App\Helpers\MinifyTools)->MinifyCss('vendor/glightbox/css/glightbox.min.css',$cssMinifyType,$cssReBuild) !!}
     {!! (new \App\Helpers\MinifyTools)->MinifyCss('vendor/swiper/swiper-bundle.min.css',$cssMinifyType,$cssReBuild) !!}
     {!! (new \App\Helpers\MinifyTools)->MinifyCss('css/style.css',$cssMinifyType,$cssReBuild) !!}
+    {!! (new \App\Helpers\MinifyTools)->MinifyCss('css/style_edit.css',$cssMinifyType,$cssReBuild) !!}
     {{--    {!! (new \App\Helpers\MinifyTools)->MinifyCss('fontawesome/all.css',$cssMinifyType,$cssReBuild) !!}--}}
     {{--    {!! (new \App\Helpers\MinifyTools)->MinifyCss('share/share_buttons.css',$cssMinifyType,$cssReBuild) !!}--}}
     @yield('AddStyle')
@@ -26,32 +27,27 @@
 
 
 
-<div id="preloader"></div>
+{{--<div id="preloader"></div>--}}
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-<!-- Vendor JS Files -->
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="assets/vendor/php-email-form/validate.js"></script>
-
-<!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
 
 
 {!! (new \App\Helpers\MinifyTools)->MinifyJs('js/jquery-3.7.1.min.js',"Web",false) !!}
-{{--{!! (new \App\Helpers\MinifyTools)->MinifyJs('js/lazy/jquery.lazy.min.js',"SeoWeb",$cssReBuild) !!}--}}
-{{--{!! (new \App\Helpers\MinifyTools)->MinifyJs('js/lazy/lazy_fun.js',"Seo",$cssReBuild) !!}--}}
-{{--{!! (new \App\Helpers\MinifyTools)->MinifyJs('js/customs.js',"Seo",$cssReBuild) !!}--}}
+{!! (new \App\Helpers\MinifyTools)->MinifyJs('js/lazy/jquery.lazy.min.js',"SeoWeb",$cssReBuild) !!}
+{!! (new \App\Helpers\MinifyTools)->MinifyJs('js/lazy/lazy_fun.js',"Seo",$cssReBuild) !!}
+{!! (new \App\Helpers\MinifyTools)->MinifyJs('vendor/bootstrap/js/bootstrap.bundle.min.js',"Web",$cssReBuild) !!}
+{!! (new \App\Helpers\MinifyTools)->MinifyJs('vendor/glightbox/js/glightbox.min.js',"Web",$cssReBuild) !!}
+{!! (new \App\Helpers\MinifyTools)->MinifyJs('vendor/isotope-layout/isotope.pkgd.min.js',"Web",$cssReBuild) !!}
+{!! (new \App\Helpers\MinifyTools)->MinifyJs('vendor/swiper/swiper-bundle.min.js',"Web",$cssReBuild) !!}
+{!! (new \App\Helpers\MinifyTools)->MinifyJs('vendor/php-email-form/validate.js',"Web",$cssReBuild) !!}
 {{--{!! (new \App\Helpers\MinifyTools)->MinifyJs('share/share-buttons.js',"Seo",$cssReBuild) !!}--}}
-{{--<x-site.js.load-web-font/>--}}
+{!! (new \App\Helpers\MinifyTools)->MinifyJs('js/main.js',"Web",$cssReBuild) !!}
+<x-site.js.load-web-font/>
 @livewireScripts
-{{--<script>--}}
-{{--    document.addEventListener('livewire:load', () => {--}}
-{{--        Livewire.onPageExpired((response, message) => {})--}}
-{{--    })--}}
-{{--</script>--}}
+<script>
+    document.addEventListener('livewire:load', () => {
+        Livewire.onPageExpired((response, message) => {})
+    })
+</script>
 @yield('AddScript')
 @stack('ScriptCode')
 {{--{!! $printSchema->Businesses() !!}--}}

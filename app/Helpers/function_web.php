@@ -1,4 +1,6 @@
 <?php
+
+use App\Helpers\AdminHelper;
 use App\Http\Controllers\WebMainController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -113,132 +115,32 @@ if (!function_exists('ChangeText')) {
     }
 }
 
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-#|||||||||||||||||||||||||||||||||||||| #     getLocationProjectTypeName
-if (!function_exists('getLocationProjectTypeName')) {
-    function getLocationProjectTypeName($value) {
-        switch ($value) {
-            case 'compound':
-                $sendStyle = __('web/var.location_compound');
-                break;
-            case 'village':
-                $sendStyle = __('web/var.location_village');
-                break;
-            case 'resort':
-                $sendStyle = __('web/var.location_resort');
-                break;
-            default:
-                $sendStyle = "";
-        }
-        return $sendStyle;
-    }
-}
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-#|||||||||||||||||||||||||||||||||||||| #     getProjectStatus
-if (!function_exists('getProjectStatus')) {
-    function getProjectStatus($value) {
-        switch ($value) {
-            case 'under-construction':
-                $sendStyle =__('web/var.status_under_construction');
-                break;
-            case 'completed':
-                $sendStyle = __('web/var.status_completed');
-                break;
-            default:
-                $sendStyle = "";
-        }
-        return $sendStyle;
-    }
-}
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-#|||||||||||||||||||||||||||||||||||||| #     getProjectTypeName
-if (!function_exists('getProjectTypeName')) {
-    function getProjectTypeName($value) {
-        switch ($value) {
-            case 'residential':
-                $sendStyle = __('web/var.project_residential');
-                break;
-            case 'vacation':
-                $sendStyle = __('web/var.project_vacation');
-                break;
-            case 'commercial':
-                $sendStyle = __('web/var.project_commercial');
-                break;
-            case 'medical':
-                $sendStyle =__('web/var.project_medical');
-                break;
+if (!function_exists('PrintShortDes')) {
+    function PrintShortDes($row,$limit=160) {
+        if($row->g_des == null){
 
-            default:
-                $sendStyle = "";
+            $value =  AdminHelper::seoDesClean($row->des,$limit);
+        }else{
+            $value =  $row->g_des ;
         }
-        return $sendStyle;
+
+        return $value;
     }
 }
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-#|||||||||||||||||||||||||||||||||||||| #     getPropertyTypeName
-if (!function_exists('getPropertyTypeName')) {
-    function getPropertyTypeName($value) {
-        switch ($value) {
-            case 'apartment':
-                $sendStyle = __('web/var.units_apartment') ;
-                break;
-            case 'duplex':
-                $sendStyle = __('web/var.units_duplex') ;
-                break;
-            case 'studio':
-                $sendStyle = __('web/var.units_studio') ;
-                break;
-            case 'town-house':
-                $sendStyle = __('web/var.units_town_house') ;
-                break;
-            case 'twin-house':
-                $sendStyle = __('web/var.units_twin_house') ;
-                break;
-            case 'pent-house':
-                $sendStyle = __('web/var.units_pent_house') ;
-                break;
-            case 'villa':
-                $sendStyle = __('web/var.units_villa') ;
-                break;
-            case 'office':
-                $sendStyle = __('web/var.units_office') ;
-                break;
-            case 'store':
-                $sendStyle = __('web/var.units_store') ;
-                break;
-            case 'chalet':
-                $sendStyle = __('web/var.units_chalet') ;
-                break;
-            case 'chalet-with-garden':
-                $sendStyle = __('web/var.units_chalet_with_garden') ;
-                break;
-            case 'pharmacy':
-                $sendStyle = __('web/var.units_pharmacy') ;
-                break;
-            case 'clinic':
-                $sendStyle = __('web/var.units_clinic') ;
-                break;
-            case 'laboratory':
-                $sendStyle = __('web/var.units_laboratory') ;
-                break;
 
-            default:
-                $sendStyle = "";
-        }
-        return $sendStyle;
-    }
+
+
+
+
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| # activeMenu
-    if (!function_exists('activeMenu')) {
-        function activeMenu($pageView, $current){
-            if(isset($pageView['SelMenu']) and $pageView['SelMenu'] == $current ){
-                return " current-page ";
-            }else{
-                return null;
-            }
+if (!function_exists('activeMenu')) {
+    function activeMenu($pageView, $current){
+        if(isset($pageView['SelMenu']) and $pageView['SelMenu'] == $current ){
+            return " current-page ";
+        }else{
+            return null;
         }
     }
-
-
 }

@@ -25,6 +25,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
 Route::group(['middleware' => ['UnderConstruction','MinifyHtml']], function() {
     Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
         Route::get('/', [MainPagesViewController::class, 'index'])->name('page_index');
+        Route::get('{slug}', [MainPagesViewController::class, 'BlogView'])
+            ->name('blog_view')->where('slug', '(.*)');
     });
 });
 

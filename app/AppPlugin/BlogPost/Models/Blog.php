@@ -54,6 +54,11 @@ class Blog extends Model implements TranslatableContract {
         }
     }
 
+
+    public function getHomeFormatteDate(){
+        return Carbon::parse($this->published_at)->locale(app()->getLocale())->translatedFormat('jS M Y') ;
+    }
+
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| # categories
     public function categories(): BelongsToMany {
@@ -78,6 +83,10 @@ class Blog extends Model implements TranslatableContract {
 #|||||||||||||||||||||||||||||||||||||| #
     public function scopeDefquery(Builder $query): Builder {
         return $query->with('translations');
+    }
+
+    public function scopedefWeb(Builder $query): Builder {
+        return $query->where('is_active',true);
     }
 
 

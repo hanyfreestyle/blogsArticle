@@ -4,6 +4,7 @@ namespace App\AppPlugin\BlogPost\Models;
 
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -28,6 +29,8 @@ class BlogCategory extends Model implements TranslatableContract {
         return $query->with('translation')->withCount('children');
     }
 
+
+
 //#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 //#|||||||||||||||||||||||||||||||||||||| #
 //    public function faqs() {
@@ -48,6 +51,10 @@ class BlogCategory extends Model implements TranslatableContract {
             ->withTrashed();
     }
 
+    public function homeBlog() {
+        return $this->belongsToMany(Blog::class, 'blogcategory_blog', 'category_id', 'blog_id')
+            ->orderBy('created_at','desc');
+    }
 
 }
 
@@ -57,3 +64,7 @@ class BlogCategory extends Model implements TranslatableContract {
 //public function slugs(): HasMany {
 //    return $this->hasMany(FaqCategoryTranslation::class, 'category_id', 'id');
 //}
+
+
+
+
