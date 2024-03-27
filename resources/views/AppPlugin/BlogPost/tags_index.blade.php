@@ -18,7 +18,8 @@
               @foreach(config('app.web_lang') as $key => $lang)
                 <th class="TD_200">{{__('admin/form.text_name')}}  {{printLableKey($key)}}</th>
               @endforeach
-              <th class="TD_50"></th>
+              <th class="TD_50">Old Count</th>
+              <th class="TD_50">Count</th>
               <th class="TD_20"></th>
               <x-admin.table.action-but po="top" type="edit"/>
               <x-admin.table.action-but po="top" type="delete"/>
@@ -31,7 +32,8 @@
                 @foreach(config('app.web_lang') as $key => $lang)
                   <td>{!! printCategoryName($key,$row,$PrefixRoute.".SubCategory") !!}</td>
                 @endforeach
-                <td>{{$row->values_count}}</td>
+                <td>{{$row->old_count}}</td>
+                <td>{{$row->count}}</td>
                 <td>{!! is_active($row->is_active) !!}</td>
                 <x-admin.table.action-but type="edit" :row="$row"/>
                 <x-admin.table.action-but type="delete" :row="$row"/>

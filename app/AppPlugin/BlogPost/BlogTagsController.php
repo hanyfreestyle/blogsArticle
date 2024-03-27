@@ -5,6 +5,7 @@ namespace App\AppPlugin\BlogPost;
 
 
 use App\AppPlugin\BlogPost\Models\BlogTags;
+use App\AppPlugin\BlogPost\Models\BlogTagsPivot;
 use App\AppPlugin\BlogPost\Models\BlogTagsTranslation;
 use App\AppPlugin\BlogPost\Request\BlogTagsRequest;
 use App\Helpers\AdminHelper;
@@ -52,10 +53,23 @@ class BlogTagsController extends AdminMainController {
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #     index
     public function index() {
+
+//         $allTags = BlogTags::where('test_count',null)->take(5000)->get();
+//         foreach ($allTags as $tag){
+//             $count = BlogTagsPivot::where('tag_id',$tag->id)->count();
+//             $tag->count = $count;
+//             $tag->test_count = 1;
+//             $tag->save();
+//         }
+//
+//
+//
+//         echobr( BlogTags::where('count',0)->count());
+
+
         $pageData = $this->pageData;
         $pageData['ViewType'] = "List";
         $pageData['SubView'] = false;
-//        dd(BlogTags::where('count',0)->count());
         $rowData = self::getSelectQuery(BlogTags::def());
         return view('AppPlugin.BlogPost.tags_index', compact('pageData', 'rowData'));
     }

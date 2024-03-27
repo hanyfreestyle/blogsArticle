@@ -12,7 +12,6 @@ return new class extends Migration {
             $table->integer('old_id')->nullable();
             $table->boolean("is_active")->default(true);
             $table->integer('count')->default(0);
-            $table->integer('old_count')->default(0);
         });
 
         Schema::create('blog_tags_translations', function (Blueprint $table) {
