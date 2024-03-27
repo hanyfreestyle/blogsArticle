@@ -25,8 +25,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
 Route::group(['middleware' => ['UnderConstruction','MinifyHtml']], function() {
     Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
         Route::get('/', [MainPagesViewController::class, 'index'])->name('page_index');
-        Route::get('{slug}', [MainPagesViewController::class, 'BlogView'])
-            ->name('blog_view')->where('slug', '(.*)');
+        Route::get('/categories', [MainPagesViewController::class, 'categories'])->name('categories_list');
+        Route::get('/category/{slug}', [MainPagesViewController::class, 'CategoryView'])->name('CategoryView');
+        Route::get('/tag/{slug}', [MainPagesViewController::class, 'TagView'])->name('TagView');
+
+
+        Route::get('{slug}{extension}', [MainPagesViewController::class, 'BlogView'])
+            ->name('blog_view')->where('slug', '(.*)')->where('extension', '(?:.html)?');
+
+
+
     });
 });
 

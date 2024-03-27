@@ -5,7 +5,7 @@
         <div class="blog-inner area-padding">
             <div class="blog-overly"></div>
 
-            @foreach($categories as $category)
+
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -16,8 +16,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        @foreach($category->homeBlog as $blog)
-                            <div class="col-md-4 col-sm-4 col-xs-12">
+                        @foreach($blogs as $blog)
+                            <div class="col-md-4 col-sm-4 col-xs-12 mb-5">
                                 <div class="single-blog">
                                     <a href="{{route('blog_view',[$blog->slug,'.html'])}}">
                                         <div class="single_blog_img">
@@ -40,8 +40,15 @@
                             </div>
                         @endforeach
                     </div>
+
+
                 </div>
-            @endforeach
+            <div class="container mt-5">
+                <x-site.def.pagination :rows="$blogs"/>
+            </div>
+
+
+
         </div>
     </div>
 

@@ -5,18 +5,18 @@
         <div class="blog-inner area-padding">
             <div class="blog-overly"></div>
 
-            @foreach($categories as $category)
+
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="section-headline text-center">
-                                <h2>{{$category->name}}</h2>
+                                <h2>{{$tag->name}}</h2>
                             </div>
 
                         </div>
                     </div>
                     <div class="row">
-                        @foreach($category->homeBlog as $blog)
+                        @foreach($ReletedBlog as $blog)
                             <div class="col-md-4 col-sm-4 col-xs-12">
                                 <div class="single-blog">
                                     <a href="{{route('blog_view',[$blog->slug,'.html'])}}">
@@ -41,7 +41,7 @@
                         @endforeach
                     </div>
                 </div>
-            @endforeach
+
         </div>
     </div>
 

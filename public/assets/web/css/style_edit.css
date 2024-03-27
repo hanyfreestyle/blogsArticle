@@ -1,4 +1,4 @@
-body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: swap!important;}
+body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: swap!important;  text-align: right!important;}
 .crop_line_1{width:100%;display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
 .crop_line_1_span{width:100%;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
 .crop_line_2{-webkit-line-clamp:2;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}
@@ -21,7 +21,7 @@ body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: 
     font-size: 18px;
     font-weight: bold;
     line-height: normal;
-    margin-rop: 2px;
+    margin-top: 2px;
     margin-bottom: 5px;
 
 }
@@ -48,7 +48,97 @@ body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: 
 }
 
 
+.post_thumbnail{
+    width: 100%!important;
+    height: 420px!important;
+}
+@media only screen and (min-width: 1px) and (max-width:600px) {
+    .post_thumbnail{
+        width: 100%!important;
+        height: 280px!important;
+    }
+}
+.post_thumbnail img{
+    width:100%;
+    height:100%;
+    -o-object-fit:cover;
+    object-fit:cover
+}
 
+.blog_des_view{
+    text-align: right!important;
+    direction: rtl;
+    font-size: 16px;
+    line-height: 28px;
+
+}
+
+.blog_des_view img{
+
+    margin-top: 15px!important;
+    margin-bottom: 15px!important;
+    max-width: 90%;
+
+}
+
+
+.blog_des_view{
+    text-align: right!important;
+    direction: rtl;
+
+}
+
+.blog_des_view h2{
+    font-weight: bold;
+    margin-top: 10px!important;
+    margin-bottom: 10px!important;
+
+}
+
+.blogview_h1{
+    text-align: right!important;
+    direction: rtl;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: normal;
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
+
+.Blogviewdate{
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 100px;
+}
+
+.tag_div{
+    text-align: right;
+    display: table;
+    padding: 5px 0 15px;
+    width: 100%;
+}
+
+.tag_div a{
+    font-size: 17px;
+    color: #c6007e;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 0 5px;
+    text-transform: capitalize;
+    display: inline-block;
+
+}
+
+.blog_view_cat_list{
+    text-align: right!important;
+}
+
+
+
+.category_text a{
+    font-size: 17px;
+    text-align: center!important;
+}
 
 
 

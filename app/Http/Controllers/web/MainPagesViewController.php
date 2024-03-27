@@ -4,10 +4,9 @@ namespace App\Http\Controllers\web;
 
 use App\AppPlugin\BlogPost\Models\Blog;
 use App\AppPlugin\BlogPost\Models\BlogCategory;
+use App\AppPlugin\BlogPost\Models\BlogTags;
 use App\Helpers\AdminHelper;
 use App\Http\Controllers\WebMainController;
-use App\Models\admin\BlogPost;
-use App\Models\admin\Location;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -41,23 +40,137 @@ class MainPagesViewController extends WebMainController{
     }
 
 
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| #     index
+    public function categories(){
+        $Meta = parent::getMeatByCatId('home');
+        parent::printSeoMeta($Meta,'page_index');
+
+        $pageView = $this->pageView ;
+        $pageView['SelMenu'] = 'HomePage' ;
+
+        $categories = BlogCategory::orderby('count',"desc")->paginate(12);
+
+        return view('web.category_list')->with(
+            [
+                'pageView'=>$pageView,
+                'categories'=>$categories,
+            ]
+        );
+    }
+
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-#|||||||||||||||||||||||||||||||||||||| # BlogView
-    public  function BlogView($slug){
+#|||||||||||||||||||||||||||||||||||||| #
+    public function CategoryView($slug){
+
+        $Meta = parent::getMeatByCatId('home');
+        parent::printSeoMeta($Meta,'page_index');
+
+        $pageView = $this->pageView ;
+        $pageView['SelMenu'] = 'HomePage' ;
 
         try {
             $slug =  AdminHelper::Url_Slug($slug);
-            $post  = Blog::defWeb()
-                ->whereTranslation('slug', $slug)
+            $category  = BlogCategory::whereTranslation('slug', $slug)
                 ->firstOrFail();
         }
         catch (\Exception $e){
             self::abortError404('root');
         }
 
+        $catid = $category->id ;
+        $blogs = Blog::defWeb()
+            ->whereHas('categories',function($query) use ($catid){
+                $query->where('category_id',$catid);
+            })->orderby('created_at','desc')->paginate(12);
 
+
+
+        return view('web.category_view')->with(
+            [
+                'pageView'=>$pageView,
+                'blogs'=>$blogs,
+                'category'=>$category,
+            ]
+        );
     }
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| # BlogView
+    public  function BlogView($slug){
+
+
+        $Meta = parent::getMeatByCatId('home');
+        parent::printSeoMeta($Meta,'page_index');
+        $pageView = $this->pageView ;
+        $pageView['SelMenu'] = 'HomePage' ;
+
+        try {
+            $slug =  str_replace('.html','',$slug);
+            $slug =  AdminHelper::Url_Slug($slug);
+            $blog  = Blog::defWeb()
+                ->whereTranslation('slug', $slug)
+                ->with('tags')
+                ->with('categories')
+                ->firstOrFail();
+        }
+        catch (\Exception $e){
+            self::abortError404('root');
+        }
+
+        $catid = $blog->categories->first()->id ;
+
+        $categories =  BlogCategory::orderby('count',"desc")->take(10)->get();
+
+        $ReletedBlog = Blog::defWeb()
+            ->where('id','!=',$blog->id)
+            ->whereHas('categories',function($query) use ($catid){
+                $query->where('category_id',$catid);
+            })->limit(6)->get();
+
+        $popularTags =  BlogTags::orderby('count',"desc")->take(10)->get();
+
+        return view('web.blog_view')->with(
+            [
+                'pageView'=>$pageView,
+                'blog'=>$blog,
+                'categories'=>$categories,
+                'ReletedBlog'=>$ReletedBlog,
+                'popularTags'=>$popularTags,
+            ]
+        );
+    }
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| # TagView
+    public function TagView($slug){
+        $Meta = parent::getMeatByCatId('home');
+        parent::printSeoMeta($Meta,'page_index');
+
+        $pageView = $this->pageView ;
+        $pageView['SelMenu'] = 'HomePage' ;
+
+
+        $slug =  AdminHelper::Url_Slug($slug);
+        $tag  = BlogTags::whereTranslation('slug', $slug)->firstOrFail();
+        $tagId = $tag->id;
+        $ReletedBlog = Blog::defWeb()
+            ->whereHas('tags',function($query) use ($tagId){
+                $query->where('tag_id',$tagId);
+            })->paginate(12);
+
+        return view('web.tag_view')->with(
+            [
+                'pageView'=>$pageView,
+                'tag'=>$tag,
+                'ReletedBlog'=>$ReletedBlog,
+            ]
+        );
+    }
+
 
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
