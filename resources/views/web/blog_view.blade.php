@@ -10,16 +10,16 @@
 
                             <article class="blog-post-wrapper">
                                 <h1 class="blogview_h1 mb-3">{{$blog->name}}</h1>
-                                <div class="post_thumbnail">
-                                    <x-site.def.img :row="$blog" def="blog" class="blog_img rounded-4" w="400" h="240" />
-                                </div>
+{{--                                <div class="post_thumbnail">--}}
+{{--                                    <x-site.def.img :row="$blog" def="blog" class="blog_img rounded-4" w="400" h="240" />--}}
+{{--                                </div>--}}
                                 <div class="post-information blog_info">
 
-{{--                                    <div class="entry-meta">--}}
-{{--                                        <span class="Blogviewdate"><i class="bi bi-clock"></i>{{$blog->getHomeFormatteDate()}}</span>--}}
-{{--                                    </div>--}}
+                                    <div class="entry-meta">
+                                        <span class="Blogviewdate"><i class="bi bi-clock"></i>{{$blog->getHomeFormatteDate()}}</span>
+                                    </div>
                                     <div class="entry-content blog_des_view">
-                                        {!! $blog->des !!}
+                                        {!! nl2br($blog->des) !!}
                                     </div>
                                     <div class="tag_div">
                                         @foreach($blog->tags as $tag)

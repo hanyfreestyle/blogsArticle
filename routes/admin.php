@@ -16,6 +16,7 @@ Route::get('/syncBlogCategory',[WordPressController::class,'syncBlogCategory'])-
 Route::get('/ImportTags',[WordPressController::class,'ImportTags'])->name('admin.ImportTags');
 Route::get('/CountSlug',[WordPressController::class,'CountSlug'])->name('admin.CountSlug');
 Route::get('/UpdateTags',[WordPressController::class,'UpdateTags'])->name('admin.UpdateTags');
+Route::get('/CheckId',[WordPressController::class,'CheckId'])->name('admin.CheckId');
 
 Route::get('/AppPuzzle/List',[AppPuzzleController::class,'IndexModel'])->name('AppPuzzle.IndexModel');
 Route::get('/AppPuzzle/Info/{model}',[AppPuzzleController::class,'InfoModel'])->name('AppPuzzle.InfoModel');

@@ -10,12 +10,18 @@ use App\AppPlugin\BlogPost\Models\BlogTags;
 use App\AppPlugin\BlogPost\Models\BlogTagsTranslation;
 use App\AppPlugin\BlogPost\Models\BlogTranslation;
 use App\Helpers\AdminHelper;
-use Corcel\Model\Meta\ThumbnailMeta;
 use Corcel\Model\Taxonomy;
 use Corcel\Model\Post;
 use Illuminate\Support\Carbon;
 
 class WordPressController extends Controller {
+
+
+public function CheckId(){
+    $posts = Post::published()->where('post_type', 'post')->where('ID',53172)->get();
+    dd($posts);
+}
+
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #   UpdatePhotoPath
