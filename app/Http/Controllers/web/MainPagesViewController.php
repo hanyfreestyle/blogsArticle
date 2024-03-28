@@ -6,6 +6,8 @@ use App\AppPlugin\BlogPost\Models\Blog;
 use App\AppPlugin\BlogPost\Models\BlogCategory;
 use App\AppPlugin\BlogPost\Models\BlogTags;
 use App\Helpers\AdminHelper;
+use App\Helpers\PHPTableOfContents;
+use App\Helpers\TableOfContents\Contents;
 use App\Http\Controllers\WebMainController;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -99,7 +101,7 @@ class MainPagesViewController extends WebMainController{
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| # BlogView
-    public  function BlogView($slug){
+    public  function BlogView($slug,Contents $contents){
 
 
         $Meta = parent::getMeatByCatId('home');
@@ -120,6 +122,9 @@ class MainPagesViewController extends WebMainController{
             self::abortError404('root');
         }
 
+        $blogBody = $contents->fromText($blog->des)->getHandledText();
+        $contents = $contents->getContentsArray();
+
         $catid = $blog->categories->first()->id ;
 
         $categories =  BlogCategory::orderby('count',"desc")->take(10)->get();
@@ -139,6 +144,8 @@ class MainPagesViewController extends WebMainController{
                 'categories'=>$categories,
                 'ReletedBlog'=>$ReletedBlog,
                 'popularTags'=>$popularTags,
+                'blogBody'=>$blogBody,
+                'contents'=>$contents,
             ]
         );
     }
