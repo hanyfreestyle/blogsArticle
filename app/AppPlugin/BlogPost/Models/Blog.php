@@ -1,11 +1,13 @@
 <?php
 namespace App\AppPlugin\BlogPost\Models;
 
+use App\Models\User;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -71,7 +73,9 @@ class Blog extends Model implements TranslatableContract {
         return $this->belongsToMany(BlogTags::class,'blog_tags_post','blog_id', 'tag_id');
     }
 
-
+    public function userName(): BelongsTo {
+        return $this->belongsTo(User::class,'user_id');
+    }
 //#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 //#|||||||||||||||||||||||||||||||||||||| #
 //    public function faqs() {

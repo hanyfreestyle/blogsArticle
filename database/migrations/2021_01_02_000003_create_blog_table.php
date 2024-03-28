@@ -9,6 +9,7 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('blog_post', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('user_id')->nullable();
             $table->boolean("is_active")->nullable()->default(true);
             $table->string("photo")->nullable();
             $table->string("photo_thum_1")->nullable();

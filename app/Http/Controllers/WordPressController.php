@@ -17,10 +17,25 @@ use Illuminate\Support\Carbon;
 class WordPressController extends Controller {
 
 
-public function CheckId(){
-    $posts = Post::published()->where('post_type', 'post')->where('ID',53172)->get();
-    dd($posts);
-}
+    public function CheckUser(){
+
+        $blogs = Blog::where('user_id',null)->take(500)->get();
+        foreach ($blogs as $blog){
+            $post = Post::published()->where('post_type', 'post')->where('ID',$blog->old_id)->first();
+            if($post->post_author){
+                $blog->user_id = $post->post_author ;
+                $blog->save() ;
+            }
+        }
+        echobr( Blog::where('user_id',null)->count());
+    }
+
+
+
+    public function CheckId(){
+        $posts = Post::published()->where('post_type', 'post')->where('ID',53172)->get();
+        dd($posts);
+    }
 
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
