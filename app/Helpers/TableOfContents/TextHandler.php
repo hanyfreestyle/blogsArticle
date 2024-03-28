@@ -76,7 +76,7 @@ final class TextHandler
         $allHeader =  $HeadersParser->getParsedHeaders();
         foreach ($allHeader as $header){
             if($header['id'] == $tagCount){
-                $slug = AdminHelper::Url_Slug($header['header']);
+                $slug = AdminHelper::Url_Slug(strip_tags($header['header']));
                 return "<{$matchedHeader[1]} " . 'id="'. $tagCount .'-'.$slug.'"' . $matchedHeader[2] . '>';
             }
         }

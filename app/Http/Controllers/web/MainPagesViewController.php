@@ -10,6 +10,8 @@ use App\Helpers\PHPTableOfContents;
 use App\Helpers\TableOfContents\Contents;
 use App\Http\Controllers\WebMainController;
 use Carbon\Carbon;
+use DOMDocument;
+use DOMXPath;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -104,6 +106,8 @@ class MainPagesViewController extends WebMainController{
     public  function BlogView($slug,Contents $contents){
 
 
+
+
         $Meta = parent::getMeatByCatId('home');
         parent::printSeoMeta($Meta,'page_index');
         $pageView = $this->pageView ;
@@ -123,7 +127,10 @@ class MainPagesViewController extends WebMainController{
         }
 
         $blogBody = $contents->fromText($blog->des)->getHandledText();
+        $blogBody = preg_replace('%(\\[caption.*])(.*)(\\[/caption\\])%','<p class="Blog_Img_Caption">$2</p>',$blogBody);
         $contents = $contents->getContentsArray();
+
+
 
         $catid = $blog->categories->first()->id ;
 
