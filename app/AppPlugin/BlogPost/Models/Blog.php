@@ -60,6 +60,9 @@ class Blog extends Model implements TranslatableContract {
     public function getHomeFormatteDate(){
         return Carbon::parse($this->published_at)->locale(app()->getLocale())->translatedFormat('jS M Y') ;
     }
+    public function getUpdateFormatteDate(){
+        return Carbon::parse($this->updated_at)->locale(app()->getLocale())->translatedFormat('jS M Y') ;
+    }
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| # categories

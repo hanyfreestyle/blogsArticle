@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2024 at 12:55 PM
+-- Generation Time: Mar 29, 2024 at 01:42 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `a_cart`
+-- Database: `blog_article`
 --
 
 --
@@ -27,9 +27,9 @@ SET time_zone = "+00:00";
 
 INSERT INTO `config_meta_tags` (`id`, `cat_id`, `photo`, `photo_thum_1`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'home', NULL, NULL, '2023-08-16 09:18:40', '2023-08-16 09:18:40', NULL),
-(2, 'developer', NULL, NULL, '2023-08-16 11:16:16', '2023-08-16 11:16:16', NULL),
-(3, 'blog', NULL, NULL, '2023-08-16 11:30:42', '2023-08-16 11:30:42', NULL),
-(4, 'contact-us', NULL, NULL, '2023-08-16 11:32:36', '2023-08-16 11:32:36', NULL),
+(2, 'categories', NULL, NULL, '2023-08-16 11:16:16', '2024-03-28 21:54:22', NULL),
+(3, 'AboutUs', NULL, NULL, '2023-08-16 11:30:42', '2024-03-28 22:41:19', NULL),
+(4, 'Review', NULL, NULL, '2023-08-16 11:32:36', '2024-03-28 22:41:45', NULL),
 (5, 'compounds', NULL, NULL, '2023-10-29 08:05:33', '2023-10-29 08:05:33', NULL),
 (6, 'for-sale', NULL, NULL, '2023-10-29 08:38:58', '2023-10-29 08:38:58', NULL),
 (7, 'err_404', NULL, NULL, '2024-01-25 13:35:18', '2024-01-25 13:35:18', NULL),

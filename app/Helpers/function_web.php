@@ -138,7 +138,7 @@ if (!function_exists('PrintShortDes')) {
 if (!function_exists('activeMenu')) {
     function activeMenu($pageView, $current){
         if(isset($pageView['SelMenu']) and $pageView['SelMenu'] == $current ){
-            return " current-page ";
+            return " active ";
         }else{
             return null;
         }

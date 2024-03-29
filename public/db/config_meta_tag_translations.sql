@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2024 at 12:55 PM
+-- Generation Time: Mar 29, 2024 at 01:42 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `a_cart`
+-- Database: `blog_article`
 --
 
 --
@@ -26,13 +26,13 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `config_meta_tag_translations` (`id`, `meta_tag_id`, `locale`, `g_title`, `g_des`) VALUES
-(1, 1, 'ar', 'موقع عقارات مصر | وجهتك العقارية الأولى في مصر', 'موقع عقارات مصر الموقع العقاري الأول للكمبوندات والمنتجعات والمشاريع العقارية في مصر'),
+(1, 1, 'ar', 'مقالات', 'موقع مقالات'),
 (2, 1, 'en', 'Real Estate Egypt | Egypt\'s #1 Real Estate Destination', 'Real Estate Egypt is the biggest real estate website in Egypt for compounds, resorts and commercial projects'),
-(3, 2, 'ar', 'المطورين العقاريين | موقع عقارات مصر', 'المطورين العقاريين  موقع عقارات مصر'),
+(3, 2, 'ar', 'الاقسام', 'الاقسام'),
 (4, 2, 'en', 'Developers | Real Estate Egypt', 'Developers Real Estate Egypt'),
-(5, 3, 'ar', 'المدونة | موقع عقارات مصر', 'موقع عقارات مصر الموقع العقاري الأول للكمبوندات والمنتجعات والمشاريع العقارية في مصر'),
+(5, 3, 'ar', 'من نحن', 'من نحن'),
 (6, 3, 'en', 'Blog | Real Estate Egypt', 'Blog Real Estate Egypt'),
-(7, 4, 'ar', 'اتصل بنا | موقع عقارات مصر | وجهتك العقارية الأولى في مصر', 'اتصل بنا موقع عقارات مصر الموقع العقاري الأول للكمبوندات والمنتجعات والمشاريع العقارية في مصر'),
+(7, 4, 'ar', 'معايير تدقيق المحتوى', 'معايير تدقيق المحتوى'),
 (8, 4, 'en', 'Contact Us | Real Estate Egypt | Egypt\'s #1 Real Estate Destination', 'Contact Us Real Estate Egypt is the biggest real estate website in Egypt for compounds, resorts and commercial projects'),
 (9, 5, 'ar', 'كمبوندات مصر', 'كمبوندات مصر'),
 (10, 5, 'en', 'Compounds', 'Compounds'),

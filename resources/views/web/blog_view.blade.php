@@ -1,45 +1,43 @@
 @extends('web.layouts.app')
 @section('content')
-
-    <div class="blog-page area-padding mt-5">
+    <div class="area_padding">
         <div class="container">
             <div class="row">
+
                 <div class="col-md-8 col-sm-8 col-xs-12">
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-
-                            <article class="blog-post-wrapper">
-                                <h1 class="blogview_h1 mb-3">{{$blog->name}}</h1>
-                                <div class="post-information blog_info">
-                                    <div class="entry-meta">
-                                        <span class="Blogviewdate"><i class="bi bi-clock"></i>{{$blog->getHomeFormatteDate()}}</span>
-                                    </div>
-
-                                    @if(!empty($contents))
-                                        <div>
-                                            @include('web.blog_table_of_contents', $contents)
-                                        </div>
-                                    @endif
-
-
-                                    <div class="entry-content blog_des_view">
-                                        {!! nl2br($blogBody) !!}
-                                    </div>
-                                    <div class="tag_div">
-                                        @foreach($blog->tags as $tag)
-                                            <a href="{{route('TagView',$tag->slug)}}"
-                                               class="tag_name">#{{$tag->name}}</a>
-                                        @endforeach
-                                    </div>
-
+                        <div class="col-md-12 col-sm-12 col-xs-12 BlogView">
+                            <h1 class="">{{$blog->name}}</h1>
+                            <div class="blog_info">
+                                <div class="printDate">
+                                    <span class="user_id">{{__('web/def.user_name')}} : <span class="info"><a href="#">{{$blog->userName->name}}</a> </span> | </span>
+                                    <span class="Blogviewdate">{{__('web/def.published_at')}} : <span class="info">{{$blog->getHomeFormatteDate()}}</span> | </span>
+                                    <span class="user_id">{{__('web/def.user_review')}} : <span class="info"><a href="#">{{$blog->userName->name}}</a> </span> | </span>
+                                    <span class="user_id">{{__('web/def.last_update')}} : <span class="info">{{$blog->getUpdateFormatteDate()}}</span> </span>
                                 </div>
-                            </article>
-                            <div class="clear"></div>
 
+                                @if(!empty($contents))
+                                    <div class="table_of_contents">
+                                        @include('web.blog_table_of_contents', $contents)
+                                    </div>
+                                @endif
 
+                                <div class="blog_des_view">
+                                    {!! nl2br($blogBody) !!}
+                                </div>
+
+                                <div class="tag_div">
+                                    <div class="title">{{__('web/def.tags')}}</div>
+                                    @foreach($blog->tags as $tag)
+                                        <a href="{{route('TagView',$tag->slug)}}" class="tag_name">#{{$tag->name}}</a>
+                                    @endforeach
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-md-4">
                     <div class="page-head-blog">
 
@@ -96,10 +94,7 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
-
 @endsection

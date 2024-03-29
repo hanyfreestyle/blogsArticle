@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @section('content')
-    <div class="area_padding ">
+    <div class="area_padding">
         @foreach($categories as $category)
             <div class="container BlogList">
                 <div class="row">

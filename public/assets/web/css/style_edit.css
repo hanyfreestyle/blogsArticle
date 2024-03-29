@@ -19,6 +19,7 @@ body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: 
 
 .BlogListLi{
 
+
 }
 
 .BlogListLi .ready_btn {
@@ -35,6 +36,7 @@ body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: 
     background: var(--background);
     float: left;
     border: 0;
+    margin-bottom: 25px;
 }
 
 .BlogListLi .ready_btn:hover {
@@ -87,6 +89,137 @@ body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: 
 }
 
 
+.category_text a{
+    margin-top: 10px;
+    font-size: 17px;
+    text-align: center!important;
+}
+
+
+
+
+.BlogView h1{
+    text-align: right!important;
+    direction: rtl;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: normal;
+    margin-top: 2px;
+    margin-bottom: 15px;
+
+}
+
+.blog_info{
+    /*background: red;*/
+}
+.blog_info .printDate{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    /*background: red;*/
+
+}
+
+.blog_info .printDate .user_id{
+    font-size: 14px;
+    display: inline-block;
+
+
+}
+
+.Blogviewdate{
+    font-size: 13px;
+    display: inline-block;
+}
+
+.blog_info .printDate .info{
+    color: var(--background);
+}
+
+.table_of_contents{
+    background: rgba(0,0,0,.2);
+    background: #edf6ff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.table_of_contents li{
+    font-size: 17px;
+    margin-bottom: 5px;
+
+}
+
+.table_of_contents li a{
+    color: #0a0e14;
+}
+.table_of_contents li a:hover{
+    color: var(--background);
+}
+
+
+.blog_des_view{
+    text-align: right!important;
+    direction: rtl;
+    font-size: 16px;
+    line-height: 28px;
+
+}
+
+.blog_des_view img{
+
+    margin-top: 15px!important;
+    margin-bottom: 15px!important;
+    max-width: 90%;
+
+}
+
+
+.blog_des_view{
+    text-align: right!important;
+    direction: rtl;
+    font-size: 18px;
+
+}
+
+.blog_des_view h2{
+    font-weight: bold;
+    margin-top: 10px!important;
+    margin-bottom: -10px!important;
+    font-size: 22px;
+
+}
+
+
+.tag_div{
+    text-align: right;
+    display: table;
+    padding: 5px 0 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+.tag_div .title{
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.tag_div a{
+    font-size: 16px;
+    color: #c6007e;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 0 5px;
+    text-transform: capitalize;
+    display: inline-block;
+
+}
+
 
 /*
 
@@ -126,44 +259,10 @@ body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: 
     object-fit:cover
 }
 
-.blog_des_view{
-    text-align: right!important;
-    direction: rtl;
-    font-size: 16px;
-    line-height: 28px;
 
-}
-
-.blog_des_view img{
-
-    margin-top: 15px!important;
-    margin-bottom: 15px!important;
-    max-width: 90%;
-
-}
-
-
-.blog_des_view{
-    text-align: right!important;
-    direction: rtl;
-
-}
-
-.blog_des_view h2{
-    font-weight: bold;
-    margin-top: 10px!important;
-    margin-bottom: 10px!important;
-
-}
 
 .blogview_h1{
-    text-align: right!important;
-    direction: rtl;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: normal;
-    margin-top: 2px;
-    margin-bottom: 5px;
+
 }
 
 .Blogviewdate{
@@ -172,23 +271,7 @@ body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: 
     padding-bottom: 100px;
 }
 
-.tag_div{
-    text-align: right;
-    display: table;
-    padding: 5px 0 15px;
-    width: 100%;
-}
 
-.tag_div a{
-    font-size: 17px;
-    color: #c6007e;
-    font-weight: 700;
-    line-height: 30px;
-    padding: 0 5px;
-    text-transform: capitalize;
-    display: inline-block;
-
-}
 
 .blog_view_cat_list{
     text-align: right!important;
@@ -196,10 +279,6 @@ body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: 
 
 
 
-.category_text a{
-    font-size: 17px;
-    text-align: center!important;
-}
 
 .Blog_Img_Caption{
     float: right;

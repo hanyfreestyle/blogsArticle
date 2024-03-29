@@ -7,12 +7,10 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link active" href="{{route('page_index')}}">الرئيسية</a></li>
-                <li><a class="nav-link" href="{{route('categories_list')}}">الاقسام</a></li>
-{{--                <li><a class="nav-link scrollto" href="#services">Services</a></li>--}}
-{{--                <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>--}}
-{{--                <li><a class="nav-link scrollto" href="#team">Team</a></li>--}}
-{{--                <li><a href="blog.html">Blog</a></li>--}}
+                <li><a class="nav-link {{activeMenu($pageView,'HomePage')}}" href="{{route('page_index')}}">{{__('web/menu.main_home')}}</a></li>
+                <li><a class="nav-link {{activeMenu($pageView,'Category')}}" href="{{route('categories_list')}}">{{__('web/menu.main_category')}}</a></li>
+                <li><a class="nav-link {{activeMenu($pageView,'AboutUs')}}" href="{{route('page_index')}}">{{__('web/menu.main_about')}}</a></li>
+                <li><a class="nav-link {{activeMenu($pageView,'Review')}}" href="{{route('page_index')}}">{{__('web/menu.main_review')}}</a></li>
             </ul>
             <i class="fas fa-bars mobile-nav-toggle"></i>
         </nav>

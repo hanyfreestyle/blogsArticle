@@ -1,7 +1,7 @@
 :root {
-    --background: #60ccdc;
-    --linkColor: #444;
-    --linkHover: #000000;
+    --background: #f58220;
+    --linkColor: #f58220;
+    --linkHover: #f58220;
 
     --h1Color:  rgb(36, 55, 87);
 
@@ -99,10 +99,11 @@ h6 {
 a {
   transition: all 0.3s ease 0s;
   text-decoration: none;
+    color: var(--linkColor);
 }
 
 a:hover {
-  color: #3EC1D5;
+  color: var(--linkColor);
   text-decoration: none;
 }
 
@@ -127,7 +128,7 @@ body {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #3ec1d5;
+  background: var(--background);
   width: 40px;
   height: 40px;
   transition: all 0.4s;
@@ -140,7 +141,7 @@ body {
 }
 
 .back-to-top:hover {
-  background: #60ccdc;
+  background:  var(--background);
   color: #fff;
 }
 
@@ -242,7 +243,7 @@ div#preloader {
 }
 
 #header .logo h1 span {
-  color: #3ec1d5;
+  color: var(--linkColor);
 }
 
 #header .logo h1 a,
@@ -314,11 +315,11 @@ div#preloader {
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 17px;
   color: #fff;
   white-space: nowrap;
   transition: 0.3s;
+    font-weight: bold;
 }
 
 .navbar a i,
@@ -332,7 +333,7 @@ div#preloader {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #3ec1d5;
+  color: var(--linkColor);
 }
 
 .navbar .dropdown ul {

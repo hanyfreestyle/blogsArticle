@@ -19,7 +19,6 @@ class MainPagesViewController extends WebMainController{
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #     index
     public function index(){
-
         $Meta = parent::getMeatByCatId('home');
         parent::printSeoMeta($Meta,'page_index');
 
@@ -39,22 +38,14 @@ class MainPagesViewController extends WebMainController{
 
     }
 
-
-
-/*
-
-
-
-
-
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-#|||||||||||||||||||||||||||||||||||||| #     index
+#|||||||||||||||||||||||||||||||||||||| #     categories
     public function categories(){
-        $Meta = parent::getMeatByCatId('home');
+        $Meta = parent::getMeatByCatId('categories');
         parent::printSeoMeta($Meta,'page_index');
 
         $pageView = $this->pageView ;
-        $pageView['SelMenu'] = 'HomePage' ;
+        $pageView['SelMenu'] = 'Category' ;
 
         $categories = BlogCategory::orderby('count',"desc")->paginate(12);
 
@@ -66,16 +57,9 @@ class MainPagesViewController extends WebMainController{
         );
     }
 
-
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #
     public function CategoryView($slug){
-
-        $Meta = parent::getMeatByCatId('home');
-        parent::printSeoMeta($Meta,'page_index');
-
-        $pageView = $this->pageView ;
-        $pageView['SelMenu'] = 'HomePage' ;
 
         try {
             $slug =  AdminHelper::Url_Slug($slug);
@@ -86,13 +70,16 @@ class MainPagesViewController extends WebMainController{
             self::abortError404('root');
         }
 
+        parent::printSeoMeta($category,'page_index');
+        $pageView = $this->pageView ;
+        $pageView['SelMenu'] = 'Category' ;
+
         $catid = $category->id ;
+
         $blogs = Blog::defWeb()
             ->whereHas('categories',function($query) use ($catid){
                 $query->where('category_id',$catid);
             })->orderby('created_at','desc')->paginate(12);
-
-
 
         return view('web.category_view')->with(
             [
@@ -102,7 +89,6 @@ class MainPagesViewController extends WebMainController{
             ]
         );
     }
-
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| # BlogView
@@ -160,6 +146,20 @@ class MainPagesViewController extends WebMainController{
             ]
         );
     }
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
