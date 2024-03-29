@@ -3,7 +3,7 @@
 @section('content')
     <x-admin.hmtl.breadcrumb :pageData="$pageData"/>
     <x-admin.hmtl.section>
-        <x-admin.card.def :page-data="$pageData">
+        <x-admin.card.def :page-data="$pageData" :full-error="true">
             <form class="mainForm" action="{{route($PrefixRoute.'.update',intval($oldData->id))}}" method="post"  enctype="multipart/form-data">
                 @csrf
                 <div class="row">

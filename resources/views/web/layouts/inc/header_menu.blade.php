@@ -14,7 +14,7 @@
 {{--                <li><a class="nav-link scrollto" href="#team">Team</a></li>--}}
 {{--                <li><a href="blog.html">Blog</a></li>--}}
             </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
+            <i class="fas fa-bars mobile-nav-toggle"></i>
         </nav>
     </div>
 </header>

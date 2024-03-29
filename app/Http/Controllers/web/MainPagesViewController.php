@@ -26,19 +26,25 @@ class MainPagesViewController extends WebMainController{
         $pageView = $this->pageView ;
         $pageView['SelMenu'] = 'HomePage' ;
 
-
         $categories =  BlogCategory::orderby('count',"desc")->take(10)->get()->map(function($blog) {
             $blog->setRelation('homeBlog', $blog->homeBlog->take(3));
             return $blog;
         });
-
-       return view('web.index')->with(
+        return view('web.index')->with(
             [
                 'pageView'=>$pageView,
                 'categories'=>$categories,
             ]
         );
+
     }
+
+
+
+/*
+
+
+
 
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -320,6 +326,6 @@ class MainPagesViewController extends WebMainController{
         return view('under');
     }
 
-
+*/
 
 }

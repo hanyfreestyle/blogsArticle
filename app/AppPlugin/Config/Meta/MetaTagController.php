@@ -69,6 +69,7 @@ class MetaTagController extends AdminMainController {
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #     edit
     public function edit($id) {
+
         $pageData = $this->pageData;
         $pageData['ViewType'] = "Edit";
         $oldData = MetaTag::findOrFail($id);
@@ -78,6 +79,7 @@ class MetaTagController extends AdminMainController {
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #     storeUpdate
     public function storeUpdate(MetaTagRequest $request, $id = '0') {
+
         try {
             DB::transaction(function () use ($request, $id) {
 
