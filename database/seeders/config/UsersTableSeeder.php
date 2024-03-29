@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\config;
 
+use App\Helpers\AdminHelper;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -53,5 +54,17 @@ class UsersTableSeeder extends Seeder {
                 $user->assignRole([$role->id]);
             }
         }
+
+        $addDes = 'مرحبًا بكم في عالمي، حيث الكلمات ترشدكم إلى فهم أعماق أحلامكم. أنا [USERName]، المتخصص في تفسير الأحلام وكتابة المقالات المعلوماتية التي تضيء الجوانب المخفية وراء رموز وقصص أحلامنا.';
+        $addDes .= '<br/>'."بخلفية أكاديمية في علم النفس وعلم الاجتماع، أعمق في الأبعاد النفسية والثقافية التي تشكل عوالم أحلامنا. أسعى من خلال كتاباتي لتقديم تحليلات دقيقة ومفهومة، تساعد القراء على ربط تجاربهم الحلمية بواقع حياتهم.";
+        $addDes .= '<br/>'."من خلال مقالاتي، ستجدون دليلًا شاملًا لفهم الرسائل الخفية في الأحلام وكيفية تطبيق هذه الفهوم في تعزيز النمو الشخصي والوعي الذاتي. انضموا إلي في هذه الرحلة الاستكشافية لعالم الأحلام، حيث كل حلم هو بوابة لاكتشاف الذات.";
+
+        $users = User::all();
+        foreach ($users as $user){
+            $user->slug = AdminHelper::Url_Slug($user->name);
+            $user->des = str_replace('[USERName]',$user->name,$addDes) ;
+            $user->save();
+        }
+
     }
 }

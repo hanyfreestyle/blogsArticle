@@ -12,9 +12,9 @@
     <x-admin.table.soft-delete/>
   @else
     <th class="TD_250">{{__('admin/blogPost.cat_text_name')}}</th>
-    <th class="TD_20"></th>
-    <x-admin.table.action-but po="top" type="addLang"/>
-    <x-admin.table.action-but po="top" type="edit"/>
+{{--    <th class="TD_20"></th>--}}
+{{--    <x-admin.table.action-but po="top" type="addLang"/>--}}
+{{--    <x-admin.table.action-but po="top" type="edit"/>--}}
     <x-admin.table.action-but po="top" type="edit"/>
     <x-admin.table.action-but po="top" type="delete"/>
   @endif

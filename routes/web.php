@@ -28,6 +28,7 @@ Route::group(['middleware' => ['UnderConstruction','MinifyHtml']], function() {
         Route::get('/categories', [MainPagesViewController::class, 'categories'])->name('categories_list');
         Route::get('/category/{slug}', [MainPagesViewController::class, 'CategoryView'])->name('CategoryView');
         Route::get('/tag/{slug}', [MainPagesViewController::class, 'TagView'])->name('TagView');
+        Route::get('/author/{slug}', [MainPagesViewController::class, 'AuthorView'])->name('AuthorView');
 
 
         Route::get('{slug}{extension}', [MainPagesViewController::class, 'BlogView'])
@@ -37,27 +38,6 @@ Route::group(['middleware' => ['UnderConstruction','MinifyHtml']], function() {
 
     });
 });
-
-//Route::group(['middleware' => ['UnderConstruction','MinifyHtml','localeSessionRedirect']], function() {
-//    Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
-//
-//
-//        Route::get('/contact-us', [MainPagesViewController::class, 'ContactUs'])->name('page_ContactUs');
-//        Route::post('/contact/SaveForm', [MainPagesViewController::class, 'ContactSaveForm'])->name('ContactSaveForm');
-//        Route::post('/contact/SaveFormOnPage', [MainPagesViewController::class, 'ContactSaveFormOnPage'])->name('ContactSaveFormOnPage');
-//        Route::get('/contact/thanks', [MainPagesViewController::class, 'ContactUsThanksPage'])->name('ContactUsThanksPage');
-//
-//        Route::post('/req/{listId}', [MainPagesViewController::class, 'RequestListing'])->name('ContactUsRequest');
-//        Route::get('/contact/request', [MainPagesViewController::class, 'RequestListingView'])->name('ContactUsRequestPage');
-//
-//        Route::post('/Meeting/{listId}', [MainPagesViewController::class, 'MeetingRequest'])->name('MeetingRequest');
-//        Route::get('/Meeting/request', [MainPagesViewController::class, 'RequestListingView'])->name('MeetingRequestPage');
-//        Route::get('/favorite-listing', [MainPagesViewController::class, 'FavoriteListing'])->name('FavoriteListing');
-//
-//
-//
-//    });
-//});
 
 Route::fallback(RouteNotFoundController::class);
 

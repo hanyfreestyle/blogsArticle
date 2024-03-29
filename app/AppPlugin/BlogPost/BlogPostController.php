@@ -6,6 +6,7 @@ use App\AppPlugin\BlogPost\Models\Blog;
 use App\AppPlugin\BlogPost\Models\BlogCategory;
 use App\AppPlugin\BlogPost\Models\BlogPhoto;
 use App\AppPlugin\BlogPost\Models\BlogPhotoTranslation;
+use App\AppPlugin\BlogPost\Models\BlogReview;
 use App\AppPlugin\BlogPost\Models\BlogTags;
 use App\AppPlugin\BlogPost\Models\BlogTagsTranslation;
 use App\AppPlugin\BlogPost\Models\BlogTranslation;
@@ -16,6 +17,7 @@ use App\Http\Controllers\AdminMainController;
 
 use App\Http\Traits\CrudTraits;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
@@ -127,9 +129,9 @@ class BlogPostController extends AdminMainController {
         $LangAdd = self::getAddLangForAdd();
         $selCat = [];
         $tags = BlogTags::where('id','!=',0)->take(50)->get();
-//        $tags = [];
         $selTags = [];
-        return view('AppPlugin.BlogPost.form',compact('pageData','rowData','Categories','LangAdd','selCat','tags','selTags'));
+        $selActive = 1;
+        return view('AppPlugin.BlogPost.form',compact('pageData','rowData','Categories','LangAdd','selCat','tags','selTags','selActive'));
     }
 
 
@@ -141,16 +143,16 @@ class BlogPostController extends AdminMainController {
         $pageData = $this->pageData;
         $pageData['ViewType'] = "Edit";
         $Categories = $this->modelCategory::all();
-        $rowData = $this->model::where('id', $id)->with('categories')->firstOrFail();
+        $rowData = $this->model::where('id', $id)->with('categories')->with('userName')->with('reviews')->firstOrFail();
         $selCat = $rowData->categories()->pluck('category_id')->toArray();
         $LangAdd = self::getAddLangForEdit($rowData);
 
         $selTags = $rowData->tags()->pluck('tag_id')->toArray();
         $tags = BlogTags::whereIn('id',$selTags)->take(50)->get();
 
-//         dd($selTags);
 
-        return view('AppPlugin.BlogPost.form',compact('pageData','rowData','Categories','LangAdd','selCat','tags','selTags'));
+        $selActive = $rowData->is_active ;
+        return view('AppPlugin.BlogPost.form',compact('pageData','rowData','Categories','LangAdd','selCat','tags','selTags','selActive'));
 
     }
 
@@ -163,11 +165,25 @@ class BlogPostController extends AdminMainController {
             DB::transaction(function () use ($request, $saveData) {
                 $categories = $request->input('categories');
                 $tags = $request->input('tag_id');
+                $user_id = Auth::user()->id;
 
                 $saveData->is_active = intval((bool)$request->input('is_active'));
                 $saveData->youtube = $request->input('youtube');
                 $saveData->published_at = SaveDateFormat($request,'published_at');
+                if($request->input('form_type') == 'Add'){
+                    $saveData->user_id = $user_id;
+                }
                 $saveData->save();
+
+                if($request->input('form_type') == 'Edit'){
+                    $blogReview = new BlogReview();
+                    $blogReview->user_id = $user_id;
+                    $blogReview->blog_id  = $saveData->id;
+                    $blogReview->updated_at  = now();
+                    $blogReview->save();
+//                    dd('hi');
+                }
+
 
                 $saveData->categories()->sync($categories);
                 $saveData->tags()->sync($tags);

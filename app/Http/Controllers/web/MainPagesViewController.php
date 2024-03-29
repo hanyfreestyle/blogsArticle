@@ -8,6 +8,7 @@ use App\AppPlugin\BlogPost\Models\BlogTags;
 use App\Helpers\AdminHelper;
 use App\Helpers\TableOfContents\Contents;
 use App\Http\Controllers\WebMainController;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -91,6 +92,37 @@ class MainPagesViewController extends WebMainController{
     }
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| #
+    public function AuthorView($slug){
+
+        try {
+            $slug =  AdminHelper::Url_Slug($slug);
+            $user  = User::where('slug', $slug)->firstOrFail();
+        }
+        catch (\Exception $e){
+            self::abortError404('root');
+        }
+
+
+//        parent::printSeoMeta($user,'page_index');
+        $pageView = $this->pageView ;
+        $pageView['SelMenu'] = 'Category' ;
+
+        $userId = $user->id ;
+
+        $blogs = Blog::defWeb()->where('user_id',$userId)->orderby('created_at','desc')->paginate(12);
+
+        return view('web.user_view')->with(
+            [
+                'pageView'=>$pageView,
+                'blogs'=>$blogs,
+                'user'=>$user,
+            ]
+        );
+    }
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| # BlogView
     public  function BlogView($slug,Contents $contents){
 
@@ -107,24 +139,29 @@ class MainPagesViewController extends WebMainController{
                 ->with('tags')
                 ->with('userName')
                 ->with('categories')
+                ->with('reviews')
                 ->firstOrFail();
         }
         catch (\Exception $e){
             self::abortError404('root');
         }
 
-//        dd($blog);
+        $review = self::checkReviews($blog);
 
+
+// dd($blog->old_id);
         $blogBody = $contents->fromText($blog->des)->getHandledText();
+//        dd($blogBody);
 
-        $blogBody = preg_replace('%(\\[caption.*])(.*)(\\[/caption\\])%','<p class="Blog_Img_Caption">$2</p>',$blogBody);
+        $blogBody = self::CleanBody($blogBody);
+//      dd($blogBody);
         $contents = $contents->getContentsArray();
 
 
 
         $catid = $blog->categories->first()->id ;
 
-        $categories =  BlogCategory::orderby('count',"desc")->take(10)->get();
+        $categories =  BlogCategory::orderby('count',"desc")->take(15)->get();
 
         $ReletedBlog = Blog::defWeb()
             ->where('id','!=',$blog->id)
@@ -143,24 +180,71 @@ class MainPagesViewController extends WebMainController{
                 'popularTags'=>$popularTags,
                 'blogBody'=>$blogBody,
                 'contents'=>$contents,
+                'review'=>$review,
             ]
         );
     }
 
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| # CleanBody
+    public function CleanBody($blogBody){
+        $find = [
+            '<!-- /wp:paragraph -->',
+            '<!-- /wp:heading -->',
+            '<!-- /wp:list -->',
+
+        ];
+        $replace = [
+            '<!-- wp:paragraph -->',
+            '<!-- wp:heading -->',
+            '<!-- wp:list -->',
+        ];
+        $blogBody = str_replace($find,$replace,$blogBody);
+
+        $pattern = ["/<!-- wp:paragraph -->\r\n/","/<!-- wp:heading -->\r\n/","/<!-- wp:list -->\r\n/",];
+        $blogBody = preg_replace($pattern, '', $blogBody);
+//        $blogBody = preg_replace('/\r\n\r\n/', '<br/>', $blogBody);
+
+        $blogBody = preg_replace('%(\\[caption.*])(.*)(\\[/caption\\])%','<p class="Blog_Img_Caption">$2</p>',$blogBody);
+
+        return $blogBody ;
+    }
 
 
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| #
+    public function checkReviews($blog){
+        if($blog->updated_at >= $blog->published_at){
+            $hasUpdate = true;
+            $to =  Carbon::createFromFormat('Y-m-d H:s:i', $blog->updated_at);
+            $from = Carbon::createFromFormat('Y-m-d', $blog->published_at);
 
+            $year =  $to->diffInYears($from);
+            $month = $to->diffInMonths($from);
+            $day = $to->diffInDays($from);
+            $month = $month > 12 ? $month-(12*$year) : $month;
+            $day = $day>30 ? $day-((365*$year)+($month*30)) : $day;
+            $cc =  '<td>' . $year . ' Year ' . $month . ' Month ' . $day . ' Day ' . '</td>';
+        }else{
+            $hasUpdate = false;
+        }
 
+        if(count($blog->reviews) > 0){
+            $review = [
+                'hasReview'=>true,
+                'userName'=>$blog->reviews->first()->userName->name,
+                'hasUpdate'=>$hasUpdate,
 
-
-
-
-
-
-
-
-
-
+            ];
+        }else{
+            $review = [
+                'hasReview'=>false,
+                'userName'=>null,
+                'hasUpdate'=>$hasUpdate,
+            ];
+        }
+        return $review;
+    }
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| # TagView
     public function TagView($slug){
@@ -325,6 +409,6 @@ class MainPagesViewController extends WebMainController{
         return view('under');
     }
 
- 
+
 
 }

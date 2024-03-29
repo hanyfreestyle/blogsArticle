@@ -53,7 +53,9 @@ class TransTextArea extends Component {
         $this->newreqname = trim(str_replace('_', " ", $this->reqname));
 
         if($this->row != null) {
-            $this->value = old($key . '.' . $name, $row->translateOrNew($key)->$name);
+            $oldData = $row->translateOrNew($key)->$name ;
+            $oldData = preg_replace('/\r\n\r\n/', '<br/>', $oldData);
+            $this->value = old($key . '.' . $name,$oldData );
         } else {
             $this->value = $value;
         }

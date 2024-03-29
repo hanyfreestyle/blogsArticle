@@ -731,12 +731,7 @@ div#preloader {
   text-transform: capitalize;
 }
 
-.recent-single-post {
-  border-bottom: 1px solid #ddd;
-  display: block;
-  overflow: hidden;
-  padding: 15px 10px;
-}
+
 
 .ready-btn {
   border: 1px solid #fff;
@@ -801,13 +796,7 @@ div#preloader {
   border-bottom: 0;
 }
 
-.popular-tag.left-blog ul li a:hover {
-  color: #fff;
-}
 
-.popular-tag.left-side-tags.left-blog ul {
-  padding: 0 10px;
-}
 
 .blog-1 .banner-box {
   margin-bottom: 30px;

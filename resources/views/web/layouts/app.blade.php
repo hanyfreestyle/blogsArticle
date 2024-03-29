@@ -31,9 +31,9 @@
 {!! (new \App\Helpers\MinifyTools)->MinifyJs('js/lazy/jquery.lazy.min.js',"SeoWeb",$cssReBuild) !!}
 {!! (new \App\Helpers\MinifyTools)->MinifyJs('js/lazy/lazy_fun.js',"Seo",$cssReBuild) !!}
 {!! (new \App\Helpers\MinifyTools)->MinifyJs('vendor/bootstrap/js/bootstrap.bundle.min.js',"Web",$cssReBuild) !!}
-{{--{!! (new \App\Helpers\MinifyTools)->MinifyJs('vendor/glightbox/js/glightbox.min.js',"Web",$cssReBuild) !!}--}}
-{{--{!! (new \App\Helpers\MinifyTools)->MinifyJs('vendor/isotope-layout/isotope.pkgd.min.js',"Web",$cssReBuild) !!}--}}
-{{--{!! (new \App\Helpers\MinifyTools)->MinifyJs('vendor/swiper/swiper-bundle.min.js',"Web",$cssReBuild) !!}--}}
+{!! (new \App\Helpers\MinifyTools)->MinifyJs('vendor/glightbox/js/glightbox.min.js',"Web",$cssReBuild) !!}
+{!! (new \App\Helpers\MinifyTools)->MinifyJs('vendor/isotope-layout/isotope.pkgd.min.js',"Web",$cssReBuild) !!}
+{!! (new \App\Helpers\MinifyTools)->MinifyJs('vendor/swiper/swiper-bundle.min.js',"Web",$cssReBuild) !!}
 {{--{!! (new \App\Helpers\MinifyTools)->MinifyJs('share/share-buttons.js',"Seo",$cssReBuild) !!}--}}
 {!! (new \App\Helpers\MinifyTools)->MinifyJs('js/main.js',"Web",$cssReBuild) !!}
 <x-site.js.load-web-font/>

@@ -5,61 +5,72 @@
 
     <x-admin.hmtl.top-edit-page :page-data="$pageData" :row="$rowData"  />
 
-    <x-admin.hmtl.section>
-        <x-admin.card.def :page-data="$pageData">
-            <form class="mainForm" action="{{route($PrefixRoute.'.update',intval($rowData->id))}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="row">
-                    <x-admin.form.date-form name="published_at" value="{{old('published_at',$rowData->published_at)}}" />
-                    <x-admin.form.select-multiple name="categories" :categories="$Categories" :sel-cat="$selCat" col="9" />
-                </div>
+    <form class="mainForm" action="{{route($PrefixRoute.'.update',intval($rowData->id))}}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="form_type" value="{{$pageData['ViewType']}}">
+        <div class="row">
+            <div class="col-lg-8">
+                <x-admin.card.normal>
+                    <div class="row">
+                        <input type="hidden" name="add_lang" value="{{json_encode($LangAdd)}}">
+                        @foreach ( $LangAdd as $key=>$lang )
+                            <x-admin.lang.meta-tage-filde :row="$rowData" :key="$key" :viewtype="$pageData['ViewType']" :label-view="$viewLabel"
+                                                          :def-name="__('admin/blogPost.blog_text_name')" />
+                        @endforeach
+                    </div>
+
+                    <div class="row">
+                        <x-admin.form.select-multiple name="tag_id" :categories="$tags" :sel-cat="$selTags" col="12" :label="__('admin/blogPost.cat_text_tag')" />
+                    </div>
+                    <div class="row mt-5 mb-5"></div>
+                </x-admin.card.normal>
+            </div>
+
+            <div class="col-lg-4">
+                <x-admin.card.normal>
+                    <div class="row">
+                        <x-admin.form.select-multiple name="categories" :categories="$Categories" :sel-cat="$selCat" col="12" />
+                        <x-admin.form.date-form name="published_at" value="{{old('published_at',$rowData->published_at)}}" :col="12" />
+                        <x-admin.form.select-arr  name="is_active" select-type="selActiveBlog" :sendvalue="old('is_active',$selActive)" :label="__('admin/blogPost.blog_is_active')" col="12" />
+                    </div>
+                </x-admin.card.normal>
 
 
+                @if($pageData['ViewType'] == 'Edit')
+                    <x-admin.card.normal>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th> {{$rowData->userName->name}}</th>
+                                <th> {{$rowData->created_at}}</th>
+                            </tr>
+                            <tr>
+                                <th colspan="2">{{__('admin/blogPost.blog_review')}}</th>
+                            </tr>
+                            </thead>
+                           @foreach($rowData->reviews as $review)
+                                <tr>
 
+                                    <td> {{$review->userName->name}}</td>
+                                    <td>{{$review->updated_at }}</td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    </x-admin.card.normal>
+                @endif
 
-                <div class="row">
-                    <x-admin.form.select-multiple name="tag_id" :categories="$tags" :sel-cat="$selTags" col="12" />
+                <x-admin.card.normal>
+                    <div class="row">
+                        <x-admin.form.upload-model-photo :page="$pageData" :row="$rowData" :labelview="false" :remove="false" col="12"/>
+                    </div>
+                </x-admin.card.normal>
 
-{{--                    <select class="is-invalid " id="user_select" multiple="multiple" name="tag_id[]" data-placeholder="" style="width: 100%;">--}}
-{{--                        @foreach($tags as $tag )--}}
-{{--                            <option value="{{$tag->id}}"--}}
-{{--                            @if(is_array($selTags))--}}
-{{--                                {{ (in_array($tag->id,$selTags)) ? 'selected' : ''}}--}}
-{{--                                @endif--}}
-{{--                                {{ (collect(old('tag_id'))->contains($tag->id)) ? 'selected':'' }}>{{ print_h1($tag)}}</option>--}}
-{{--                        @endforeach--}}
-{{--                    </select>--}}
+            </div>
+        </div>
+        <x-admin.form.submit-role-back :page-data="$pageData"/>
+        <div class="row mt-5 mb-5"></div>
+    </form>
 
-{{--                    <x-admin.form.select-multiple name="blog_tag" :categories="$tags" :sel-cat="$selTags" col="12" />--}}
-
-
-
-                </div>
-
-                <div class="row">
-                    <input type="hidden" name="add_lang" value="{{json_encode($LangAdd)}}">
-                    @foreach ( $LangAdd as $key=>$lang )
-                        <x-admin.lang.meta-tage-filde :row="$rowData" :key="$key" :viewtype="$pageData['ViewType']" :label-view="$viewLabel"
-                                                      :def-name="__('admin/blogPost.blog_text_name')" />
-                    @endforeach
-                </div>
-
-                <hr>
-                <x-admin.form.check-active name="is_active" :row="$rowData" :page-view="$pageData['ViewType']"/>
-
-                <hr>
-                <div class="row">
-                    <x-admin.form.input name="youtube" :row="$rowData" :label="__('admin/form.text_youtube')" col="4" tdir="en" :req="false"  />
-                    @foreach ( $LangAdd as $key=>$lang )
-                        <x-admin.form.trans-input name="youtube_title" :key="$key" :row="$rowData" :label="__('admin/form.text_youtube_title')" col="4" :req="false" :tdir="$key"/>
-                    @endforeach
-                </div>
-                <hr>
-                <x-admin.form.upload-model-photo :page="$pageData" :row="$rowData" col="6"/>
-                <x-admin.form.submit-role-back :page-data="$pageData"/>
-            </form>
-        </x-admin.card.def>
-    </x-admin.hmtl.section>
 
 @endsection
 

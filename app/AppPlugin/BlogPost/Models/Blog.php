@@ -79,6 +79,11 @@ class Blog extends Model implements TranslatableContract {
     public function userName(): BelongsTo {
         return $this->belongsTo(User::class,'user_id');
     }
+
+    public function reviews(): HasMany {
+        return $this->hasMany(BlogReview::class,'blog_id')->with('userName')->orderBy('updated_at','DESC');
+    }
+
 //#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 //#|||||||||||||||||||||||||||||||||||||| #
 //    public function faqs() {

@@ -35,10 +35,16 @@ return new class extends Migration {
             $table->string('g_title')->nullable();
             $table->text('g_des')->nullable();
             $table->string('youtube_title')->nullable();
-//            $table->integer('slug_count')->nullable();
-
             $table->unique(['blog_id', 'locale']);
             $table->unique(['locale', 'slug']);
+            $table->foreign('blog_id')->references('id')->on('blog_post')->onDelete('cascade');
+        });
+
+        Schema::create('blog_post_review', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('blog_id')->unsigned();
+            $table->dateTime('updated_at');
             $table->foreign('blog_id')->references('id')->on('blog_post')->onDelete('cascade');
         });
 
@@ -46,6 +52,7 @@ return new class extends Migration {
 
 
     public function down(): void {
+        Schema::dropIfExists('blog_post_review');
         Schema::dropIfExists('blog_translations');
         Schema::dropIfExists('blog_post');
     }
