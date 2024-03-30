@@ -1184,10 +1184,7 @@ span.email-notes {
   width: 70px;
 }
 
-.footer-area-bottom {
-  background: #f1f1f1 none repeat scroll 0 0;
-  padding: 15px 0;
-}
+
 
 .copyright-text a:hover {
   text-decoration: underline;
@@ -1198,10 +1195,7 @@ span.email-notes {
   color: #444;
 }
 
-.copyright>p {
-  margin-bottom: 0;
-  color: #444;
-}
+
 
 .copyright a,
 .credits a {

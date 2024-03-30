@@ -325,6 +325,46 @@ body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: 
 }
 
 
+.footer-area-bottom {
+    background: rgba(0,0,0,1) none repeat scroll 0 0;
+    padding: 25px 0;
+    color: #fff;
+}
+.copyright>p {
+    margin-bottom: 0;
+    color: #fff;
+}
+.pagination {
+
+
+}
+
+.page-link {
+    position:relative;
+    display:block;
+    padding:10px 15px!important;
+    font-size:15px;
+    color:#fff;
+    text-decoration:none;
+    background-color:var(--background);
+    border:none!important;
+    transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+.page-link:hover {
+    position:relative;
+    display:block;
+    padding:10px 15px!important;
+    font-size:15px;
+    color:#fff;
+    text-decoration:none;
+    background-color:var(--background);
+    border:none!important;
+    transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+
+
 /*
 
 

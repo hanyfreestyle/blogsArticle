@@ -22,7 +22,7 @@
 
 @include('web.layouts.inc.header_menu')
 @yield('content')
-{{--@include('web.layouts.inc.footer')--}}
+@include('web.layouts.inc.footer')
 
 <div id="preloader"></div>
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-angle-up"></i></a>
