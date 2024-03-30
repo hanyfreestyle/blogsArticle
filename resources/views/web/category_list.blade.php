@@ -11,12 +11,12 @@
                         <div class="single-blog">
                             <a href="{{route('CategoryView',$category->slug)}}">
                                 <div class="category_img">
-                                    <x-site.def.img :row="$category" def="categories" class="blog_img rounded-4" w="400" h="240" />
+                                    <x-site.def.img :row="$category" def="categories" class="blog_img rounded-3" w="400" h="240" />
                                 </div>
                             </a>
 
                             <div class="category_text text-center">
-                                <h3><a href="{{route('CategoryView',$category->slug)}}" class="crop_line_1">{{$category->name}} ({{$category->count}})</a></h3>
+                                <h3><a href="{{route('CategoryView',$category->slug)}}" class="crop_line_1">{{$category->name}} <span class="number">({{$category->count}})</span></a></h3>
                             </div>
 
                         </div>
