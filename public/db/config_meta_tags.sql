@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2024 at 01:42 AM
+-- Generation Time: Mar 30, 2024 at 08:01 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -30,10 +30,7 @@ INSERT INTO `config_meta_tags` (`id`, `cat_id`, `photo`, `photo_thum_1`, `create
 (2, 'categories', NULL, NULL, '2023-08-16 11:16:16', '2024-03-28 21:54:22', NULL),
 (3, 'AboutUs', NULL, NULL, '2023-08-16 11:30:42', '2024-03-28 22:41:19', NULL),
 (4, 'Review', NULL, NULL, '2023-08-16 11:32:36', '2024-03-28 22:41:45', NULL),
-(5, 'compounds', NULL, NULL, '2023-10-29 08:05:33', '2023-10-29 08:05:33', NULL),
-(6, 'for-sale', NULL, NULL, '2023-10-29 08:38:58', '2023-10-29 08:38:58', NULL),
-(7, 'err_404', NULL, NULL, '2024-01-25 13:35:18', '2024-01-25 13:35:18', NULL),
-(8, 'favorite_list', NULL, NULL, '2024-01-30 16:23:20', '2024-01-30 16:23:35', NULL);
+(7, 'err_404', NULL, NULL, '2024-01-25 13:35:18', '2024-01-25 13:35:18', NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -11,7 +11,7 @@
                         <div class="single-blog">
                             <a href="{{route('CategoryView',$category->slug)}}">
                                 <div class="category_img">
-                                    <x-site.def.img :row="$category" def="blog" class="blog_img rounded-4" w="400" h="240" />
+                                    <x-site.def.img :row="$category" def="categories" class="blog_img rounded-4" w="400" h="240" />
                                 </div>
                             </a>
 

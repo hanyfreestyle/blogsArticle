@@ -41,10 +41,10 @@ class DatabaseSeeder extends Seeder {
         $this->call(UploadFilterSizeSeeder::class);
 
         $this->call(BlogCategorySeeder::class);
-//        $this->call(BlogTagsSeeder::class);
-//        $this->call(BlogSeeder::class);
-//        $this->call(BlogPivotSeeder::class);
-//        $this->call(BlogTagsPivotSeeder::class);
+        $this->call(BlogTagsSeeder::class);
+        $this->call(BlogSeeder::class);
+        $this->call(BlogPivotSeeder::class);
+        $this->call(BlogTagsPivotSeeder::class);
 //        $this->call(BlogPhotoSeeder::class);
 
     }
