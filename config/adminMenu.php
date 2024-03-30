@@ -28,8 +28,8 @@ return [
             'submenu' => [
 
                 [
-                    'sel_routs' => 'BlogCategory',
-                    'url' => 'Blog.BlogCategory.create',
+                    'sel_routs' => 'BlogPostD',
+                    'url' => 'Blog.BlogPost.create',
                     'roleView' => 'Blog_view',
                     'text' => 'admin/blogPost.app_menu_add',
                     'icon' => 'fas fa-plus',

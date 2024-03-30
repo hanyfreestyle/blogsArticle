@@ -21,4 +21,5 @@ return
 	'users_fr_status' => 'User Status',
 	'users_list' => 'Users List',
 	'users_title' => 'Users',
+	'users_des' => 'About User',
 ];

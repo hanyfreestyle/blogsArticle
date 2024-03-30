@@ -21,4 +21,5 @@ return
 	'users_fr_status' => 'حالة العضو',
 	'users_list' => 'عرض الاعضاء',
 	'users_title' => 'الاعضاء',
+	'users_des' => 'نبذة',
 ];

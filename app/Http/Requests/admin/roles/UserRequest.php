@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\admin\roles;
 
+use App\Helpers\AdminHelper;
+use App\Http\Controllers\AdminMainController;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Password ;
 
 class UserRequest extends FormRequest{
@@ -12,14 +15,24 @@ class UserRequest extends FormRequest{
         return true;
     }
 
+    protected function prepareForValidation() {
+        $data = $this->toArray();
+        data_set($data, 'slug', AdminHelper::Url_Slug($data['slug']));
+        $this->merge($data);
+    }
 
-    public function rules(): array
-    {
+
+
+    public function rules(Request $request): array {
+
+        $request->merge(['slug' => AdminHelper::Url_Slug($request->slug)]);
+
         $id = $this->route('id');
 
         if($id == '0'){
             $rules =[
-                'name'=> "required|min:4|max:50",
+                'name'=> "required|min:3|max:50|unique:users",
+                'slug'=> "required|min:3|max:50|unique:users",
                 'roles' => 'required',
                 'email'=> "required|email|unique:users",
                 'phone'=> "numeric|nullable",
@@ -37,7 +50,8 @@ class UserRequest extends FormRequest{
             ];
         }else{
             $rules =[
-                'name'=> "required|min:4|max:50",
+                'name'=> "required|min:3|max:50|unique:users,name,$id",
+                'slug'=> "required|min:3|max:50|unique:users,slug,$id",
                 'roles' => 'required',
                 'email'=> "required|email|unique:users,email,$id",
                 'phone'=> "numeric|nullable",

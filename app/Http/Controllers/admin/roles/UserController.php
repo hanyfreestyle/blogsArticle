@@ -94,6 +94,8 @@ class UserController extends AdminMainController{
         $saveData->name = $request->name;
         $saveData->email = $request->email;
         $saveData->phone = $request->phone;
+        $saveData->des = $request->des;
+        $saveData->slug = AdminHelper::Url_Slug($request->slug);
 
         if(trim($request->user_password != '')){
             $saveData->password = Hash::make($request->user_password);

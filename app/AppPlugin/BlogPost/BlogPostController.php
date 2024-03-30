@@ -4,6 +4,7 @@ namespace App\AppPlugin\BlogPost;
 
 use App\AppPlugin\BlogPost\Models\Blog;
 use App\AppPlugin\BlogPost\Models\BlogCategory;
+use App\AppPlugin\BlogPost\Models\BlogCategoryTranslation;
 use App\AppPlugin\BlogPost\Models\BlogPhoto;
 use App\AppPlugin\BlogPost\Models\BlogPhotoTranslation;
 use App\AppPlugin\BlogPost\Models\BlogReview;
@@ -74,6 +75,7 @@ class BlogPostController extends AdminMainController {
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #     index
     public function index() {
+
         $pageData = $this->pageData;
         $pageData['ViewType'] = "List";
         $pageData['SubView'] = false;
