@@ -1,7 +1,13 @@
 @extends('web.layouts.app')
 @section('content')
     <div class="area_padding">
+
+
         <div class="container">
+            <div class="col-lg-12">
+                {!! Breadcrumbs::render('contact_us') !!}
+            </div>
+
             <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                 <h2 class="headline">{{__('web/menu.main_category')}}</h2>
             </div>

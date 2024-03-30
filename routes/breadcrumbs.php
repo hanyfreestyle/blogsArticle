@@ -13,7 +13,7 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('contact_us', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push(__('web/contact.breadcrumbs'), route('page_ContactUs'));
+    $trail->push(__('web/contact.breadcrumbs'), route('categories_list'));
 });
 
 
