@@ -17,7 +17,7 @@
           <input type="hidden" name="add_lang" value="{{json_encode($LangAdd)}}">
           @foreach ( $LangAdd as $key=>$lang )
             <x-admin.lang.meta-tage-filde :row="$rowData" :key="$key" :viewtype="$pageData['ViewType']" :label-view="$viewLabel"
-                                          :def-name="__('admin/faq.faq_text_name')" :defdes="__('admin/faq.faq_text_answer')"/>
+                                          :def-name="__('admin/pages.page_text_name')" />
           @endforeach
         </div>
 

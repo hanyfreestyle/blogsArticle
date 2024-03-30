@@ -75,11 +75,11 @@ class PageCategory extends Model implements TranslatableContract  {
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     public function del_category(): HasMany {
-        return $this->hasMany(FaqCategory::class, 'parent_id');
+        return $this->hasMany(PageCategory::class, 'parent_id');
     }
 
-    public function del_faq() {
-        return $this->belongsToMany(Faq::class, 'faqcategory_faq', 'category_id', 'faq_id')
+    public function del_page() {
+        return $this->belongsToMany(Page::class, 'pagecategory_page', 'category_id', 'page_id')
             ->withTrashed();
     }
 

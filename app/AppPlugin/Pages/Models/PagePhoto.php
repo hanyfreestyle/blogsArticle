@@ -19,7 +19,7 @@ class PagePhoto extends Model implements TranslatableContract  {
     protected $translationForeignKey = 'photo_id';
 
     public function modelName(): BelongsTo {
-        return $this->belongsTo(Page::class, 'faq_id', 'id');
+        return $this->belongsTo(Page::class, 'page_id', 'id');
     }
 
 

@@ -78,7 +78,7 @@ class PageCategoryController extends AdminMainController {
 
 
 
-        if($deleteRow->del_category_count == 0 and $deleteRow->del_faq_count == 0) {
+        if($deleteRow->del_category_count == 0 and $deleteRow->del_page_count == 0) {
             try {
                 DB::transaction(function () use ($deleteRow, $id) {
                     $deleteRow = AdminHelper::DeleteAllPhotos($deleteRow);
@@ -86,10 +86,11 @@ class PageCategoryController extends AdminMainController {
                     $deleteRow->forceDelete();
                 });
             } catch (\Exception $exception) {
-                return back()->with(['confirmException' => '', 'fromModel' => 'CategoryFaq', 'deleteRow' => $deleteRow]);
+                return back()->with(['confirmException' => '', 'fromModel' => 'CategoryPages', 'deleteRow' =>
+                    $deleteRow]);
             }
         } else {
-            return back()->with(['confirmException' => '', 'fromModel' => 'CategoryFaq', 'deleteRow' => $deleteRow]);
+            return back()->with(['confirmException' => '', 'fromModel' => 'CategoryPages', 'deleteRow' => $deleteRow]);
         }
 
         self::ClearCash();

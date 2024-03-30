@@ -1,32 +1,29 @@
 <?php
 
-namespace App\AppPlugin\Faq\Seeder;
+namespace App\AppPlugin\Pages\Seeder;
 
-
-use App\AppPlugin\Faq\Models\Faq;
-use Faker\Factory;
+use App\AppPlugin\Pages\Models\Page;
+use App\AppPlugin\Pages\Models\PagePivot;
+use App\AppPlugin\Pages\Models\PageTranslation;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 
-class FaqSeeder extends Seeder {
+class PageSeeder extends Seeder {
 
     public function run(): void {
 
-        $newData = 0;
-        if($newData == 0) {
-            Faq::unguard();
-            $tablePath = public_path('db/faq_faqs.sql');
-            DB::unprepared(file_get_contents($tablePath));
-        }else{
-            for ($i = 0; $i < 100; $i++) {
-                $faker = Factory::create();
-                Faq::create([
-                    'is_active' => 1,
-                ]);
-            }
-        }
+        Page::unguard();
+        $tablePath = public_path('db/page_pages.sql');
+        DB::unprepared(file_get_contents($tablePath));
 
+        PageTranslation::unguard();
+        $tablePath = public_path('db/page_translations.sql');
+        DB::unprepared(file_get_contents($tablePath));
+
+        PagePivot::unguard();
+        $tablePath = public_path('db/pagecategory_page.sql');
+        DB::unprepared(file_get_contents($tablePath));
 
 
     }

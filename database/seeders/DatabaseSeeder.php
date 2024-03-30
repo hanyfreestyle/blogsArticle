@@ -14,6 +14,9 @@ use App\AppPlugin\Config\Meta\SeederMetaTag;
 use App\AppPlugin\Config\Privacy\SeederWebPrivacy;
 use App\AppPlugin\Leads\NewsLetter\SeederNewsLetter;
 
+use App\AppPlugin\Pages\Seeder\PageCategorySeeder;
+use App\AppPlugin\Pages\Seeder\PagePhotoSeeder;
+use App\AppPlugin\Pages\Seeder\PageSeeder;
 use Database\Seeders\roles\AdminUserSeeder;
 use Database\Seeders\roles\PermissionSeeder;
 use Database\Seeders\roles\RoleSeeder;
@@ -39,6 +42,10 @@ class DatabaseSeeder extends Seeder {
         $this->call(DefPhotoSeeder::class);
         $this->call(UploadFilterSeeder::class);
         $this->call(UploadFilterSizeSeeder::class);
+
+        $this->call(PageCategorySeeder::class);
+        $this->call(PageSeeder::class);
+        $this->call(PagePhotoSeeder::class);
 
 
 //        $this->call(BlogCategorySeeder::class);
