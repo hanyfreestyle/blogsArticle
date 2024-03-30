@@ -12,7 +12,7 @@ use App\AppPlugin\BlogPost\Seeder\BlogTagsPivotSeeder;
 use App\AppPlugin\BlogPost\Seeder\BlogTagsSeeder;
 use App\AppPlugin\Config\Meta\SeederMetaTag;
 use App\AppPlugin\Config\Privacy\SeederWebPrivacy;
-use App\AppPlugin\Leads\NewsLetter\SeederNewsLetter;
+
 
 use App\AppPlugin\Pages\Seeder\PageCategorySeeder;
 use App\AppPlugin\Pages\Seeder\PagePhotoSeeder;
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder {
         $this->call(PageCategorySeeder::class);
         $this->call(PageSeeder::class);
         $this->call(PagePhotoSeeder::class);
-
+        $this->call(SeederWebPrivacy::class);
 
 //        $this->call(BlogCategorySeeder::class);
 //        $this->call(BlogTagsSeeder::class);
