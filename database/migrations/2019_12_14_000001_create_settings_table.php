@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->string('phone_call')->nullable();
             $table->string('whatsapp_send')->nullable();
             $table->string('email')->nullable();
+            $table->json('categories')->nullable();
 
             $table->string('facebook')->nullable();
             $table->string('youtube')->nullable();

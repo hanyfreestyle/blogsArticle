@@ -1,7 +1,15 @@
 <script>
     @if($arFont)
+    {{--async function loadarfont(){--}}
+    {{--    const font_ar = new FontFace('Tajawal','url({{ defWebAssets('fonts/Ar/TajawalRegular.woff2') }}');--}}
+    {{--    await font_ar.load();--}}
+    {{--    document.fonts.add(font_ar);--}}
+    {{--    document.body.classList.add('Tajawal');--}}
+    {{--};--}}
+    {{--loadarfont();--}}
+
     async function loadarfont(){
-        const font_ar = new FontFace('Tajawal','url({{ defWebAssets('fonts/Ar/TajawalRegular.woff2') }}');
+        const font_ar = new FontFace('Tajawal','url({{ defWebAssets('fonts/Ar/DroidArabicKufi.woff2') }}');
         await font_ar.load();
         document.fonts.add(font_ar);
         document.body.classList.add('Tajawal');

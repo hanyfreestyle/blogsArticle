@@ -8,6 +8,11 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link {{activeMenu($pageView,'HomePage')}}" href="{{route('page_index')}}">{{__('web/menu.main_home')}}</a></li>
+                @if(isset($menuCategories))
+                    @foreach($menuCategories as $category)
+                        <li><a class="nav-link {{activeMenu($pageView,'CategoryID'.$category->id)}}" href="{{route('CategoryView',$category->slug)}}">{{$category->name}}</a></li>
+                    @endforeach
+                @endif
                 <li><a class="nav-link {{activeMenu($pageView,'Category')}}" href="{{route('categories_list')}}">{{__('web/menu.main_category')}}</a></li>
                 <li><a class="nav-link {{activeMenu($pageView,'AboutUs')}}" href="{{route('page_index')}}">{{__('web/menu.main_about')}}</a></li>
                 <li><a class="nav-link {{activeMenu($pageView,'Review')}}" href="{{route('page_index')}}">{{__('web/menu.main_review')}}</a></li>

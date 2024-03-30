@@ -41,7 +41,7 @@
                   </div>
                 @endforeach
               </div>
-
+                <x-admin.form.select-multiple name="categories" :categories="$categories" :sel-cat="$selCat" col="12" />
             </div>
           </div>
 

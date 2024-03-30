@@ -1,6 +1,7 @@
 <?php
 namespace App\Models\admin\config;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
@@ -16,6 +17,13 @@ class Setting extends Model implements TranslatableContract
     public $timestamps = false ;
 
 
-
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| #     categories
+    protected function categories() :Attribute{
+        return Attribute::make(
+            get: fn($value) => json_decode($value,true),
+            set: fn($value) => json_encode($value)
+        );
+    }
 
 }

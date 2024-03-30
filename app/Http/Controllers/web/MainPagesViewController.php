@@ -73,7 +73,7 @@ class MainPagesViewController extends WebMainController{
 
         parent::printSeoMeta($category,'page_index');
         $pageView = $this->pageView ;
-        $pageView['SelMenu'] = 'Category' ;
+        $pageView['SelMenu'] = 'CategoryID'.$category->id ;
 
         $catid = $category->id ;
 

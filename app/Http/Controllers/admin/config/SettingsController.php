@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin\config;
 
+use App\AppPlugin\BlogPost\Models\BlogCategory;
 use App\Http\Controllers\AdminMainController;
 use App\Http\Requests\admin\config\SettingFormRequest;
 use App\Models\admin\config\Setting;
@@ -45,8 +46,9 @@ class SettingsController extends AdminMainController{
         $pageData = $this->pageData;
         $pageData['ViewType'] = "Edit";
         $setting = Setting::findOrFail(1);
-
-        return view('admin.config.settingWeb')->with(compact('pageData','setting'));
+        $categories = BlogCategory::all();
+        $selCat = $setting->categories;
+        return view('admin.config.settingWeb')->with(compact('pageData','setting','categories','selCat'));
     }
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #     webConfigUpdate
@@ -61,6 +63,7 @@ class SettingsController extends AdminMainController{
         $saveData->phone_call = $request->input( 'phone_call');
         $saveData->whatsapp_send = $request->input( 'whatsapp_send');
         $saveData->email = $request->input( 'email');
+        $saveData->categories =  $request->input( 'categories');
         $saveData->save();
 
         foreach ( config('app.web_lang') as $key=>$lang) {

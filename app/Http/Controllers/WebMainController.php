@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AppPlugin\BlogPost\Models\BlogCategory;
 use App\Helpers\AdminHelper;
 use App\Helpers\Seo\SchemaTools;
 use Illuminate\Support\Facades\View;
@@ -35,6 +36,14 @@ class WebMainController extends DefaultMainController {
 
         $this->DefPhotoList = self::getDefPhotoList($this->StopeCash);
         View::share('DefPhotoList',  $this->DefPhotoList);
+
+        if($this->WebConfig->categories and count($this->WebConfig->categories) > 0){
+           $categoriesId =  $this->WebConfig->categories ;
+           $menuCategories = BlogCategory::wherein('id',$categoriesId)->get();
+           View::share('menuCategories', $menuCategories);
+        }
+
+
 
         $pageView = [
             'SelMenu' => '',
