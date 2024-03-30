@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2024 at 04:51 PM
+-- Generation Time: Mar 30, 2024 at 06:37 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `a_realestate_test2024`
+-- Database: `blog_article`
 --
 
 --
@@ -26,8 +26,7 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `config_setting_translations` (`id`, `setting_id`, `locale`, `name`, `closed_mass`) VALUES
-(1, 1, 'ar', 'موقع عقارات مصر', 'عذرا جارى اجراء بعض التحديثات \r\nسنعود قريبا'),
-(2, 1, 'en', 'Real Estate Egypt', 'Sorry, some updates are being made\r\nWe will be back soon');
+(1, 1, 'ar', 'موقع مقالات', 'عذرا جارى اجراء بعض التحديثات \r\nسنعود قريبا');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

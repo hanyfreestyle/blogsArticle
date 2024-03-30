@@ -13,10 +13,10 @@ return [
         'def' => ['id'=> 'def' , 'group'=>'admin' , 'file_name'=> 'def','name_en'=>'Default Variables','name_ar'=>'المتغيرات الاساسية' ],
         'filter'=> ['id'=> 'filter', 'group'=>'admin', 'file_name'=> 'formFilter','name_en'=>'Filter Form','name_ar'=>'فلتر' ],
 
-        'Privacy'=> ['id'=> 'Privacy','group'=>'admin', 'file_name'=> 'configPrivacy','name'=>'Privacy','name_ar'=>'سياسية الاستخدام' ],
+//        'Privacy'=> ['id'=> 'Privacy','group'=>'admin', 'file_name'=> 'configPrivacy','name'=>'Privacy','name_ar'=>'سياسية الاستخدام' ],
         'Meta'=> ['id'=> 'Meta','group'=>'admin', 'file_name'=> 'configMeta','name'=>'Meta Tage','name_ar'=>'ميتا تاج' ],
         'sitemap'=> ['id'=> 'sitemap','group'=>'admin','file_name'=> 'configSitemap','name'=>'SiteMap' ,'name_ar'=>'خريطة الموقع'],
-        'newsletter'=> ['id'=> 'newsletter','group'=>'admin','file_name'=> 'leadsNewsLetter','name'=>'Newsletter','name_ar'=>'القائمة البريدية'],
+//        'newsletter'=> ['id'=> 'newsletter','group'=>'admin','file_name'=> 'leadsNewsLetter','name'=>'Newsletter','name_ar'=>'القائمة البريدية'],
         'blogPost'=> ['id'=> 'blogPost' , 'group'=>'admin','file_name'=> 'blogPost','name'=>'Blog Post','name_ar'=>'المقالات' ],
 
 

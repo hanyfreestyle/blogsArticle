@@ -26,6 +26,15 @@ return [
             'icon' => 'fab fa-blogger',
             'roleView' => 'Blog_view',
             'submenu' => [
+
+                [
+                    'sel_routs' => 'BlogCategory',
+                    'url' => 'Blog.BlogCategory.create',
+                    'roleView' => 'Blog_view',
+                    'text' => 'admin/blogPost.app_menu_add',
+                    'icon' => 'fas fa-plus',
+                    'view' => true
+                ],
                 [
                     'sel_routs' => 'BlogCategory',
                     'url' => 'Blog.BlogCategory.index',
