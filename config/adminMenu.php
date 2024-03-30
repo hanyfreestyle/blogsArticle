@@ -19,6 +19,34 @@ $MenuView = [
 return [
     'menu' => [
         [
+            'view' => IsMenuView($MenuView, "Pages",'pages.php'),
+            'sel_routs' => 'Pages',
+            'type' => 'many',
+            'text' => 'admin/pages.app_menu',
+            'icon' => 'fas fa-question-circle',
+            'roleView' => 'Pages_view',
+            'submenu' => [
+                [
+                    'sel_routs' => 'PageCategory',
+                    'url' => 'Pages.PageCategory.index',
+                    'roleView' => 'Pages_view',
+                    'text' => 'admin/pages.app_menu_category',
+                    'icon' => 'fas fa-sitemap',
+                    'view' => true
+                ],
+                [
+                    'sel_routs' => 'PageList',
+                    'url' => 'Pages.PageList.index',
+                    'roleView' => 'Pages_view',
+                    'text' => 'admin/pages.app_menu_page',
+                    'icon' => 'fas fa-question',
+                    'view' => true
+                ],
+
+            ],
+        ], #Pages
+
+        [
             'view' => IsMenuView($MenuView, "BlogPost",'blogPost.php'),
             'sel_routs' => 'Blog',
             'type' => 'many',

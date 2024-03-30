@@ -18,6 +18,7 @@ return [
         'sitemap'=> ['id'=> 'sitemap','group'=>'admin','file_name'=> 'configSitemap','name'=>'SiteMap' ,'name_ar'=>'خريطة الموقع'],
 //        'newsletter'=> ['id'=> 'newsletter','group'=>'admin','file_name'=> 'leadsNewsLetter','name'=>'Newsletter','name_ar'=>'القائمة البريدية'],
         'blogPost'=> ['id'=> 'blogPost' , 'group'=>'admin','file_name'=> 'blogPost','name'=>'Blog Post','name_ar'=>'المقالات' ],
+        'pages'=> ['id'=> 'pages' , 'group'=>'admin','file_name'=> 'pages','name'=>'pages','name_ar'=>'الصفحات' ],
 
 
 //       'cash'=> ['id'=> 'cash' , 'group'=>'admin' , 'sub_dir'=> 'config' , 'file_name'=> 'cash','name'=>'Cash Mass','name_ar'=>'' ],

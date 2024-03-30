@@ -75,6 +75,12 @@ class RouteServiceProvider extends ServiceProvider {
                         }
 
 
+                        if(File::isFile(base_path('routes/AppPlugin/pages.php'))) {
+                            Route::middleware('web')->group(base_path('routes/AppPlugin/pages.php'));
+                        }
+
+
+
                         Route::middleware('web')->group(base_path('routes/admin_config.php'));
                         Route::middleware('web')->group(base_path('routes/admin_roles.php'));
 
