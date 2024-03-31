@@ -154,9 +154,6 @@ class BlogPostController extends AdminMainController {
         return view('AppPlugin.BlogPost.form',compact('pageData','rowData','Categories','LangAdd','selCat','tags','selTags','selActive'));
     }
 
-
-
-
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #     edit
     public function edit($id) {
@@ -181,64 +178,61 @@ class BlogPostController extends AdminMainController {
 #|||||||||||||||||||||||||||||||||||||| #     storeUpdate
     public function storeUpdate(BlogPostRequest $request, $id = 0) {
         $saveData = $this->model::findOrNew($id);
-        $categories = $request->input('categories');
-        $tags = $request->input('tag_id');
-        $user_id = Auth::user()->id;
-
-        $saveData->is_active = intval((bool)$request->input('is_active'));
-        $saveData->youtube = $request->input('youtube');
-        $saveData->published_at = SaveDateFormat($request,'published_at');
-        if($request->input('form_type') == 'Add'){
-            $saveData->user_id = $user_id;
-        }
-        $saveData->save();
-
-        if($request->input('form_type') == 'Edit'){
-            $blogReview = new BlogReview();
-            $blogReview->user_id = $user_id;
-            $blogReview->blog_id  = $saveData->id;
-            $blogReview->updated_at  = now();
-            $blogReview->save();
-        }
-
-
-        $saveData->categories()->sync($categories);
-        $saveData->tags()->sync($tags);
-
-        $saveImgData = new PuzzleUploadProcess();
-        $saveImgData->setCountOfUpload(2);
-        $saveImgData->setUploadDirIs($this->UploadDirIs . '/' . $saveData->id);
-        $saveImgData->setnewFileName($request->input('ar.name'));
-        $saveImgData->setfileUploadName('image');
-        $saveImgData->UploadOne($request, 'filter_id');
-        if($saveData->new_post == 1){
-            $saveData = AdminHelper::saveAndDeletePhoto($saveData, $saveImgData);
-        }else{
-            if(count( $saveImgData->sendSaveData) != 0){
-                $saveData->photo = $saveImgData->sendSaveData['photo']['file_name'];
-                if(isset($saveImgData->sendSaveData['photo_thum_1'])){
-                    $saveData->photo_thum_1 = $saveImgData->sendSaveData['photo_thum_1']['file_name'];
-                }else{
-                    $saveData->photo_thum_1 = null;
-                }
-            }
-        }
-        $saveData->save();
-
-        $addLang = json_decode($request->add_lang);
-        foreach ($addLang as $key => $lang) {
-            $dbName = $this->translationdb;
-            $saveTranslation = $this->translation->where($dbName, $saveData->id)->where('locale', $key)->firstOrNew();
-            $saveTranslation->$dbName = $saveData->id;
-            $saveTranslation->youtube_title = $request->input($key.'.youtube_title');
-            $saveTranslation->slug = AdminHelper::Url_Slug($request->input($key . '.slug'));
-            $saveTranslation = self::saveTranslationMain($saveTranslation, $key, $request);
-            $saveTranslation->save();
-        }
-
-
         try {
+
             DB::transaction(function () use ($request, $saveData) {
+                $categories = $request->input('categories');
+                $tags = $request->input('tag_id');
+                $user_id = Auth::user()->id;
+
+                $saveData->is_active = intval((bool)$request->input('is_active'));
+                $saveData->youtube = $request->input('youtube');
+                $saveData->published_at = SaveDateFormat($request,'published_at');
+                if($request->input('form_type') == 'Add'){
+                    $saveData->user_id = $user_id;
+                }
+                $saveData->save();
+
+                if($request->input('form_type') == 'Edit'){
+                    $blogReview = new BlogReview();
+                    $blogReview->user_id = $user_id;
+                    $blogReview->blog_id  = $saveData->id;
+                    $blogReview->updated_at  = now();
+                    $blogReview->save();
+                }
+                $saveData->categories()->sync($categories);
+                $saveData->tags()->sync($tags);
+
+                $saveImgData = new PuzzleUploadProcess();
+                $saveImgData->setCountOfUpload(2);
+                $saveImgData->setUploadDirIs($this->UploadDirIs . '/' . $saveData->id);
+                $saveImgData->setnewFileName($request->input('ar.name'));
+                $saveImgData->setfileUploadName('image');
+                $saveImgData->UploadOne($request, 'filter_id');
+                if($saveData->new_post == 1){
+                    $saveData = AdminHelper::saveAndDeletePhoto($saveData, $saveImgData);
+                }else{
+                    if(count( $saveImgData->sendSaveData) != 0){
+                        $saveData->photo = $saveImgData->sendSaveData['photo']['file_name'];
+                        if(isset($saveImgData->sendSaveData['photo_thum_1'])){
+                            $saveData->photo_thum_1 = $saveImgData->sendSaveData['photo_thum_1']['file_name'];
+                        }else{
+                            $saveData->photo_thum_1 = null;
+                        }
+                    }
+                }
+                $saveData->save();
+
+                $addLang = json_decode($request->add_lang);
+                foreach ($addLang as $key => $lang) {
+                    $dbName = $this->translationdb;
+                    $saveTranslation = $this->translation->where($dbName, $saveData->id)->where('locale', $key)->firstOrNew();
+                    $saveTranslation->$dbName = $saveData->id;
+                    $saveTranslation->youtube_title = $request->input($key.'.youtube_title');
+                    $saveTranslation->slug = AdminHelper::Url_Slug($request->input($key . '.slug'));
+                    $saveTranslation = self::saveTranslationMain($saveTranslation, $key, $request);
+                    $saveTranslation->save();
+                }
 
             });
         } catch (\Exception $exception) {

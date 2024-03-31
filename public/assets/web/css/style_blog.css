@@ -45,7 +45,13 @@
 .blog_des_view ul{padding:10px 40px;margin:0!important;list-style-type:disc}
 .blog_des_view li{font-size:15px;margin-bottom:5px;padding:0!important}
 
-.blog_des_view p{ color: rgba(0,0,0,1);}
+.blog_des_view p{
+    color: rgba(0,0,0,1);
+    margin: 1px!important;
+    line-height: 30px;
+    content:""
+}
+
 .blog_des_view h2 , .blog_des_view h3 , .blog_des_view h4 , .blog_des_view h5 ,.blog_des_view h6 {
     padding: 0!important;
     margin: 0!important;
