@@ -1,11 +1,3 @@
-body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: swap!important;  text-align: right!important;}
-.crop_line_1{width:100%;display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
-.crop_line_1_span{width:100%;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
-.crop_line_2{-webkit-line-clamp:2;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}
-.crop_line_3{-webkit-line-clamp:3;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}
-.crop_line_4{-webkit-line-clamp:4;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}
-.def_img_cover{width:100%;height: 100%;-o-object-fit:cover;object-fit:cover;}
-.area_padding {padding: 100px 2px 70px; background-color: red}
 
 
 .BlogList{ padding: 10px 20px;}
@@ -209,9 +201,9 @@ body{font-family: 'Tajawal', sans-serif!important; font-size:20px;font-display: 
 
 .blog_des_view li {
     list-style-type: disc;
-    /*list-style-position: inside;*/
+
     margin-bottom: 5px;
-    /*padding-right: 10px;*/
+
 }
 
 
