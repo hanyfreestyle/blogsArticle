@@ -58,6 +58,7 @@ Route::post('/Blog/PhotoUpdateAll/{id}',[BlogPostController::class,'More_PhotosU
 Route::get('/Blog/config', [BlogPostController::class,'config'])->name('Blog.BlogPost.config');
 Route::get('/Blog/TagsSearch', [BlogPostController::class,'TagsSearch'])->name('Blog.BlogPost.TagsSearch');
 Route::get('/Blog/TagsOnFly', [BlogPostController::class,'TagsOnFly'])->name('Blog.BlogPost.TagsOnFly');
+Route::post('/Blog/ckeditor/Upload', [BlogPostController::class,'CkeditorUpload'])->name('Blog.BlogPost.CkeditorUpload');
 
 Route::get('/Blog/tags',[BlogTagsController::class,'index'])->name('Blog.BlogTags.index');
 Route::get('/Blog/tags/create',[BlogTagsController::class,'create'])->name('Blog.BlogTags.create');
