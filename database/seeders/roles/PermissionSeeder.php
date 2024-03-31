@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\roles;
 
-use App\Models\admin\config\Setting;
+
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 
@@ -68,16 +68,16 @@ class PermissionSeeder extends Seeder {
         $countData = Permission::all()->count();
         if($countData == '0') {
             foreach ($data as $value) {
-                $newPr = new Permission();
-                $newPr->cat_id = $value['cat_id'];
-                $newPr->name = $value['name'];
-                $newPr->name_ar = $value['name_ar'];
-                $newPr->name_en = $value['name_en'];
-                $newPr->created_at = now();
-                $newPr->updated_at = now();
-                $newPr->save();
+//                $newPr = new Permission();
+//                $newPr->cat_id = $value['cat_id'];
+//                $newPr->name = $value['name'];
+//                $newPr->name_ar = $value['name_ar'];
+//                $newPr->name_en = $value['name_en'];
+//                $newPr->created_at = now();
+//                $newPr->updated_at = now();
+//                $newPr->save();
 
-//                Permission::create($value);
+                Permission::create($value);
             }
         }
 
