@@ -14,6 +14,7 @@ use App\AppPlugin\BlogPost\Models\BlogTranslation;
 
 use App\AppPlugin\BlogPost\Request\BlogPostRequest;
 use App\Helpers\AdminHelper;
+use App\Helpers\photoUpload\PuzzleUploadProcess;
 use App\Http\Controllers\AdminMainController;
 
 use App\Http\Traits\CrudTraits;
@@ -75,6 +76,8 @@ class BlogPostController extends AdminMainController {
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #     index
     public function index() {
+
+
 
         $pageData = $this->pageData;
         $pageData['ViewType'] = "List";
@@ -183,14 +186,29 @@ class BlogPostController extends AdminMainController {
                     $blogReview->blog_id  = $saveData->id;
                     $blogReview->updated_at  = now();
                     $blogReview->save();
-//                    dd('hi');
                 }
 
 
                 $saveData->categories()->sync($categories);
                 $saveData->tags()->sync($tags);
 
-                self::SaveAndUpdateDefPhoto($saveData, $request, $this->UploadDirIs, 'en.name');
+                $saveImgData = new PuzzleUploadProcess();
+                $saveImgData->setCountOfUpload(2);
+                $saveImgData->setUploadDirIs($this->UploadDirIs . '/' . $saveData->id);
+                $saveImgData->setnewFileName($request->input('ar.name'));
+                $saveImgData->setfileUploadName('image');
+                $saveImgData->UploadOne($request, 'filter_id');
+                if($saveData->new_post == 1){
+                    $saveData = AdminHelper::saveAndDeletePhoto($saveData, $saveImgData);
+                }else{
+                    $saveData->photo = $saveImgData->sendSaveData['photo']['file_name'];
+                    if(isset($saveImgData->sendSaveData['photo_thum_1'])){
+                        $saveData->photo_thum_1 = $saveImgData->sendSaveData['photo_thum_1']['file_name'];
+                    }else{
+                        $saveData->photo_thum_1 = null;
+                    }
+                }
+                $saveData->save();
 
                 $addLang = json_decode($request->add_lang);
                 foreach ($addLang as $key => $lang) {

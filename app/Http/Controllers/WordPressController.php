@@ -19,15 +19,15 @@ class WordPressController extends Controller {
 
     public function CheckUser(){
 
-        $blogs = Blog::where('user_id',null)->take(500)->get();
+        $blogs = Blog::where('new_post',1)->take(500)->get();
         foreach ($blogs as $blog){
             $post = Post::published()->where('post_type', 'post')->where('ID',$blog->old_id)->first();
-            if($post->post_author){
-                $blog->user_id = $post->post_author ;
-                $blog->save() ;
-            }
+            $blog->new_post = 0 ;
+            $blog->created_at = $post->post_date ;
+            $blog->updated_at = $post->post_modified ;
+            $blog->save() ;
         }
-        echobr( Blog::where('user_id',null)->count());
+        echobr( Blog::where('new_post',1)->count());
     }
 
 
