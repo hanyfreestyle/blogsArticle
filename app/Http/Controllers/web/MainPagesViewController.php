@@ -6,6 +6,7 @@ use App\AppPlugin\BlogPost\Models\Blog;
 use App\AppPlugin\BlogPost\Models\BlogCategory;
 use App\AppPlugin\BlogPost\Models\BlogTags;
 use App\AppPlugin\Config\Privacy\WebPrivacy;
+use App\AppPlugin\Pages\Models\Page;
 use App\Helpers\AdminHelper;
 use App\Helpers\TableOfContents\Contents;
 use App\Http\Controllers\WebMainController;
@@ -21,25 +22,55 @@ class MainPagesViewController extends WebMainController{
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #     PagePrivacy
     public function PagePrivacy(){
-
         $Meta = parent::getMeatByCatId('Privacy');
         parent::printSeoMeta($Meta,'page_index');
-
         $pageView = $this->pageView ;
         $pageView['SelMenu'] = 'PagePrivacy' ;
-
-
         $webPrivacy = WebPrivacy::where('is_active',true)->orderby('postion','asc')->with('translation')->get();
-//        dd($webPrivacy);
-
         return view('web.page_privacy')->with(
             [
                 'pageView'=>$pageView,
                 'webPrivacy'=>$webPrivacy,
             ]
         );
-
     }
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| #     PageAbout
+    public function PageAbout(){
+        $pageView = $this->pageView ;
+        $pageView['SelMenu'] = 'PageAbout' ;
+        $page = Page::where('id',1)->with('translation')->firstOrFail();
+        $Meta = parent::getMeatByCatId('AboutUs');
+        parent::printSeoMeta($Meta,'page_index');
+        return view('web.page_about')->with(
+            [
+                'pageView'=>$pageView,
+                'page'=>$page,
+            ]
+        );
+    }
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#|||||||||||||||||||||||||||||||||||||| #     PageReview
+    public function PageReview(){
+        $Meta = parent::getMeatByCatId('Review');
+        parent::printSeoMeta($Meta,'page_index');
+        $pageView = $this->pageView ;
+        $pageView['SelMenu'] = 'PageReview' ;
+
+        $page = Page::where('id',2)->with('translation')->with('more_photos')->firstOrFail();
+//        dd($page);
+
+
+        return view('web.page_review')->with(
+            [
+                'pageView'=>$pageView,
+                'page'=>$page,
+            ]
+        );
+    }
+
 
 
 

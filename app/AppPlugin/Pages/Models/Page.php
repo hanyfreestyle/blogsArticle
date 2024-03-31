@@ -59,7 +59,7 @@ class Page extends Model implements TranslatableContract {
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| # more_photos
     public function more_photos(): HasMany {
-        return $this->hasMany(PagePhoto::class, 'page_id', 'id');
+        return $this->hasMany(PagePhoto::class, 'page_id', 'id')->with('translation');
     }
 
 

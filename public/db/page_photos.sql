@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2024 at 12:15 AM
+-- Generation Time: Mar 31, 2024 at 04:08 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -26,9 +26,11 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `page_photos` (`id`, `page_id`, `photo`, `photo_thum_1`, `photo_thum_2`, `position`, `print_photo`, `is_default`) VALUES
-(2, 1, 'images/pages/1/فثسف-pAya3BO5aO.webp', 'images/pages/1/فثسف-SrNdaVObyf.webp', NULL, 0, 2, 0),
-(3, 1, 'images/pages/1/فثسف-c1WrP2o48J.webp', 'images/pages/1/فثسف-R3uf427l49.webp', NULL, 0, 2, 0),
-(4, 1, 'images/pages/1/فثسف-JncK829P6J.webp', 'images/pages/1/فثسف-ZJzEXVLxHV.webp', NULL, 0, 2, 0);
+(6, 2, 'images/pages/2/معايير-تدقيق-المحتوى-في-موضوع-A053kRxpil.webp', 'images/pages/2/معايير-تدقيق-المحتوى-في-موضوع-DZVIq4QY2m.webp', NULL, 0, 2, 0),
+(7, 2, 'images/pages/2/معايير-تدقيق-المحتوى-في-موضوع-QIqbccAcV5.webp', 'images/pages/2/معايير-تدقيق-المحتوى-في-موضوع-YBV4d6fJhk.webp', NULL, 0, 2, 0),
+(8, 2, 'images/pages/2/معايير-تدقيق-المحتوى-في-موضوع-uDDOkDpjtS.webp', 'images/pages/2/معايير-تدقيق-المحتوى-في-موضوع-VKz530wRZa.webp', NULL, 0, 2, 0),
+(9, 2, 'images/pages/2/معايير-تدقيق-المحتوى-في-موضوع-MSQD2o9lzL.webp', 'images/pages/2/معايير-تدقيق-المحتوى-في-موضوع-fGtOdJbUSf.webp', NULL, 0, 2, 0),
+(10, 2, 'images/pages/2/معايير-تدقيق-المحتوى-في-موضوع-jozkzxA9E6.webp', 'images/pages/2/معايير-تدقيق-المحتوى-في-موضوع-dnEs9FZqd6.webp', NULL, 0, 2, 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

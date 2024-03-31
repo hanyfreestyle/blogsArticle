@@ -8,7 +8,7 @@
             </div>
 
             <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                <h2 class="headline">{{__('web/menu.privacy')}}</h2>
+                <h1 class="headline">{{__('web/menu.privacy')}}</h1>
             </div>
             <div class="row">
                 @foreach($webPrivacy as $privacy)

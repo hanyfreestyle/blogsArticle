@@ -54,46 +54,52 @@ body{font-family: 'Tajawal', sans-serif!important; font-size:16px;font-display: 
 .breadcrumb-item{display:inline-block;text-overflow:ellipsis;white-space:nowrap!important;overflow:hidden!important;line-height:30px}
 .breadcrumb i{font-size:12px;line-height:0!important;}
 .breadcrumb-item + .breadcrumb-item::before{float:right;content:"\f100";font-family:"FontAwesome";vertical-align:middle;color:var(--textColor)!important;padding-right:3px;margin-left:3px!important}
-.webPrivacy{
-    /*background-color: red;*/
-}
 
-.webPrivacy h2{
+
+.webPrivacy{}
+.webPrivacy h2{font-size:18px;padding:0!important;font-weight:700;border-bottom:1px solid rgba(0,0,0,.1);margin-bottom:5px!important}
+.webPrivacy h3{font-size:17px;margin-bottom:5px!important}
+.webPrivacy p{font-size:15px;line-height:30px}
+.webPrivacy ul{padding-right:20px}
+.webPrivacy li{font-size:15px;line-height:30px;list-style-type:disc}
+.webPrivacy span{color:var(--background)}
+
+.PageView h2{
     font-size: 18px;
-    padding: 0!important;
+    margin-bottom: 5px;
     font-weight: bold;
-    border-bottom: 1px solid rgba(0,0,0,.1);
-    margin-bottom: 5px!important;
 }
 
-.webPrivacy h3{
-    font-size: 17px;
-    margin-bottom: 5px!important;
+.PageView p{
+    font-size: 16px;
+    margin-bottom: 5px;
+    line-height:35px;
 }
 
-.webPrivacy p{
-    font-size: 15px;
-    line-height: 30px;
-
+.PageView ul ,.PageView ol{
+    padding: 10px 50px;
+    font-size: 16px;
+    margin-bottom: 5px;
+    line-height:30px;
 }
 
-.webPrivacy ul{
-    padding-right: 20px;
-
-}
-.webPrivacy li{
-    font-size: 15px;
-    line-height: 30px;
-    list-style-type: disc;
-
+.PageView li{
+    font-size: 16px;
+    margin-bottom: 5px;
+    line-height:30px;
 }
 
-.webPrivacy span{
-    color: var(--background);
+.reviewPhoto{
+    text-align: center;
 
 }
 
+.reviewPhoto img{
+    /*max-height:200px;*/
+    width: auto!important;
 
+    max-height: 80%;
+}
 
 
 
