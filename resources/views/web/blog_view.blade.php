@@ -3,20 +3,24 @@
     <div class="area_padding">
         <div class="container">
             <div class="row">
+                <div class="col-lg-12">
+                    {!! Breadcrumbs::render('BlogView',$blog->categories->first(),$blog) !!}
+                </div>
 
                 <div class="col-md-8 col-sm-8 col-xs-12">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12 BlogView">
-                            <h1 class="">{{$blog->name}}</h1>
-                            <div class="blog_info">
-                                <div class="printDate">
+                            <h1>{{$blog->name}}</h1>
+                            <div class="blogViewDiv">
+
+                                <div class="dateInfo">
                                     <span class="user_id">{{__('web/def.user_name')}} : <span class="info"><a href="{{route('AuthorView',$blog->userName->slug)}}">{{$blog->userName->name}}</a> </span> | </span>
-                                    <span class="Blogviewdate">{{__('web/def.published_at')}} : <span class="info">{{$blog->getHomeFormatteDate()}}</span> | </span>
+                                    <span class="printDate">{{__('web/def.published_at')}} : <span class="info">{{$blog->getHomeFormatteDate()}}</span> | </span>
                                     @if($review['hasReview'])
                                         <span class="user_id">{{__('web/def.user_review')}} : <span class="info"><a href="{{route('AuthorView',$blog->userName->slug)}}">{{$review['userName']}}</a> </span> | </span>
                                     @endif
                                     @if($review['hasUpdate'])
-                                        <span class="user_id">{{__('web/def.last_update')}} : <span class="info">{{$blog->getUpdateFormatteDate()}}</span> </span>
+                                        <span class="printDate">{{__('web/def.last_update')}} : <span class="info">{{$blog->getUpdateFormatteDate()}}</span> </span>
                                     @endif
                                 </div>
 
@@ -42,7 +46,6 @@
                                 <div class="tag_div">
                                     <div class="title">{{__('web/def.user_div')}}</div>
                                     <p class="user_info_p" >{!! $blog->userName->des !!}</p>
-
                                 </div>
 
                             </div>
@@ -51,20 +54,17 @@
                 </div>
 
                 <div class="col-lg-4 col-md-4">
-                    <div class="page-head-blog">
 
                         <div class="single-blog-page">
                             <div class="left-blog">
                                 <h4>{{__('web/menu.main_category')}}</h4>
                                 <ul class="blog_view_cat_list">
                                     @foreach($categories as $category)
-                                        <li><a href="{{route('CategoryView',$category->slug)}}">{{$category->name}} ({{$category->count}})</a></li>
+                                        <li><a href="{{route('CategoryView',$category->slug)}}">{{$category->name}} <span class="number">({{$category->count}})</span></a></li>
                                     @endforeach
                                 </ul>
                             </div>
                         </div>
-
-
                         <div class="single-blog-page">
                             <div class="left-blog">
                                 <h4>{{__('web/def.related_blog')}}</h4>
@@ -84,8 +84,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="single-blog-page">
                             <div class="left-tags blog-tags">
                                 <div class="popular-tag left-side-tags left-blog">
@@ -98,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                 </div>
             </div>
         </div>

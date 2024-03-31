@@ -1,5 +1,4 @@
 <footer>
-
     <div class="footer-area-bottom">
         <div class="container">
             <div class="row">

@@ -65,22 +65,22 @@ h6 {
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 20px;
   line-height: 50px;
 }
 
 h2 {
-  font-size: 38px;
+  font-size: 20px;
   line-height: 40px;
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 20px;
   line-height: 32px;
 }
 
 h4 {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 26px;
 }
 
@@ -119,44 +119,9 @@ body {
 }
 
 
-.back-to-top {
-  position: fixed;
-  visibility: hidden;
-  opacity: 0;
-  right: 15px;
-  bottom: 15px;
-  z-index: 996;
-  background: var(--background);
-  width: 40px;
-  height: 40px;
-  transition: all 0.4s;
-}
 
-.back-to-top i {
-  font-size: 28px;
-  color: #fff;
-  line-height: 0;
-}
 
-.back-to-top:hover {
-  background:  var(--background);
-  color: #fff;
-}
 
-.back-to-top.active {
-  visibility: visible;
-  opacity: 1;
-}
-
-.clear {
-  clear: both;
-}
-
-ul {
-  list-style: outside none none;
-  margin: 0;
-  padding: 0;
-}
 
 input,
 select,

@@ -60,7 +60,7 @@ class MainPagesViewController extends WebMainController{
         $pageView['SelMenu'] = 'PageReview' ;
 
         $page = Page::where('id',2)->with('translation')->with('more_photos')->firstOrFail();
-//        dd($page);
+
 
 
         return view('web.page_review')->with(
@@ -199,9 +199,11 @@ class MainPagesViewController extends WebMainController{
                 ->with('reviews')
                 ->firstOrFail();
         }
+
         catch (\Exception $e){
             self::abortError404('root');
         }
+
 
         $review = self::checkReviews($blog);
 

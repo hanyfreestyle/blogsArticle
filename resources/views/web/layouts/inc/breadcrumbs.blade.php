@@ -3,7 +3,7 @@
         @foreach ($breadcrumbs as $breadcrumb)
             @if (!is_null($breadcrumb->url) && !$loop->last)
                 <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                    <a  itemprop="item" href="{!! $breadcrumb->url !!}" aria-label="{{$breadcrumb->title}}" >
+                    <a itemprop="item" href="{!! $breadcrumb->url !!}" aria-label="{{$breadcrumb->title}}">
                     <span itemprop="name">
                         @if($loop->index == 0)
                             <span class="breadcrumbSpanName">{{__('web/menu.main_home')}}</span>
