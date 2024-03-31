@@ -5,7 +5,7 @@ namespace App\Helpers\TableOfContents;
 class Contents
 {
     private $tags = ['h2', 'h3', 'h4', 'h5', 'h6'];
-    private $minLength = 100;
+    private $minLength = 1000;
     private $text = '';
 
     private $textHandler;
