@@ -7,10 +7,15 @@
                     {!! Breadcrumbs::render('BlogView',$blog->categories->first(),$blog) !!}
                 </div>
 
+
                 <div class="col-md-8 col-sm-8 col-xs-12">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12 BlogView">
-                            <h1>{{$blog->name}}</h1>
+                            <h1>{{$blog->name}}
+                                @if(\Illuminate\Support\Facades\Auth::user())
+                                    <a target="_blank" href="{{route('Blog.BlogPost.edit',$blog->id)}}"  style="font-size: 15px" >تعديل</a>
+                                @endif
+                            </h1>
                             <div class="blogViewDiv">
 
                                 <div class="dateInfo">

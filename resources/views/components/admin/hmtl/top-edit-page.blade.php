@@ -9,6 +9,9 @@
           <x-admin.form.action-button url="{{route($PrefixRoute.'.More_Photos',$row->id)}}" type="morePhoto" :tip="false"/>
         @endif
 
+            <a class="btn" href="{{route("blog_view",[$row->slug,'.html'])}}" >عرض</a>
+
+
         @if(isset($pageData['AddLang']) and $pageData['AddLang'] == true )
           <x-admin.lang.delete-button :row="$row"/>
         @endif
