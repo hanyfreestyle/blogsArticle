@@ -107,9 +107,12 @@ if (!function_exists('GetCopyRight')) {
 if (!function_exists('ChangeText')) {
     function ChangeText($value) {
         $WebConfig = WebMainController::getWebConfig();
+//        dd($WebConfig);
         $CompanyName = '<span>'.$WebConfig->name.'</span>';
-        $rep1 = array("[CompanyName]","[WebSiteName]");
-        $rep2 = array($CompanyName,$WebConfig->def_url);
+        $webEmail = '<span>'.$WebConfig->email.'</span>';
+        $def_url = '<span>'.$WebConfig->def_url.'</span>';
+        $rep1 = array("[CompanyName]","[WebSiteName]","[WebEmail]");
+        $rep2 = array($CompanyName,$def_url,$webEmail);
         $value = str_replace($rep1,$rep2,$value);
         return $value;
     }

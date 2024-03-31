@@ -2,7 +2,6 @@
 @section('content')
     <div class="area_padding">
 
-
         <div class="container">
             <div class="col-lg-12">
                 {!! Breadcrumbs::render('categories') !!}

@@ -63,6 +63,7 @@ class SettingsController extends AdminMainController{
         $saveData->phone_call = $request->input( 'phone_call');
         $saveData->whatsapp_send = $request->input( 'whatsapp_send');
         $saveData->email = $request->input( 'email');
+        $saveData->def_url = $request->input( 'def_url');
         $saveData->categories =  $request->input( 'categories');
         $saveData->save();
 

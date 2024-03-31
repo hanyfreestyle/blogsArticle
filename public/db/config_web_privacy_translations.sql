@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2023 at 07:11 PM
+-- Generation Time: Mar 31, 2024 at 01:31 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `a_etman`
+-- Database: `blog_article`
 --
 
 --
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `config_web_privacy_translations` (`id`, `privacy_id`, `locale`, `h1`, `h2`, `des`, `lists`) VALUES
-(3, 2, 'ar', 'شروط وسياسة الخصوصية', '', 'تقوم شركة [CompanyName] (\"نحن\" أو \"نحن\" أو \"موقعنا\") بتشغيل [WebSiteName]  (\"الموقع الالكترونى\").\r\nتُعرفك هذه الصفحة بسياساتنا المتعلقة بجمع البيانات الشخصية واستخدامها والكشف عنها عند استخدامك للخدمة والأختيارات المرتبطة بهذه البيانات. \r\nسياسة الخصوصية لشركة [CompanyName]\r\nنستخدم بياناتك لتوفير الخدمة وتحسينها. باستخدام الخدمة، فإنك توافق على جمع واستخدام المعلومات وفقًا لهذه السياسة. ما لم يتم تحديد خلاف ذلك في سياسة الخصوصية، فإن المصطلحات المستخدمة في سياسة الخصوصية لها نفس المعاني كما في الشروط والأحكام الخاصة بنا، والتي يمكن الوصول إليها من [WebSiteName]', ''),
+(3, 2, 'ar', 'شروط وسياسة الخصوصية', NULL, 'تقوم [CompanyName] (\"نحن\" أو \"نحن\" أو \"موقعنا\") بتشغيل [WebSiteName]  (\"الموقع الالكترونى\").\r\nتُعرفك هذه الصفحة بسياساتنا المتعلقة بجمع البيانات الشخصية واستخدامها والكشف عنها عند استخدامك للخدمة والأختيارات المرتبطة بهذه البيانات. \r\nسياسة الخصوصية لـ [CompanyName]\r\nنستخدم بياناتك لتوفير الخدمة وتحسينها. باستخدام الخدمة، فإنك توافق على جمع واستخدام المعلومات وفقًا لهذه السياسة. ما لم يتم تحديد خلاف ذلك في سياسة الخصوصية، فإن المصطلحات المستخدمة في سياسة الخصوصية لها نفس المعاني كما في الشروط والأحكام الخاصة بنا، والتي يمكن الوصول إليها من [WebSiteName]', NULL),
 (4, 2, 'en', 'Privacy Policy', '', ' [CompanyName] (\"us\", \"we\", or \"our\") operates the [WebSiteName] website (the \"Service\").\r\nThis page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. Our Privacy Policy for [CompanyName]\r\nWe use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from  [WebSiteName]', ''),
 (5, 3, 'ar', 'جمع المعلومات واستخدامها', '', 'نقوم بتجميع أنواع مختلفة من المعلومات لأغراض متنوعة لتوفير وتحسين خدماتنا لك.', ''),
 (6, 3, 'en', 'Information Collection And Use', '', 'We collect several different types of information for various purposes to provide and improve our Service to you.', ''),
@@ -54,7 +54,7 @@ INSERT INTO `config_web_privacy_translations` (`id`, `privacy_id`, `locale`, `h1
 (28, 14, 'en', 'Children\'s Privacy', '', 'Our Service does not address anyone under the age of 18 (&quot;Children&quot;).\r\nWe do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your Children has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent, we take steps to remove that information from our servers.', ''),
 (29, 15, 'ar', 'تغييرات سياسة الخصوصية', '', 'يجوز لنا تحديث سياسة الخصوصية الخاصة بنا من وقت لآخر. سنعلمك بأي تغييرات عن طريق نشر سياسة الخصوصية الجديدة على هذه الصفحة.\r\nسنخبرك عبر البريد الإلكتروني و/ أو بإشعار بارز في خدمتنا، قبل أن يصبح التغيير ساريًا وتحديث &quot;تاريخ الفعالية&quot; في أعلى سياسة الخصوصية هذه.\r\nننصحك بمراجعة سياسة الخصوصية هذه بشكل دوري لأية تغييرات. تسري التغييرات التي تطرأ على سياسة الخصوصية هذه عند نشرها على هذه الصفحة.', ''),
 (30, 15, 'en', 'Changes To This Privacy Policy', '', 'We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.\r\n\r\nWe will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the &quot;effective date&quot; at the top of this Privacy Policy.\r\n\r\nYou are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.', ''),
-(31, 16, 'ar', 'اتصل بنا', '', 'إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه، يرجى الاتصال بنا:', 'البريد الإلكتروني : info@etman-group.com'),
+(31, 16, 'ar', 'اتصل بنا', NULL, 'إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه، يرجى الاتصال بنا:', 'البريد الإلكتروني : [WebEmail]'),
 (32, 16, 'en', 'Contact Us', '', 'If you have any questions about this Privacy Policy, please contact us:', 'Email:info@etman-group.com');
 COMMIT;
 

@@ -27,6 +27,7 @@
 
               <div class="row">
                 <x-admin.form.input :row="$setting" name="email" :label="__('admin/config/webConfig.email')" col="12" tdir="en"/>
+                <x-admin.form.input :row="$setting" name="def_url" label="Web Url" col="12" tdir="en"/>
               </div>
 
             </div>

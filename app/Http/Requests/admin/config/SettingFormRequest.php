@@ -24,6 +24,7 @@ class SettingFormRequest extends FormRequest
             'phone_call'=> 'required|numeric',
             'whatsapp_send'=> 'required|numeric',
             'email'=> 'required|email',
+            'def_url'=> 'required|url',
             'facebook'=> 'nullable|url',
             'twitter'=> 'nullable|url',
             'youtube'=> 'nullable|url',

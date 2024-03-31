@@ -14,8 +14,9 @@
                     @endforeach
                 @endif
                 <li><a class="nav-link {{activeMenu($pageView,'Category')}}" href="{{route('categories_list')}}">{{__('web/menu.main_category')}}</a></li>
-                <li><a class="nav-link {{activeMenu($pageView,'AboutUs')}}" href="{{route('PageAbout')}}">{{__('web/menu.main_about')}}</a></li>
-                <li><a class="nav-link {{activeMenu($pageView,'Review')}}" href="{{route('PageReview')}}">{{__('web/menu.main_review')}}</a></li>
+                <li><a class="nav-link {{activeMenu($pageView,'PageAbout')}}" href="{{route('PageAbout')}}">{{__('web/menu.main_about')}}</a></li>
+                <li><a class="nav-link {{activeMenu($pageView,'PageReview')}}" href="{{route('PageReview')}}">{{__('web/menu.main_review')}}</a></li>
+                <li><a class="nav-link {{activeMenu($pageView,'PagePrivacy')}}" href="{{route('PagePrivacy')}}">{{__('web/menu.privacy')}}</a></li>
             </ul>
             <i class="fas fa-bars mobile-nav-toggle"></i>
         </nav>
