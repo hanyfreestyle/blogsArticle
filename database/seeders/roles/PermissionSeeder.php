@@ -73,6 +73,8 @@ class PermissionSeeder extends Seeder {
                 $newPr->name = $value['name'];
                 $newPr->name_ar = $value['name_ar'];
                 $newPr->name_en = $value['name_en'];
+                $newPr->created_at = now();
+                $newPr->updated_at = now();
                 $newPr->save();
 
 //                Permission::create($value);
