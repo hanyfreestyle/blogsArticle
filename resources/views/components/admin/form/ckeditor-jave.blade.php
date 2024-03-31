@@ -37,6 +37,8 @@
                 language: 'en',
                 contentsLangDirection: 'rtl',
                 height: {{$height}},
+                filebrowserUploadUrl: "{{route('Blog.BlogPost.CkeditorUpload',['_token'=>csrf_token()])}}",
+                removePlugins : 'print,save,newpage,flash,another',
                 toolbarGroups : [
                     { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
                     { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
@@ -45,7 +47,7 @@
                     { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
                     { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
                     { name: 'links', groups: [ 'links' ] },
-                    '/',
+
                     { name: 'colors', groups: [ 'colors' ] },
                     { name: 'styles', groups: [ 'styles' ] },
                     { name: 'tools', groups: [ 'tools' ] },

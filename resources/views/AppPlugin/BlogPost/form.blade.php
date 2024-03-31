@@ -102,9 +102,9 @@
 @push('JsCode')
     <x-admin.java.update-slug :view-type="$pageData['ViewType']"/>
     @if($viewEditor)
-        <script src="{{defAdminAssets('ckeditor5/super_ckeditor.js')}}"></script>
-        <x-admin.form.ckeditor5/>
-{{--        <x-admin.form.ckeditor-jave height="350" :enlang="false"/>--}}
+{{--        <script src="{{defAdminAssets('ckeditor5/super_ckeditor.js')}}"></script>--}}
+{{--        <x-admin.form.ckeditor5/>--}}
+        <x-admin.form.ckeditor-jave height="350" :enlang="false"/>
     @endif
     <script>
         $(document).ready(function() {
