@@ -159,6 +159,7 @@ class BlogPostController extends AdminMainController {
     public function edit($id) {
         $pageData = $this->pageData;
         $pageData['ViewType'] = "Edit";
+
         $Categories = $this->modelCategory::all();
         $rowData = $this->model::where('id', $id)->with('categories')->with('userName')->with('reviews')->firstOrFail();
         $selCat = $rowData->categories()->pluck('category_id')->toArray();
@@ -167,7 +168,7 @@ class BlogPostController extends AdminMainController {
         $selTags = $rowData->tags()->pluck('tag_id')->toArray();
         $tags = BlogTags::whereIn('id',$selTags)->take(50)->get();
 
-
+        $pageData['WebUrl'] = route("blog_view",[$rowData->slug,'.html']);
         $selActive = $rowData->is_active ;
         return view('AppPlugin.BlogPost.form',compact('pageData','rowData','Categories','LangAdd','selCat','tags','selTags','selActive'));
 

@@ -61,8 +61,6 @@ class MainPagesViewController extends WebMainController{
 
         $page = Page::where('id',2)->with('translation')->with('more_photos')->firstOrFail();
 
-
-
         return view('web.page_review')->with(
             [
                 'pageView'=>$pageView,

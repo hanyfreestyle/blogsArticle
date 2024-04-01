@@ -1,39 +1,23 @@
 @extends('admin.layouts.app')
-@section('StyleFile')
-    <style>
-        .ck-editor__editable[role="textbox"] {
-            min-height:500px;
-        }
-        .ck-content .image {
-            max-width: 80%;
-            margin: 20px auto;
-        }
-    </style>
-@endsection
-
 @section('content')
     <x-admin.hmtl.breadcrumb :pageData="$pageData"/>
 
-    <x-admin.hmtl.top-edit-page :page-data="$pageData" :row="$rowData"  />
-
+    <x-admin.hmtl.top-edit-page :page-data="$pageData" :row="$rowData" view-web="{{$pageData['WebUrl']}}"  />
 
        <form class="mainForm " action="{{route($PrefixRoute.'.update',intval($rowData->id))}}" method="post" enctype="multipart/form-data">
            @csrf
            <input type="hidden" name="form_type" value="{{$pageData['ViewType']}}">
            <div class="row">
                <div class="col-lg-12">
-
                    @if($errors->has([]))
                        <div class="alert alert-danger alert-dismissible">
                            {{__('admin/alertMass.form_has_error')}}
                        </div>
                    @endif
-
                </div>
 
                <div class="col-lg-8">
                    <x-admin.card.normal>
-
                        <div class="row">
                            <input type="hidden" name="add_lang" value="{{json_encode($LangAdd)}}">
                            @foreach ( $LangAdd as $key=>$lang )
@@ -100,10 +84,8 @@
 
 
 @push('JsCode')
-    <x-admin.java.update-slug :view-type="$pageData['ViewType']"/>
+    <x-admin.java.update-slug :view-type="$pageData['ViewType']" :en="false"/>
     @if($viewEditor)
-{{--        <script src="{{defAdminAssets('ckeditor5/super_ckeditor.js')}}"></script>--}}
-{{--        <x-admin.form.ckeditor5/>--}}
         <x-admin.form.ckeditor-jave height="350" :enlang="false"/>
     @endif
     <script>

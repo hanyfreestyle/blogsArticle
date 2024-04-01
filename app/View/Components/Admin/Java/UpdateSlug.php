@@ -11,17 +11,23 @@ class UpdateSlug extends Component {
     public $row;
     public $isactive;
     public $viewType;
+    public $ar;
+    public $en;
 
 
     public function __construct(
         $row = array(),
         $isactive = true,
         $viewType = null,
+        $ar = true,
+        $en = true,
 
     ) {
         $this->row = $row;
         $this->isactive = $isactive;
         $this->viewType = $viewType;
+        $this->ar = $ar;
+        $this->en = $en;
 
     }
 

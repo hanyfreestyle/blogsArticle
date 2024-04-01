@@ -11,7 +11,7 @@ class TopEditPage extends Component
 
     public $row;
     public $pageData;
-    public $option_1;
+    public $viewWeb;
     public $option_2;
     public $option_3;
     public $option_4;
@@ -22,7 +22,7 @@ class TopEditPage extends Component
     public function __construct(
         $row = array(),
         $pageData = true,
-        $option_1 = null,
+        $viewWeb = null,
         $option_2 = null,
         $option_3 = null,
         $option_4 = null,
@@ -33,7 +33,7 @@ class TopEditPage extends Component
     {
         $this->row = $row;
         $this->pageData = $pageData;
-        $this->option_1 = $option_1;
+        $this->viewWeb = $viewWeb;
         $this->option_2 = $option_2;
         $this->option_3 = $option_3;
         $this->option_4 = $option_4;
