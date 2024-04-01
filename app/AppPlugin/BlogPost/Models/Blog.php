@@ -81,7 +81,9 @@ class Blog extends Model implements TranslatableContract {
     }
 
     public function reviews(): HasMany {
-        return $this->hasMany(BlogReview::class,'blog_id')->with('userName')->orderBy('updated_at','DESC');
+        return $this->hasMany(BlogReview::class,'blog_id')
+            ->with('userName')
+            ->orderBy('updated_at','DESC');
     }
 
 //#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

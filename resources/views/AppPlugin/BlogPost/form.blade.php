@@ -42,28 +42,8 @@
                        </div>
                    </x-admin.card.normal>
 
-
                    @if($pageData['ViewType'] == 'Edit')
-                       <x-admin.card.normal>
-                           <table class="table table-bordered">
-                               <thead>
-                               <tr>
-                                   <th> {{$rowData->userName->name}}</th>
-                                   <th> {{$rowData->created_at}}</th>
-                               </tr>
-                               <tr>
-                                   <th colspan="2">{{__('admin/blogPost.blog_review')}}</th>
-                               </tr>
-                               </thead>
-                               @foreach($rowData->reviews as $review)
-                                   <tr>
-
-                                       <td> {{$review->userName->name}}</td>
-                                       <td>{{$review->updated_at }}</td>
-                                   </tr>
-                               @endforeach
-                           </table>
-                       </x-admin.card.normal>
+                       <x-admin.blog.review-table :row="$rowData"/>
                    @endif
 
                    <x-admin.card.normal>
@@ -77,9 +57,6 @@
            <x-admin.form.submit-role-back :page-data="$pageData"/>
            <div class="row mt-5 mb-5"></div>
        </form>
-
-
-
 @endsection
 
 
