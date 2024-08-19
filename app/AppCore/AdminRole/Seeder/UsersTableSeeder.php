@@ -22,11 +22,8 @@ class UsersTableSeeder extends Seeder {
         $tablePath = public_path('db/users_back.sql');
         DB::unprepared(file_get_contents($tablePath));
 
-
-        if($online){
-
+        if ($online) {
             $oldUsers = UserBack::query()->where('id', '!=', 1)->get();
-
             foreach ($oldUsers as $old) {
                 $user = new User();
                 $user->name = $old->name;
@@ -43,7 +40,7 @@ class UsersTableSeeder extends Seeder {
                 $user->assignRole([$role->id]);
             }
 
-        }else{
+        } else {
             $oldUsers = DB::connection('mysql2')->table('wp_users')->where('ID', '!=', 1)->get();
 
             $addDes = 'مرحبًا بكم في عالمي، حيث الكلمات ترشدكم إلى فهم أعماق أحلامكم. أنا [USERName]، المتخصص في تفسير الأحلام وكتابة المقالات المعلوماتية التي تضيء الجوانب المخفية وراء رموز وقصص أحلامنا.';

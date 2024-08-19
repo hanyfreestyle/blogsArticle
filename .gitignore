@@ -16,7 +16,8 @@
 /public/ckfinder
 /public/images/product
 /public/images/category
-#/public/images
+/routes/AppPlugin/crm/
+/app/AppPlugin/Crm/
 /storage/*.key
 /database/snapshots
 /vendor
