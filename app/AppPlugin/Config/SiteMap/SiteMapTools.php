@@ -147,7 +147,7 @@ class SiteMapTools {
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #    Create_XML_Code_new
-    public function Create_XML_Code_new($dataRows) {
+    public function Create_XML_Code_new($dataRows, $extension = false) {
 
         $stringData = "";
         if ($this->langEn == true) {
@@ -155,7 +155,7 @@ class SiteMapTools {
             foreach ($dataRows as $row) {
                 if (isset($row->translate($lang)->name)) {
                     $stringData .= "\t\t<url>\n";
-                    $stringData .= self::addUrlCode($lang, $row);
+                    $stringData .= self::addUrlCode($lang, $row, $extension);
                     $stringData .= self::AddLastUpdateCode($row);
                     $stringData .= self::AddPhotoCode($row, $lang);
                     $stringData .= "\t\t</url>\n";
@@ -168,7 +168,7 @@ class SiteMapTools {
             foreach ($dataRows as $row) {
                 if (isset($row->translate($lang)->name)) {
                     $stringData .= "\t\t<url>\n";
-                    $stringData .= self::addUrlCode($lang, $row);
+                    $stringData .= self::addUrlCode($lang, $row, $extension);
                     $stringData .= self::AddLastUpdateCode($row);
                     $stringData .= self::AddPhotoCode($row, $lang);
                     $stringData .= "\t\t</url>\n";
@@ -221,7 +221,7 @@ class SiteMapTools {
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| #     addAlternateCode
-    public function addUrlCode($lang, $row) {
+    public function addUrlCode($lang, $row, $extension = false) {
 
         if ($lang == 'en') {
             $alternateLang = 'ar';
@@ -229,7 +229,12 @@ class SiteMapTools {
             $alternateLang = 'en';
         }
 
-        $Url = urldecode(LaravelLocalization::getLocalizedURL($lang, route($this->urlRoute, $row['slug'])));
+        if ($extension) {
+            $Url = urldecode(LaravelLocalization::getLocalizedURL($lang, route($this->urlRoute, [$row['slug'], '.html'])));
+        } else {
+            $Url = urldecode(LaravelLocalization::getLocalizedURL($lang, route($this->urlRoute,$row['slug'])));
+        }
+
 
         $stringData = "\t\t\t<loc>$Url</loc>\n";
 

@@ -30,7 +30,8 @@ Route::group(['middleware' => ['UnderConstruction','MinifyHtml']], function() {
         Route::get('/من-نحن', [MainPagesViewController::class, 'PageAbout'])->name('PageAbout');
         Route::get('/سياسية-الاستخدام', [MainPagesViewController::class, 'PagePrivacy'])->name('PagePrivacy');
 
-        Route::get('{slug}', [MainPagesViewController::class, 'BlogView'])->name('blog_view');
+        Route::get('{slug}{extension}', [MainPagesViewController::class, 'BlogView'])->name('blog_view')
+            ->where('slug', '(.*)')->where('extension', '(?:.html)?');
 //        ->where('slug', '(.*)')->where('extension', '(?:.html)?');
     });
 });

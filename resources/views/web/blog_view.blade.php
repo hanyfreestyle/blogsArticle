@@ -78,14 +78,14 @@
                             <div class="recent-post">
                                 @foreach($ReletedBlog as $blog)
                                     <div class="recent_single_post">
-                                        <a href="{{route('blog_view',$blog->slug)}}">
+                                        <a href="{{route('blog_view',[$blog->slug,'.html'])}}">
                                             <div class="post_img">
                                                 <x-site.def.img :row="$blog" def="blog" class="" w="400" h="240"/>
                                             </div>
                                         </a>
                                         <div class="pst_content">
-                                            <p><a href="{{route('blog_view',$blog->slug)}}"> {{$blog->name}}</a></p>
-{{--                                            <p><a href="{{route('blog_view',[$blog->slug,'.html'])}}"> {{$blog->name}}</a></p>--}}
+{{--                                            <p><a href="{{route('blog_view',$blog->slug)}}"> {{$blog->name}}</a></p>--}}
+                                            <p><a href="{{route('blog_view',[$blog->slug,'.html'])}}"> {{$blog->name}}</a></p>
                                         </div>
                                     </div>
                                     {!! $printSchema->Article($blog,'blog_view') !!}

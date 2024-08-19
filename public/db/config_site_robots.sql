@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2024 at 09:41 PM
+-- Generation Time: Aug 19, 2024 at 12:07 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `islamic_4`
+-- Database: `blog_article`
 --
 
 --
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `config_site_robots` (`id`, `cat_id`, `tag_manager_code`, `analytics_code`, `web_master_meta`, `web_master_html`, `google_api`, `robots`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'GTM-N787VV2B', 'G-HJ18793RZT', '2f5yRtAUIxahiTjP5ObVZcgnXOgDn0OF48cWtrGx4co', 'google2046fca3bd763c13', NULL, 'Disallow: /vendors/\r\nDisallow: /test/', NULL, '2024-08-08 16:40:21');
+(1, NULL, NULL, NULL, NULL, NULL, NULL, 'Disallow: /vendors/\r\nDisallow: /test/', NULL, '2024-08-19 07:06:24');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

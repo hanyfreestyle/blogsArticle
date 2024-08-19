@@ -191,8 +191,8 @@ class WebMainController extends DefaultMainController {
                 break;
 
             case 'blog_view':
-                $Url = urldecode(LaravelLocalization::getLocalizedURL($lang, route('blog_view', $row->slug)));
-                $alternatUrl = urldecode(LaravelLocalization::getLocalizedURL($alternateLang, route('blog_view', $row->slug)));
+                $Url = urldecode(LaravelLocalization::getLocalizedURL($lang, route('blog_view',[$row->slug,'.html'])));
+                $alternatUrl = urldecode(LaravelLocalization::getLocalizedURL($alternateLang, route('blog_view', [$row->slug,'.html'])));
                 break;
 
             case 'TagView':

@@ -173,6 +173,7 @@ class MainPagesViewController extends WebMainController {
         $pageView = $this->pageView;
         $pageView['SelMenu'] = 'HomePage';
         try {
+            $slug = str_replace('.html','',$slug);
             $slug = AdminHelper::Url_Slug($slug);
 
             if (Auth::user()) {

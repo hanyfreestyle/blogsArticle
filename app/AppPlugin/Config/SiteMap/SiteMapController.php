@@ -232,10 +232,11 @@ class SiteMapController extends AdminMainController {
 
             $dataRows = Blog::orderBy('id')
                 ->where('is_active', true)
+                ->take(1)
                 ->get();
             $urlCount = $urlCount + count($dataRows);
             $siteMapTools->urlRoute = "blog_view";
-            $stringData .= $siteMapTools->Create_XML_Code_new($dataRows);
+            $stringData .= $siteMapTools->Create_XML_Code_new($dataRows,true);
 
             SiteMapTools::updateIndexSiteOneFile($catId, $urlCount);
 

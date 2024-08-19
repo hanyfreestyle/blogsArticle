@@ -99,7 +99,7 @@ class SchemaTools {
 #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
     public function Article($row, $route) {
 
-        $url = urldecode(route($route, $row->slug));
+        $url = urldecode(route($route, [$row->slug,'.html']));
         $Photo = getPhotoPath($row->photo, 'blog', "photo");
         $publisher_logo = getDefPhotoPath($this->DefPhotoList, 'logo', 'photo');
 
