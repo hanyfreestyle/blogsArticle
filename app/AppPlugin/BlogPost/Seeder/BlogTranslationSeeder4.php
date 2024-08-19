@@ -16,12 +16,12 @@ class BlogTranslationSeeder4 extends Seeder {
 
     public function run(): void {
 
-        BlogTranslation::unguard();
-        $tablePath = public_path('db/SQLDumpSplitterResult/blog_translations_16.sql');
-        DB::unprepared(file_get_contents($tablePath));
-
-        $tablePath = public_path('db/SQLDumpSplitterResult/blog_translations_17.sql');
-        DB::unprepared(file_get_contents($tablePath));
+//        BlogTranslation::unguard();
+//        $tablePath = public_path('db/SQLDumpSplitterResult/blog_translations_16.sql');
+//        DB::unprepared(file_get_contents($tablePath));
+//
+//        $tablePath = public_path('db/SQLDumpSplitterResult/blog_translations_17.sql');
+//        DB::unprepared(file_get_contents($tablePath));
 
         BlogPivot::unguard();
         $tablePath = public_path('db/blogcategory_blog.sql');
@@ -31,10 +31,9 @@ class BlogTranslationSeeder4 extends Seeder {
         $tablePath = public_path('db/blog_tags_post.sql');
         DB::unprepared(file_get_contents($tablePath));
 
-
-        BlogReview::unguard();
-        $tablePath = public_path('db/blog_post_review.sql');
-        DB::unprepared(file_get_contents($tablePath));
+//        BlogReview::unguard();
+//        $tablePath = public_path('db/blog_post_review.sql');
+//        DB::unprepared(file_get_contents($tablePath));
 
 
     }
