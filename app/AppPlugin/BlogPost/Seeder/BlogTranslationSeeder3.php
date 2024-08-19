@@ -18,14 +18,14 @@ class BlogTranslationSeeder3 extends Seeder {
         $tablePath = public_path('db/SQLDumpSplitterResult/blog_translations_12.sql');
         DB::unprepared(file_get_contents($tablePath));
 
-//        $tablePath = public_path('db/SQLDumpSplitterResult/blog_translations_13.sql');
-//        DB::unprepared(file_get_contents($tablePath));
-//
-//        $tablePath = public_path('db/SQLDumpSplitterResult/blog_translations_14.sql');
-//        DB::unprepared(file_get_contents($tablePath));
-//
-//        $tablePath = public_path('db/SQLDumpSplitterResult/blog_translations_15.sql');
-//        DB::unprepared(file_get_contents($tablePath));
+        $tablePath = public_path('db/SQLDumpSplitterResult/blog_translations_13.sql');
+        DB::unprepared(file_get_contents($tablePath));
+
+        $tablePath = public_path('db/SQLDumpSplitterResult/blog_translations_14.sql');
+        DB::unprepared(file_get_contents($tablePath));
+
+        $tablePath = public_path('db/SQLDumpSplitterResult/blog_translations_15.sql');
+        DB::unprepared(file_get_contents($tablePath));
 
     }
 }
