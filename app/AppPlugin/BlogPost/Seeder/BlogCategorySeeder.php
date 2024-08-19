@@ -20,28 +20,21 @@ class BlogCategorySeeder extends Seeder {
 
     public function run(): void {
 
-        $Config = BlogConfigTraits::DbConfig();
+        BlogCategory::unguard();
+        $tablePath = public_path('db/blog_categories.sql');
+        DB::unprepared(file_get_contents($tablePath));
 
-        if($Config['TableCategory']){
-            BlogCategory::unguard();
-            $tablePath = public_path('db/blog_categories.sql');
-            DB::unprepared(file_get_contents($tablePath));
+        BlogCategoryTranslation::unguard();
+        $tablePath = public_path('db/blog_category_translations.sql');
+        DB::unprepared(file_get_contents($tablePath));
 
-            BlogCategoryTranslation::unguard();
-            $tablePath = public_path('db/blog_category_translations.sql');
-            DB::unprepared(file_get_contents($tablePath));
-        }
+        BlogTags::unguard();
+        $tablePath = public_path('db/blog_tags.sql');
+        DB::unprepared(file_get_contents($tablePath));
 
-        if($Config['TableTags']){
-            BlogTags::unguard();
-            $tablePath = public_path('db/blog_tags.sql');
-            DB::unprepared(file_get_contents($tablePath));
-
-            BlogTagsTranslation::unguard();
-            $tablePath = public_path('db/blog_tags_translations.sql');
-            DB::unprepared(file_get_contents($tablePath));
-        }
-
+        BlogTagsTranslation::unguard();
+        $tablePath = public_path('db/blog_tags_translations.sql');
+        DB::unprepared(file_get_contents($tablePath));
 
     }
 }

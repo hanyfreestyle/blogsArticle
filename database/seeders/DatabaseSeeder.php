@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder {
             }
 
             if (File::isFile(base_path('routes/AppPlugin/blogPost.php'))) {
-//                $this->call(BlogCategorySeeder::class);
+                $this->call(BlogCategorySeeder::class);
 //                $this->call(BlogPostSeeder::class);
 //                $this->call(BlogTranslationSeeder::class);
 //                $this->call(BlogTranslationSeeder2::class);
